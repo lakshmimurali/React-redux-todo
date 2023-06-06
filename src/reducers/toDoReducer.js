@@ -1,4 +1,4 @@
-function toDoItemsReducer(state = { defaultView: 'All', toDos: [] }, action) {
+function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
   if (action.type === 'ADD_TO_DO') {
     let actionId = action.id;
     console.log('State inside toDoItemsReducer', state, action);
@@ -16,7 +16,7 @@ function toDoItemsReducer(state = { defaultView: 'All', toDos: [] }, action) {
       ],
     };
   } else if (action.type === 'Toggle_TO_DO') {
-    console.log('inside toggle case reducer', action);
+    console.log('inside toggle case reducer', action, state);
     let actionId = action.id;
     console.log('actionId', actionId);
     let taskToUpdate = state.toDos[actionId];
