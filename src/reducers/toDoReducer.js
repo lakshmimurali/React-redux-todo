@@ -38,13 +38,18 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
         },
       ],
     };*/
+    console.log('state is', state);
     let actionId = action.id;
     let updatedToDos = state.toDos.map((toDo, index) => {
-      let taskItemObj = toDo[index];
-      console.log('taskItemObj is', taskItemObj);
+      let keyOftaskItemObj = Object.keys(toDo);
+      let taskObj = toDo[keyOftaskItemObj];
+      console.log('taskObj is', taskObj);
+      //let keyOftaskItemObj = Object.keys(taskObj);
+
+      /*console.log('taskItemObj is', taskItemObj);
       let keyOftaskItemObj = Object.keys(taskItemObj);
       console.log('keyOftaskItemObj is >>>>>', keyOftaskItemObj);
-      let taskObj = taskItemObj[keyOftaskItemObj];
+      let taskObj = taskItemObj[keyOftaskItemObj];*/
       console.log('inside map', taskObj);
       return taskObj.id === actionId
         ? {
