@@ -21,7 +21,7 @@ function toDoItemsReducer(state = { defaultView: 'All', toDos: [] }, action) {
     console.log('actionId', actionId);
     let taskToUpdate = state.toDos[actionId];
     console.log('taskToUpdate', taskToUpdate);
-    let completedStatus = taskToUpdate.completed;
+    let completedStatus = taskToUpdate[actionId].completed;
     console.log('completedStatus', completedStatus);
     let togglecompletedStatus = !completedStatus;
     console.log(togglecompletedStatus);
