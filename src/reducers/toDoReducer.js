@@ -58,7 +58,7 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
               isCompleted: !taskObj.isCompleted,
             },
           }
-        : taskItemObj;
+        : toDo;
     });
     console.log('Inside toggle todo', {
       ...state,
