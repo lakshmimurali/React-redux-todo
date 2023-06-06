@@ -16,8 +16,10 @@ function toDoItemsReducer(state = { defaultView: 'All', toDos: [] }, action) {
       ],
     };
   } else if (action.type === 'Toggle_TO_DO') {
+    console.log('inside toggle case reducer', action);
     let actionId = action.id;
     let updatedToDos = state.toDos.map((toDo) => {
+      console.log('inside map', toDo);
       toDo[actionId].id === action.id
         ? { actionId: { ...toDo[actionId], isCompleted: !toDo.isCompleted } }
         : toDo;
