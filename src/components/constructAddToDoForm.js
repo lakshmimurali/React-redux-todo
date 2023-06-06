@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 function ConstructAddToDoForm(props) {
-  console.log(
+  /*console.log(
     'Inside ConstructAddToDoForm',
     props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator
-  );
+  );*/
   let [toDo, setToDo] = useState('');
 
   let todoHandler = (event) => {

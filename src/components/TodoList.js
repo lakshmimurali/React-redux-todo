@@ -2,9 +2,9 @@ import React from 'react';
 import Todo from './Todo.js';
 
 function TodoList(props) {
-  console.log('Inside TodoList', props.toDoListFromStore);
+  /*console.log('Inside TodoList', props.toDoListFromStore);
   console.log(' Inside TodoList', props.invokeToggleToDoActionCreator);
-  console.log(' Inside TodoList', props.selectedView);
+  console.log(' Inside TodoList', props.selectedView);*/
   let toToDoList = null;
 
   function renderToDoData() {
@@ -44,7 +44,7 @@ function TodoList(props) {
     });
     return toDoListElements;
   }
-  console.log('Props Data', props);
+  //console.log('Props Data', props);
   let taskList = renderToDoData();
   return (
     <div>

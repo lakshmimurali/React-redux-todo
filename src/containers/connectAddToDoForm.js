@@ -22,7 +22,7 @@ function addToDoActionCreator(dispatch) {
 }
 
 function ConnectAddToDoForm({ dispatch }) {
-  console.log('Inside ConnectAddToDoForm', dispatch);
+  //console.log('Inside ConnectAddToDoForm', dispatch);
   let addToDoActionCreatorAsProps = addToDoActionCreator(dispatch);
   return (
     <ConstructAddToDoForm

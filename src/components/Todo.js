@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Todo(props) {
-  console.log('Inside ToDo', props);
+  /*console.log('Inside ToDo', props);*/
   let toggleToDo = () => {
     return props.invokeToggleToDoActionCreator(props.id);
   };
