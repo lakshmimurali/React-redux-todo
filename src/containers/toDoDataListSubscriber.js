@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TodoList from '../components/TodoList';
 import constructToggleToDoPayLoad from '../actions/toggleToDo.js';
 
-function ConnectToDoList(props) {
+function SubscribeToDoList(props) {
   console.log('Inside ConnectToDoList>>>>', props);
   return (
     <TodoList
@@ -26,4 +26,4 @@ let mapDispatchToprops = (dispatch, ownProps) => {
     },
   };
 };
-export default connect(mapStateToProps, mapDispatchToprops)(ConnectToDoList);
+export default connect(mapStateToProps, mapDispatchToprops)(SubscribeToDoList);
