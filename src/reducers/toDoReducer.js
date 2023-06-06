@@ -32,8 +32,7 @@ function toDoItemsReducer(state = { defaultView: 'All', toDos: [] }, action) {
         ...state.toDos,
         {
           [actionId]: {
-            value: action.value,
-            id: action.id,
+            ...toDo[actionId],
             completed: togglecompletedStatus,
           },
         },
