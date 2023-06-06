@@ -16,8 +16,8 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
       ],
     };
   } else if (action.type === 'Toggle_TO_DO') {
-    console.log('inside toggle case reducer', action, state);
-    let actionId = action.id;
+    /*console.log('inside toggle case reducer', action, state);
+    
     console.log('actionId', actionId);
     let taskToUpdate = state.toDos[actionId];
     console.log('taskToUpdate', taskToUpdate);
@@ -37,18 +37,23 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
           },
         },
       ],
-    };
-
-    /*let updatedToDos = state.toDos.map((toDo) => {
-      console.log('inside map', toDo, action.id, toDo[actionId].id);
-      toDo[actionId].id === action.id
+    };*/
+    let actionId = action.id;
+    let updatedToDos = state.toDos.map((toDo, index) => {
+      let taskItemObj = toDo[index];
+      console.log('taskItemObj is', taskItemObj);
+      let keyOftaskItemObj = Object.keys(taskItemObj);
+      console.log('keyOftaskItemObj is >>>>>', keyOftaskItemObj);
+      let taskObj = taskItemObj[keyOftaskItemObj];
+      console.log('inside map', taskObj);
+      return taskObj.id === actionId
         ? {
             [actionId]: {
-              ...toDo[actionId],
-              isCompleted: !toDo[actionId].isCompleted,
+              ...taskObj,
+              isCompleted: !taskObj.isCompleted,
             },
           }
-        : toDo;
+        : taskItemObj;
     });
     console.log('Inside toggle todo', {
       ...state,
@@ -58,7 +63,7 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
     return {
       ...state,
       toDos: updatedToDos,
-    };*/
+    };
   }
 
   return state;
