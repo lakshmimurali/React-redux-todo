@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoList from './components/TodoList.js';
+import ConnectToDoList from './containers/toDoDataListSubscriber.js';
 import ConnectAddToDoForm from './containers/connectAddToDoForm.js';
 import Footer from './components/footer.js';
 
@@ -9,7 +9,7 @@ export default function App() {
   return (
     <div>
       <ConnectAddToDoForm />
-      <TodoList />
+      <ConnectToDoList />
       <Footer />
     </div>
   );

@@ -1,12 +1,11 @@
 import React from 'react';
-import Button from './Button.js';
+import ConnectFilterButton from '../containers/connectFilterButton.js';
+
 function Footer() {
   return (
     <div>
       <p>
-        <Button value="All" />
-        <Button value="Completed" />
-        <Button value="Active" />
+        <ConnectFilterButton />
       </p>
     </div>
   );
