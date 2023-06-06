@@ -60,10 +60,6 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
           }
         : toDo;
     });
-    console.log('Inside toggle todo', {
-      ...state,
-      toDos: updatedToDos,
-    });
 
     return {
       ...state,
