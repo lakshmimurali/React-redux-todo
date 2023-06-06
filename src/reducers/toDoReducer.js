@@ -55,7 +55,7 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
         ? {
             [actionId]: {
               ...taskObj,
-              isCompleted: !taskObj.isCompleted,
+              completed: !taskObj.completed,
             },
           }
         : toDo;
