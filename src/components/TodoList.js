@@ -24,6 +24,7 @@ function TodoList(props) {
 
   function constructToDoData(toToDoList) {
     let toDoListElements = toToDoList.map((toDo) => {
+      console.log('Inside constructToDoData', toDo);
       if (props.selectedView === 'Completed' && toDo.isCompleted === false) {
         return;
       }
@@ -33,9 +34,9 @@ function TodoList(props) {
 
       return (
         <Todo
-          value={toDo.task}
+          value={toDo.value}
           id={toDo.id}
-          isCompleted={toDo.isCompleted}
+          isCompleted={toDo.completed}
           invokeToggleToDoActionCreator={props.invokeToggleToDoActionCreator}
           selectedView={props.selectedView}
         />
