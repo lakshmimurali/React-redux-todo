@@ -6,7 +6,7 @@ function Todo(props) {
   };
 
   return (
-    <li onClick={toggleToDo}>
+    <li key={props.id} onClick={toggleToDo}>
       {props.value} {props.isCompleted}{' '}
     </li>
   );

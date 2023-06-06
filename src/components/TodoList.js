@@ -8,7 +8,7 @@ function TodoList(props) {
   let toToDoList = null;
 
   function renderToDoData() {
-    if (props.toDoListFromStore.toDos.length === 0 || 1 == 1) {
+    if (props.toDoListFromStore.toDos.length === 0) {
       return null;
     }
     toToDoList = props.toDoListFromStore.toDos.map((toDo) => {
