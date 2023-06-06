@@ -2,18 +2,16 @@ import React from 'react';
 import Todo from './Todo.js';
 
 function TodoList(props) {
-  console.log(props.toDoListFromStore);
-  console.log(props.invokeToggleToDoActionCreator);
+  console.log('Inside TodoList', props.toDoListFromStore);
+  console.log(' Inside TodoList', props.invokeToggleToDoActionCreator);
+  console.log(' Inside TodoList', props.selectedView);
   let toToDoList = null;
 
   function renderToDoData() {
-    if (
-      props.toDoListFromStore === undefined ||
-      props.toDoListFromStore === null
-    ) {
+    if (props.toDoListFromStore.toDos.length === 0 || 1 == 1) {
       return null;
     }
-    toToDoList = props.toDoListFromStore.map((toDo) => {
+    toToDoList = props.toDoListFromStore.toDos.map((toDo) => {
       let toDoKey = Object.keys(toDo);
       console.log(toDoKey);
       let toToData = toDo[toDoKey];
@@ -26,10 +24,10 @@ function TodoList(props) {
 
   function constructToDoData(toToDoList) {
     let toDoListElements = toToDoList.map((toDo) => {
-      if (selectedView === 'Completed' && toDo.isCompleted === false) {
+      if (props.selectedView === 'Completed' && toDo.isCompleted === false) {
         return;
       }
-      if (selectedView === 'Active' && toDo.isCompleted === true) {
+      if (props.selectedView === 'Active' && toDo.isCompleted === true) {
         return;
       }
 
@@ -45,11 +43,12 @@ function TodoList(props) {
     });
     return toDoListElements;
   }
-
+  console.log('Props Data', props);
+  let taskList = renderToDoData();
   return (
     <div>
       Added ToDo List:
-      <ul>{renderToDoData()}</ul>
+      <ul>{taskList}</ul>
     </div>
   );
 }

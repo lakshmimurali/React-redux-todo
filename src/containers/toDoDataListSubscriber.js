@@ -4,8 +4,14 @@ import TodoList from '../components/TodoList';
 import constructToggleToDoPayLoad from '../actions/toggleToDo.js';
 
 function ConnectToDoList(props) {
-  console.log('Inside ConnectToDoList', props);
-  return <TodoList />;
+  console.log('Inside ConnectToDoList>>>>', props);
+  return (
+    <TodoList
+      invokeToggleToDoActionCreator={props.invokeToggleToDoActionCreator}
+      toDoListFromStore={props.toDoListFromStore}
+      selectedView={props.selectedView.selectedView}
+    />
+  );
 }
 
 let mapStateToProps = (state, ownProps) => {
