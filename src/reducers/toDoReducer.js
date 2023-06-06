@@ -60,7 +60,7 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
           }
         : toDo;
     });
-
+    console.log('updatedToDos', updatedToDos);
     return {
       ...state,
       toDos: updatedToDos,
