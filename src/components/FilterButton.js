@@ -5,9 +5,13 @@ function FilterButton(props) {
       event.target.value
     );
   };
-  let filterButtons = props.values.map((value) => {
+  let filterButtons = props.values.map((value, index) => {
     return (
-      <button value={value} onClick={invokeApplyFilterActionCreator}>
+      <button
+        value={value}
+        key={index}
+        onClick={invokeApplyFilterActionCreator}
+      >
         {value}
       </button>
     );
