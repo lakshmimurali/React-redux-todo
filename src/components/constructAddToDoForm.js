@@ -14,6 +14,11 @@ function ConstructAddToDoForm(props) {
   let invokeToDoAction = () => {
     return props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator(toDo);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      invokeToDoAction();
+    }
+  };
   return (
     <div>
       <input
@@ -21,6 +26,7 @@ function ConstructAddToDoForm(props) {
         name="addToDo"
         value={toDo}
         onChange={todoHandler}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={invokeToDoAction}>Add To Do</button>
     </div>
