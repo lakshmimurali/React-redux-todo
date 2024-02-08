@@ -165,3 +165,54 @@ let updatedGuruKripaFamilyWithBabyHobbiesofSubaKalyan = {
   ...guruKripaFamilyWithBabyHobbiesOfMoyaLakshu,
   kalyansubababies: kalyanSubaBabies,
 };
+
+let babiesHobiesOfPrakashArch =
+  updatedGuruKripaFamilyWithBabyHobbiesofSubaKalyan.prakarchbabies.map(
+    (baby, index, babyArray) => {
+      if (baby === 'SriKala') {
+        return {
+          [baby]: {
+            hobby: 'StoryTelling',
+            favoritesubject: 'History,Hindi,Maths',
+            name: baby,
+            coachname: 'Prak',
+          },
+        };
+      }
+      if (baby === 'RajaSastha') {
+        return {
+          [baby]: {
+            hobby: 'Gymnastics',
+            favoritesubject: 'English,Maths,History',
+            name: baby,
+            coachname: 'Prak,Moya',
+          },
+        };
+      }
+      if (baby === 'Pushkala') {
+        return {
+          [baby]: {
+            hobby: 'Dance&Music',
+            favoritesubject: 'Dance&Music',
+            name: baby,
+            coachname: 'Lakshmi&OnlineGurus',
+          },
+        };
+      }
+      if (baby === 'Revathi') {
+        return {
+          [baby]: {
+            hobby: 'Cooking',
+            favoritesubject: 'Mathematics,Science,English,Tamil',
+            name: baby,
+            coachname: 'Venkat,Murali,Prak',
+          },
+        };
+      }
+    }
+  );
+
+let updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch = {
+  ...updatedGuruKripaFamilyWithBabyHobbiesofSubaKalyan,
+  prakarchbabies: [...babiesHobiesOfPrakashArch],
+};
