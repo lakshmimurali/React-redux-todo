@@ -221,6 +221,6 @@ let updatedGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu = {
   ...updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch,
   moyalakshuBabies: updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch.babies,
 };
-
-let { babies, ...newGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu } =
+// Destructuring Feature can also be used in a way to remove specific keys from an object and to extract out required keys in the new object.
+let { babies, ...newGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu } = 
   updatedGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu;
