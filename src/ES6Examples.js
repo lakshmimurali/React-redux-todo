@@ -82,3 +82,63 @@ let guruKripaFamilyWithBabyHobbiesofSubaKalyan = {
   ...guruKripaFamily,
   kalyansubababies: [...babiesHobies],
 };
+
+let babiesHobiesOfMoyaLakshu = guruKripaFamily.babies.map(
+  (baby, index, babyArray) => {
+    if (baby === 'RamLalla') {
+      return {
+        [baby]: {
+          hobby: 'Archery',
+          favoritesubject: 'LearingItselfisfavorite',
+          name: baby,
+          coachname: 'Moya',
+        },
+      };
+    }
+    if (baby === 'Lakshman') {
+      return {
+        [baby]: {
+          hobby: 'Karate',
+          favoritesubject: 'Music',
+          name: baby,
+          coachname: 'Lakshmi',
+        },
+      };
+    }
+    if (baby === 'Sruthi') {
+      return {
+        [baby]: {
+          hobby: 'Dance&Music',
+          favoritesubject: 'Dance&Music',
+          name: baby,
+          coachname: 'Lakshmi&OnlineGurus',
+        },
+      };
+    }
+    if (baby === 'GaneshVenkat') {
+      return {
+        [baby]: {
+          hobby: 'Cricket',
+          favoritesubject: 'Mathematics',
+          name: baby,
+          coachname: 'Venkat',
+        },
+      };
+    }
+    if (baby === 'Poorni') {
+      return {
+        [baby]: {
+          hobby: 'Cooking',
+          favoritesubject: 'Tamil&Sanskrit&Telugu&Maths',
+          name: baby,
+          coachname: 'Rev&OnlineGurus',
+        },
+      };
+    }
+  }
+);
+
+let guruKripaFamilyWithBabyHobbiesOfMoyaLakshu = {
+  ...guruKripaFamilyWithBabyHobbiesofSubaKalyan,
+  babies: [...babiesHobiesOfMoyaLakshu],
+};
