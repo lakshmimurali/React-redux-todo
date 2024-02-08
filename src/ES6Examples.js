@@ -142,3 +142,26 @@ let guruKripaFamilyWithBabyHobbiesOfMoyaLakshu = {
   ...guruKripaFamilyWithBabyHobbiesofSubaKalyan,
   babies: [...babiesHobiesOfMoyaLakshu],
 };
+
+let moyaLakshmiBabies = {};
+guruKripaFamilyWithBabyHobbiesOfMoyaLakshu.babies.forEach((baby, index) => {
+  Object.assign(moyaLakshmiBabies, baby);
+});
+
+guruKripaFamilyWithBabyHobbiesOfMoyaLakshu = {
+  ...guruKripaFamilyWithBabyHobbiesofSubaKalyan,
+  babies: moyaLakshmiBabies,
+};
+
+let kalyanSubaBabies = {};
+
+guruKripaFamilyWithBabyHobbiesOfMoyaLakshu.kalyansubababies.forEach(
+  (baby, index) => {
+    Object.assign(kalyanSubaBabies, baby);
+  }
+);
+
+let updatedGuruKripaFamilyWithBabyHobbiesofSubaKalyan = {
+  ...guruKripaFamilyWithBabyHobbiesOfMoyaLakshu,
+  kalyansubababies: kalyanSubaBabies,
+};
