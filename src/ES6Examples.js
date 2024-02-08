@@ -216,3 +216,11 @@ let updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch = {
   ...updatedGuruKripaFamilyWithBabyHobbiesofSubaKalyan,
   prakarchbabies: [...babiesHobiesOfPrakashArch],
 };
+
+let updatedGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu = {
+  ...updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch,
+  moyalakshuBabies: updatedGuruKripaFamilyWithBabyHobbiesOfPrakArch.babies,
+};
+
+let { babies, ...newGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu } =
+  updatedGuruKripaFamilyWithBabyHobbiesOfMoyaLakshu;
