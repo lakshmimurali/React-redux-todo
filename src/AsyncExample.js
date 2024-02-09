@@ -1,3 +1,8 @@
+import { combineReducers } from 'redux';
+import { createStore } from 'redux';
+import { applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+
 const initialState = {};
 
 const overAllState = {
@@ -122,10 +127,37 @@ const actionCreatorForFetchingPronounciationOfWord = (payload) => {
   };
 };
 
-const actionCreatorForWriteUpsPayload = (payload) => {
+const actionCreatorForStoringNotes = (payload) => {
   return {
-    type: 'give-me-details',
-    note: payload.load,
+    type: 'store-the-note',
+    note: payload.note,
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForGettingNote = (payload) => {
+  return {
+    type: 'get-the-note',
+    sentence: payload.sentence,
+  };
+};
+const actionCreatorForGettingAllNotes = () => {
+  return {
+    type: 'get-all-notes',
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForDeletingtheNote = (payload) => {
+  return {
+    type: 'delete-the-note',
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForEditingtheNote = (payload) => {
+  return {
+    type: 'editing-the-note',
     sentence: payload.sentence,
   };
 };
@@ -179,8 +211,6 @@ const pronounciationReducer = (
   state = initialStateForPronounciationReducer,
   action
 ) => {
-  // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
-
   let actionType = action.type;
   let selectedWord = action.selectedWord;
   if (actionType === 'please-tell-the-pronounciation') {
@@ -220,3 +250,24 @@ const pronounciationReducer = (
     };
   }
 };
+
+const notesReducer = (state = initialStateForPronounciationReducer, action) => {
+  let actionType = action.type;
+  let selectedWord = action.selectedWord;
+  if (actionType === 'store-the-note') {
+  }
+  if (actionType === 'get-the-note') {
+  }
+  if (actionType === 'delete-the-note') {
+  }
+  if (actionType === 'edit-the-note') {
+  }
+};
+
+const rootReducer = combineReducers({
+  meanings: meaningsReducer,
+  pronounciations: pronounciationReducer,
+  writeups: notesReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
