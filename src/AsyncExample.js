@@ -4,6 +4,7 @@ const overAllState = {
   meanings: {
     synonyms: {
       Adhoc: {
+        // will be in square brackets
         meaning: 'Focus',
         exampleSentence: 'Focus on One Task',
         name: 'Adhoc',
@@ -19,6 +20,7 @@ const overAllState = {
   pronounciations: {
     urls: {
       Onomatopoeia: {
+        // will be in square brackets
         url: 'https://dictionary.com/abcde.mp3',
         language: 'english',
         name: 'Onomatopoeia',
@@ -33,6 +35,7 @@ const overAllState = {
   writeups: {
     notes: {
       'Side Effects And Pure Function': {
+        // will be in square brackets
         note: 'Pure Function = Fasting.',
         name: 'Side Effects And Pure Function',
       },
@@ -46,8 +49,17 @@ const overAllState = {
 
 const actionCreatorForMeaningPayload = (payload) => {
   return {
-    type: 'tell-the-meaning',
+    type: 'please-tell-the-meaning',
     selectedWord: payload.selectedWord,
+  };
+};
+
+const actionCreatorForStoringMeaningPayload = (payload) => {
+  return {
+    type: 'please-store-the-meaning',
+    selectedWord: payload.selectedWord,
+    meaning: payload.meaning,
+    exampleSentence: payload.exampleSentence,
   };
 };
 
@@ -56,7 +68,7 @@ const actionCreatorForFetchingMeaningOfPayload = (payload) => {
     fetch(`https://dictionaryapi.com/meaning/${payload.selectedWord}`)
       .then((response) => {
         console.log(response.data);
-        return actionCreatorForMeaningPayload({
+        return actionCreatorForStoringMeaningPayload({
           selectedWord: payload.selectedWord,
           meaning: response.data.meaning,
           exampleSentence: response.data.exampleSentence,
@@ -64,7 +76,7 @@ const actionCreatorForFetchingMeaningOfPayload = (payload) => {
       })
       .catch((error) => {
         console.log(error.data);
-        return actionCreatorForMeaningPayload({
+        return actionCreatorForStoringMeaningPayload({
           selectedWord: payload.selectedWord,
           meaning: 'Not Available',
           exampleSentence: 'Not Available',
@@ -74,38 +86,26 @@ const actionCreatorForFetchingMeaningOfPayload = (payload) => {
 };
 const actionCreatorForPronounciationPayload = (payload) => {
   return {
-    type: 'pronounce-the-word',
+    type: 'please-tell-the-pronounciation',
     selectedWord: payload.word,
   };
 };
 
-const actionCreatorForFetchingMeaningOfWord = (payload) => {
-  return function (dispatch) {
-    fetch(`https://dictionaryapi.com/meaning/${payload.selectedWord}`)
-      .then((response) => {
-        console.log(response.data);
-        return actionCreatorForMeaningPayload({
-          selectedWord: payload.selectedWord,
-          meaning: response.data.meaning,
-          exampleSentence: response.data.exampleSentence,
-        });
-      })
-      .catch((error) => {
-        console.log(error.data);
-        return actionCreatorForMeaningPayload({
-          selectedWord: payload.selectedWord,
-          meaning: 'Not Available',
-          exampleSentence: 'Not Available',
-        });
-      });
+const actionCreatorForStoringPronounciationPayload = (payload) => {
+  return {
+    type: 'please-store-the-pronounciation',
+    selectedWord: payload.selectedWord,
+    url: payload.url,
+    language: payload.language,
   };
 };
+
 const actionCreatorForFetchingPronounciationOfWord = (payload) => {
   return function (dispatch) {
     fetch(`https://dictionaryapi.com/meaning/${payload.selectedWord}`)
       .then((response) => {
         console.log(response.data);
-        return actionCreatorForMeaningPayload({
+        return actionCreatorForStoringPronounciationPayload({
           selectedWord: payload.selectedWord,
           url: response.data.url,
           language: response.data.language,
@@ -113,7 +113,7 @@ const actionCreatorForFetchingPronounciationOfWord = (payload) => {
       })
       .catch((error) => {
         console.log(error.data);
-        return actionCreatorForMeaningPayload({
+        return actionCreatorForStoringPronounciationPayload({
           selectedWord: payload.selectedWord,
           url: 'Not Available',
           language: 'Not Available',
@@ -134,4 +134,45 @@ const initialStateForMeaningsReducer = { synonyms: {} };
 const initialStateForPronounciationReducer = { urls: {} };
 const initialStateForWriteUpsReducer = { notes: {} };
 
-const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {};
+const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
+  // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
+
+  let actionType = action.type;
+  let selectedWord = action.selectedWord;
+  if (actionType === 'please-tell-the-meaning') {
+    let meaningList = state.synonyms;
+    let selectedWord = action.selectedWord;
+
+    let detailsForGivenWord = meaningList[selectedWord];
+    if (detailsForGivenWord !== undefined) {
+      return detailsForGivenWord;
+    } else {
+      return {
+        ...state,
+        synonyms: {
+          ...state.synonyms,
+          [selectedWord]: {
+            meaning: 'Not Available',
+            exampleSentence: 'Not Available',
+            name: selectedWord,
+          },
+        },
+      };
+    }
+  }
+  if (actionType === 'please-store-the-meaning') {
+    let meaningOfWord = action.meaning;
+    let sentence = action.exampleSentence;
+    return {
+      ...state,
+      synonyms: {
+        ...state.synonyms,
+        [selectedWord]: {
+          meaning: meaningOfWord,
+          exampleSentence: sentence,
+          name: selectedWord,
+        },
+      },
+    };
+  }
+};
