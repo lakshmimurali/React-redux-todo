@@ -141,8 +141,6 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
   let selectedWord = action.selectedWord;
   if (actionType === 'please-tell-the-meaning') {
     let meaningList = state.synonyms;
-    let selectedWord = action.selectedWord;
-
     let detailsForGivenWord = meaningList[selectedWord];
     if (detailsForGivenWord !== undefined) {
       return detailsForGivenWord;
@@ -170,6 +168,52 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
         [selectedWord]: {
           meaning: meaningOfWord,
           exampleSentence: sentence,
+          name: selectedWord,
+        },
+      },
+    };
+  }
+};
+
+const pronounciationReducer = (
+  state = initialStateForPronounciationReducer,
+  action
+) => {
+  // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
+
+  let actionType = action.type;
+  let selectedWord = action.selectedWord;
+  if (actionType === 'please-tell-the-pronounciation') {
+    let urlsList = state.urls;
+    let selectedWord = action.selectedWord;
+
+    let detailsForGivenWord = meaningList[selectedWord];
+    if (detailsForGivenWord !== undefined) {
+      return detailsForGivenWord;
+    } else {
+      return {
+        ...state,
+        urls: {
+          ...state.urls,
+          [selectedWord]: {
+            url: 'Not Available',
+            language: 'Not Available',
+            name: selectedWord,
+          },
+        },
+      };
+    }
+  }
+  if (actionType === 'please-store-the-meaning') {
+    let url = action.url;
+    let language = action.language;
+    return {
+      ...state,
+      urls: {
+        ...state.urls,
+        [selectedWord]: {
+          url: url,
+          language: language,
           name: selectedWord,
         },
       },
