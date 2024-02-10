@@ -38,17 +38,21 @@ const overAllState = {
     },
   },
   writeups: {
-    notes: {
-      'Side Effects And Pure Function': {
-        // will be in square brackets
-        note: 'Pure Function = Fasting.',
-        name: 'Side Effects And Pure Function',
+    notes: [
+      {
+        'Side Effects And Pure Function': {
+          // will be in square brackets
+          note: 'Pure Function = Fasting.',
+          name: 'Side Effects And Pure Function',
+        },
       },
-      'Greedy Quantifiers': {
-        note: 'greedy quantifiers used in patterns helps to *generate matched strings with maximum number of characters *',
-        name: 'Greedy Quantifiers',
+      {
+        'Greedy Quantifiers': {
+          note: 'greedy quantifiers used in patterns helps to *generate matched strings with maximum number of characters *',
+          name: 'Greedy Quantifiers',
+        },
       },
-    },
+    ],
   },
 };
 
@@ -127,44 +131,9 @@ const actionCreatorForFetchingPronounciationOfWord = (payload) => {
   };
 };
 
-const actionCreatorForStoringNotes = (payload) => {
-  return {
-    type: 'store-the-note',
-    note: payload.note,
-    sentence: payload.sentence,
-  };
-};
-
-const actionCreatorForGettingNote = (payload) => {
-  return {
-    type: 'get-the-note',
-    sentence: payload.sentence,
-  };
-};
-const actionCreatorForGettingAllNotes = () => {
-  return {
-    type: 'get-all-notes',
-    sentence: payload.sentence,
-  };
-};
-
-const actionCreatorForDeletingtheNote = (payload) => {
-  return {
-    type: 'delete-the-note',
-    sentence: payload.sentence,
-  };
-};
-
-const actionCreatorForEditingtheNote = (payload) => {
-  return {
-    type: 'editing-the-note',
-    sentence: payload.sentence,
-  };
-};
-
 const initialStateForMeaningsReducer = { synonyms: {} };
 const initialStateForPronounciationReducer = { urls: {} };
-const initialStateForWriteUpsReducer = { notes: {} };
+const initialStateForWriteUpsReducer = { notes: [] };
 
 const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
   // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
@@ -251,16 +220,87 @@ const pronounciationReducer = (
   }
 };
 
-const notesReducer = (state = initialStateForPronounciationReducer, action) => {
+const actionCreatorForStoringNotes = (payload) => {
+  return {
+    type: 'store-the-note',
+    note: payload.note,
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForGettingNote = (payload) => {
+  return {
+    type: 'get-the-note',
+    sentence: payload.sentence,
+  };
+};
+const actionCreatorForGettingAllNotes = () => {
+  return {
+    type: 'get-all-notes',
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForDeletingtheNote = (payload) => {
+  return {
+    type: 'delete-the-note',
+    sentence: payload.sentence,
+  };
+};
+
+const actionCreatorForEditingtheNote = (payload) => {
+  return {
+    type: 'editing-the-note',
+    sentence: payload.sentence,
+    note: payload.note,
+  };
+};
+
+const notesReducer = (state = initialStateForWriteUpsReducer, action) => {
   let actionType = action.type;
-  let selectedWord = action.selectedWord;
+  let sentence = action.sentence;
   if (actionType === 'store-the-note') {
+    let note = action.note;
+    return {
+      ...state,
+      notes: [
+        ...state.notes,
+        {
+          [sentence]: {
+            note: note,
+            name: sentence,
+          },
+        },
+      ],
+    };
   }
   if (actionType === 'get-the-note') {
+    let requiredNoteInfo = state.notes.filter((noteObj) => {
+      return noteObj[sentence] !== undefined;
+    });
+
+    return requiredNoteInfo;
   }
   if (actionType === 'delete-the-note') {
+    let updatedNoteInfo = state.notes.filter((noteObj) => {
+      return noteObj[sentence] === undefined;
+    });
+    return {
+      ...state,
+      notes: [...updatedNoteInfo],
+    };
   }
   if (actionType === 'edit-the-note') {
+    let updatedNoteInfo = state.notes.map((noteObj) => {
+      if (noteObj[sentence] !== undefined) {
+        noteObj[sentence].note = action.note;
+      }
+      return noteObj;
+    });
+    return {
+      ...state,
+      notes: [...updatedNoteInfo],
+    };
   }
 };
 
