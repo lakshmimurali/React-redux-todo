@@ -17,7 +17,6 @@ export default function App() {
       <Footer />
       <UpdateSelectedText />
       <RenderUIActionsBasedOnTextSelectionChange />
-      <DisplayResponseToUserAction />
     </div>
   );
 }
