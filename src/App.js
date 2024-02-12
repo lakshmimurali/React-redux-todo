@@ -15,9 +15,9 @@ export default function App() {
       <ConnectAddToDoForm />
       <SubscribeToDoList />
       <Footer />
+      <UpdateSelectedText />
       <RenderUIActionsBasedOnTextSelectionChange />
       <DisplayResponseToUserAction />
-      <UpdateSelectedText />
     </div>
   );
 }

@@ -7,6 +7,9 @@ import { actionCreatorForGettingNote } from '../actionCreators/IRE-Notes.js';
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
 function RenderUIActionsBasedOnTextSelectionChange(props) {
+  if (props.selectedText === '0000') {
+    return null;
+  }
   return (
     <div>
       <InteractiveReader

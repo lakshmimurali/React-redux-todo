@@ -10,6 +10,10 @@ function UpdateSelectedText({ dispatch }) {
       const selection = window.getSelection();
       if (selection && selection.toString()) {
         const selectedWord = selection.toString();
+        console.log(
+          'In  UpdateSelectedText container useeffect for mouseup event',
+          selectedWord
+        );
         dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
       }
     };

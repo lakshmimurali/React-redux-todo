@@ -53,6 +53,10 @@ function invokeInteractiveReadingExperienceActions(dispatch) {
 }
 
 function DisplayResponseToUserAction(props) {
+  console.log('props inside DisplayResponseToUserAction ', props);
+  if (props.selectedText === '0000') {
+    return null;
+  }
   let invokedAction = props.action;
   let invokeHandler;
   if (invokedAction === 'meaning') {
