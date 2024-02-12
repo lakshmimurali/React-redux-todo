@@ -220,7 +220,7 @@ const pronounciationReducer = (
   }
 };
 
-const actionCreatorForStoringNotes = (payload) => {
+const actionCreatorForStoringNote = (payload) => {
   return {
     type: 'store-the-note',
     note: payload.note,
@@ -311,4 +311,3 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
-
