@@ -4,3 +4,5 @@ const actionCreatorForUpdatingSelectedText = (text) => {
     text: text,
   };
 };
+
+export default actionCreatorForUpdatingSelectedText;

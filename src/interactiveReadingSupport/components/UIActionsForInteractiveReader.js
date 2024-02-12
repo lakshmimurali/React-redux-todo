@@ -1,13 +1,14 @@
 import React from 'react';
 
 const InteractiveReader = (props) => {
+  const selectedText = props.selectedText;
   return (
     <div>
       <p>
         <button
           value="Meaning"
           key="1"
-          onClick={(selectedText) => {
+          onClick={() => {
             props.invokeMeaning(selectedText);
           }}
         >
@@ -16,7 +17,7 @@ const InteractiveReader = (props) => {
         <button
           value="Pronounciation"
           key="2"
-          onClick={(selectedText) => {
+          onClick={() => {
             props.invokePronounciation(selectedText);
           }}
         >
@@ -25,7 +26,7 @@ const InteractiveReader = (props) => {
         <button
           value="addnote"
           key="3"
-          onClick={(selectedText) => {
+          onClick={() => {
             props.invokeAddNotes(selectedText);
           }}
         >

@@ -18,3 +18,5 @@ function ShowMeaningForWord(props) {
     </p>
   );
 }
+
+export default ShowMeaningForWord;

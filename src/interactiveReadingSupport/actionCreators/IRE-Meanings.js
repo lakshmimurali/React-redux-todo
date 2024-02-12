@@ -35,3 +35,9 @@ const actionCreatorForFetchingMeaningOfPayload = (payload) => {
       });
   };
 };
+
+export {
+  actionCreatorForMeaningPayload,
+  actionCreatorForStoringMeaningPayload,
+  actionCreatorForFetchingMeaningOfPayload,
+};

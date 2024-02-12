@@ -1,17 +1,18 @@
-import getSelectionText from './helperToGetSelectedText.js';
 import { actionCreatorForMeaningPayload } from '../actionCreators/IRE-Meanings.js';
 import { actionCreatorForPronounciationPayload } from '../actionCreators/IRE-Pronounciation.js';
-import { actionCreatorForGettingNote } from '../actionCreators/IRE-Meanings.js';
+import { actionCreatorForGettingNote } from '../actionCreators/IRE-Notes.js';
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
 function renderUIActionsBasedOnTextSelectionChange(props) {
   return (
-    <InteractiveReader
-      selectedText={props.selectedText}
-      invokeMeaning={props.invokeMeaning}
-      invokePronounciation={props.invokePronounciation}
-      invokeAddNotes={props.invokeAddNotes}
-    />
+    <div>
+      <InteractiveReader
+        selectedText={props.selectedText}
+        invokeMeaning={props.invokeMeaning}
+        invokePronounciation={props.invokePronounciation}
+        invokeAddNotes={props.invokeAddNotes}
+      />
+    </div>
   );
 }
 

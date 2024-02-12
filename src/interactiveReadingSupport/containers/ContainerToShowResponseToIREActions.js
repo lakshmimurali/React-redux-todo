@@ -1,5 +1,13 @@
 import { connect } from 'react-redux';
-import getSelectionText from './helperToGetSelectedText.js';
+import { actionCreatorForStoringMeaningPayload } from '../actionCreators/IRE-Meanings.js';
+import { actionCreatorForStoringPronounciationPayload } from '../actionCreators/IRE-Pronounciation.js';
+import {
+  actionCreatorForGettingNote,
+  actionCreatorForGettingAllNotes,
+  actionCreatorForStoringNote,
+  actionCreatorForEditingtheNote,
+  actionCreatorForDeletingtheNote,
+} from '../actionCreators/IRE-Notes.js';
 
 function getDataFromStore(state) {
   let selectedText = getSelectionText();
@@ -13,17 +21,10 @@ function getDataFromStore(state) {
 
 function invokeInteractiveReadingExperienceActions(dispatch) {
   return {
-    fetchMeaningsFromLocal: (word) => {
-      dispatch(actionCreatorForMeaningPayload(word));
-    },
-
     fetchMeaningsFromServer: (word) => {
       dispatch(actionCreatorForStoringMeaningPayload(word));
     },
 
-    fetchMeaningsFromServer: (word) => {
-      dispatch(actionCreatorForPronounciationPayload(word));
-    },
     fetchPronounciationURLFromServer: (word) => {
       dispatch(actionCreatorForStoringPronounciationPayload(word));
     },
@@ -45,7 +46,7 @@ function invokeInteractiveReadingExperienceActions(dispatch) {
   };
 }
 
-function routingContainerForInteractiveReadingExperience_new(props) {
+function displayResponseToUserAction(props) {
   let invokedAction = props.action;
   let invokeHandler;
   if (invokedAction === 'meaning') {
@@ -95,4 +96,4 @@ let renderNotesUI = (props) => {
 export default connect(
   getDataFromStore,
   invokeInteractiveReadingExperienceActions
-)(routingContainerForInteractiveReadingExperience_new);
+)(displayResponseToUserAction);

@@ -35,3 +35,9 @@ const actionCreatorForFetchingPronounciationOfWord = (payload) => {
       });
   };
 };
+
+export {
+  actionCreatorForPronounciationPayload,
+  actionCreatorForStoringPronounciationPayload,
+  actionCreatorForFetchingPronounciationOfWord,
+};

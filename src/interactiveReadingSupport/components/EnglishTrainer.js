@@ -1,4 +1,4 @@
-function EnglishTrainer(props) {
+function ShowProuniciationAudioForGivenWord(props) {
   let [fetchData, setFetchData] = useState(false);
   let audioURLForSelectedText = props.pronounciationObj.url;
   if (audioURLForSelectedText !== 'Not Available') {
@@ -18,3 +18,5 @@ function EnglishTrainer(props) {
     </p>
   );
 }
+
+export default ShowProuniciationAudioForGivenWord;

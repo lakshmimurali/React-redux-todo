@@ -33,3 +33,11 @@ const actionCreatorForEditingtheNote = (payload) => {
     note: payload.note,
   };
 };
+
+export {
+  actionCreatorForStoringNote,
+  actionCreatorForGettingNote,
+  actionCreatorForGettingAllNotes,
+  actionCreatorForDeletingtheNote,
+  actionCreatorForEditingtheNote,
+};
