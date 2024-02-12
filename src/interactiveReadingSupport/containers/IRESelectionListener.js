@@ -32,9 +32,6 @@ function dispactchActions(dispatch) {
     invokeAddNotes: (selectedText) => {
       dispatch(actionCreatorForGettingNote(selectedText));
     },
-    updatedSelectedText: (selectedText) => {
-      dispatch(actionCreatorForUpdatingSelectedText(selectedText));
-    },
   };
 }
 

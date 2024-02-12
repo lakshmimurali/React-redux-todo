@@ -95,4 +95,4 @@ let renderNotesUI = (props) => {
 export default connect(
   getDataFromStore,
   invokeInteractiveReadingExperienceActions
-)(routingContainerForInteractiveReadingExperience);
+)(routingContainerForInteractiveReadingExperience_new);

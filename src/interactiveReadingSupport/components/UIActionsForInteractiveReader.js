@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const InteractiveReader = (props) => {
-  useEffect(() => {
-    const handleSelection = () => {
-      const selection = window.getSelection();
-      if (selection && selection.toString()) {
-        const selectedWord = selection.toString();
-        props.actionCreatorForUpdatingSelectedText(selectedWord);
-      }
-    };
-
-    document.addEventListener('mouseup', handleSelection);
-
-    return () => {
-      document.removeEventListener('mouseup', handleSelection);
-    };
-  }, []);
-
   return (
     <div>
       <p>
