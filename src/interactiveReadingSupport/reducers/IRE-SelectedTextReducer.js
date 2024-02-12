@@ -5,7 +5,7 @@ const selectedTextReducer = (
   action
 ) => {
   let selectedWord = action.text;
-  return { ...state, selectedText: selectedWord };
+  return { selectedText: selectedWord };
 };
 
 export default selectedTextReducer;

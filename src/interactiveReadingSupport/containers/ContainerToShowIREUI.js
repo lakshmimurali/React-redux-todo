@@ -21,6 +21,7 @@ function RenderUIActionsBasedOnTextSelectionChange(props) {
 
 function getSelectedText(state) {
   console.log('insidegetSelectedText >>>>>>>>.', state);
+
   return {
     selectedText: state.selectedNode.selectedText,
   };
