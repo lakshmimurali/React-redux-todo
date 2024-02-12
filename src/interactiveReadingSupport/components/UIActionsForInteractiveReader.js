@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const InteractiveReader = (props) => {
-  const [selectedText, setSelectedText] = useState(null);
   useEffect(() => {
     const handleSelection = () => {
       const selection = window.getSelection();
       if (selection && selection.toString()) {
         const selectedWord = selection.toString();
-        setSelectedText(selectedWord);
         props.actionCreatorForUpdatingSelectedText(selectedWord);
       }
     };
