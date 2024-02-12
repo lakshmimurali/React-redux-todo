@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
+import getSelectionText from './helperToGetSelectedText.js';
 
-function getDataFromStore(state, ownProps) {
+function getDataFromStore(state) {
+  let selectedText = getSelectionText();
   return {
-    meaningObj: state.meanings.synonyms[ownProps],
-    pronounciationObj: state.pronounciations.urls[ownProps],
+    meaningObj: state.meanings.synonyms[selectedText],
+    pronounciationObj: state.pronounciations.urls[selectedText],
     notes: state.writeups.notes,
+    selectedText: selectedText,
   };
 }
 
@@ -41,38 +44,75 @@ function invokeInteractiveReadingExperienceActions(dispatch) {
     },
   };
 }
-
 function routingContainerForInteractiveReadingExperience(props) {
-  if (props.invokedAction === 'meaning') {
+  let selectedText = getSelectionText();
+
+  if (selectedText !== '' && selectedText !== undefined) {
     return (
-      <ShowMeaningForWord
-        word={props.word}
-        localAction={props.fetchMeaningsFromLocal}
-        serverAction={fetchMeaningsFromServer}
-      />
+      <p>
+        <button
+          value="Meaning"
+          key="1"
+          onClick={() => {
+            renderMeaningsUI(props);
+          }}
+        >
+          Check Meaning
+        </button>
+        <button
+          value="Pronounciation"
+          key="2"
+          onClick={() => {
+            renderPronounciationsUI(props);
+          }}
+        >
+          Pronounce It.. Plz..
+        </button>
+        <button
+          value="addnote"
+          key="3"
+          onClick={() => {
+            renderNotesUI(props);
+          }}
+        >
+          Add Note
+        </button>
+      </p>
     );
   }
-  if (props.invokedAction === 'pronounciation') {
-    return (
-      <ShowProuniciationAudioForGivenWord
-        word={props.word}
-        localAction={fetchPronounciationURLFromLocal}
-        serverAction={fetchPronounciationURLFromServer}
-      />
-    );
-  }
-  if (props.invokedAction === 'notes') {
-    return (
-      <ShowNotesForSentence
-        sentence={props.sentence}
-        fetchNote={props.fetchNote}
-        fetchAllNotes={props.listNotes}
-        editNote={props.editNote}
-        storeNote={props.storeNote}
-        deleteNote={props.deleteNote}
-      />
-    );
-  }
+}
+
+function renderMeaningsUI(props) {
+  return (
+    <ShowMeaningForWord
+      meaningInfo={props.meaningObj}
+      localAction={props.fetchMeaningsFromLocal}
+      serverAction={fetchMeaningsFromServer}
+    />
+  );
+}
+
+function renderPronounciationsUI(props) {
+  return (
+    <ShowProuniciationAudioForGivenWord
+      pronounciationInfo={props.pronounciationObj}
+      localAction={fetchPronounciationURLFromLocal}
+      serverAction={fetchPronounciationURLFromServer}
+    />
+  );
+}
+
+function renderNotesUI(props) {
+  return (
+    <ShowNotesForSentence
+      sentence={props.selectedText}
+      fetchNote={props.fetchNote}
+      fetchAllNotes={props.listNotes}
+      editNote={props.editNote}
+      storeNote={props.storeNote}
+      deleteNote={props.deleteNote}
+    />
+  );
 }
 
 export default connect(
