@@ -9,6 +9,10 @@ import {
   actionCreatorForDeletingtheNote,
 } from '../actionCreators/IRE-Notes.js';
 
+import ShowMeaningForWord from '../components/Dictionary.js';
+import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
+import ShowNotesForSentence from '../components/EnglishTrainer.js';
+
 function getDataFromStore(state) {
   let selectedText = getSelectionText();
   return {

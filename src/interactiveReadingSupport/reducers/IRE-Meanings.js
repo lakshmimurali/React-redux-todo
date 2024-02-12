@@ -40,3 +40,5 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
     };
   }
 };
+
+export default meaningsReducer;

@@ -46,3 +46,5 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     };
   }
 };
+
+export default notesReducer;
