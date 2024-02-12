@@ -3,7 +3,7 @@ import { actionCreatorForPronounciationPayload } from '../actionCreators/IRE-Pro
 import { actionCreatorForGettingNote } from '../actionCreators/IRE-Notes.js';
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
-function renderUIActionsBasedOnTextSelectionChange(props) {
+function RenderUIActionsBasedOnTextSelectionChange(props) {
   return (
     <div>
       <InteractiveReader
@@ -39,4 +39,4 @@ function dispactchActions(dispatch) {
 export default connect(
   getSelectedText,
   dispactchActions
-)(renderUIActionsBasedOnTextSelectionChange);
+)(RenderUIActionsBasedOnTextSelectionChange);

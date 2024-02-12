@@ -50,7 +50,7 @@ function invokeInteractiveReadingExperienceActions(dispatch) {
   };
 }
 
-function displayResponseToUserAction(props) {
+function DisplayResponseToUserAction(props) {
   let invokedAction = props.action;
   let invokeHandler;
   if (invokedAction === 'meaning') {
@@ -100,4 +100,4 @@ let renderNotesUI = (props) => {
 export default connect(
   getDataFromStore,
   invokeInteractiveReadingExperienceActions
-)(displayResponseToUserAction);
+)(DisplayResponseToUserAction);

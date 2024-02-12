@@ -3,6 +3,10 @@ import SubscribeToDoList from './containers/toDoDataListSubscriber.js';
 import ConnectAddToDoForm from './containers/connectAddToDoForm.js';
 import Footer from './components/footer.js';
 
+import RenderUIActionsBasedOnTextSelectionChange from './interactiveReadingSupport/containers/ContainerToShowIREUI.js';
+import DisplayResponseToUserAction from './interactiveReadingSupport/containers/ContainerToShowResponseToIREActions.js';
+import UpdateSelectedText from './interactiveReadingSupport/containers/ContainerToUpdatedSelectedText.js';
+
 import './style.css';
 
 export default function App() {
@@ -11,6 +15,9 @@ export default function App() {
       <ConnectAddToDoForm />
       <SubscribeToDoList />
       <Footer />
+      <RenderUIActionsBasedOnTextSelectionChange />
+      <DisplayResponseToUserAction />
+      <UpdateSelectedText />
     </div>
   );
 }

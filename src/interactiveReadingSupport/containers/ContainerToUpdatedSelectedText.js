@@ -1,5 +1,5 @@
-import actionCreatorForUpdatingSelectedText from '../acionCreators/IRE-UpdatedSelectedText.js'
-function updateSelectedText({ dispatch }) {
+import actionCreatorForUpdatingSelectedText from '../acionCreators/IRE-UpdatedSelectedText.js';
+function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = () => {
       const selection = window.getSelection();
@@ -17,4 +17,4 @@ function updateSelectedText({ dispatch }) {
   }, []);
 }
 
-export default connect()(updateSelectedText);
+export default connect()(UpdateSelectedText);
