@@ -2,45 +2,43 @@ import getSelectionText from './helperToGetSelectedText.js';
 import { actionCreatorForMeaningPayload } from '../actionCreators/IRE-Meanings.js';
 import { actionCreatorForPronounciationPayload } from '../actionCreators/IRE-Pronounciation.js';
 import { actionCreatorForGettingNote } from '../actionCreators/IRE-Meanings.js';
+import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
-function showIREFeatures({ dispatch }) {
-  let selectedText = getSelectionText();
-
-  if (selectedText !== '' && selectedText !== undefined) {
-    return (
-      <p>
-        <button
-          value="Meaning"
-          key="1"
-          onClick={() => {
-            dispatch(actionCreatorForMeaningPayload(selectedText));
-          }}
-        >
-          Check Meaning
-        </button>
-        <button
-          value="Pronounciation"
-          key="2"
-          onClick={() => {
-            dispatch(actionCreatorForPronounciationPayload(selectedText));
-          }}
-        >
-          Pronounce It.. Plz..
-        </button>
-        <button
-          value="addnote"
-          key="3"
-          onClick={() => {
-            dispatch(actionCreatorForGettingNote(selectedText));
-          }}
-        >
-          Add Note
-        </button>
-      </p>
-    );
-  }
-
-  return null;
+function renderUIActionsBasedOnTextSelectionChange(props) {
+  return (
+    <InteractiveReader
+      selectedText={props.selectedText}
+      invokeMeaning={props.invokeMeaning}
+      invokePronounciation={props.invokePronounciation}
+      invokeAddNotes={props.invokeAddNotes}
+    />
+  );
 }
 
-export default connect()(showIREFeatures);
+function getSelectedText(state) {
+  return {
+    selectedText: state.selectedNode.selectedText,
+  };
+}
+
+function dispactchActions(dispatch) {
+  return {
+    invokeMeaning: (selectedText) => {
+      dispatch(actionCreatorForMeaningPayload(selectedText));
+    },
+    invokePronounciation: (selectedText) => {
+      dispatch(actionCreatorForPronounciationPayload(selectedText));
+    },
+    invokeAddNotes: (selectedText) => {
+      dispatch(actionCreatorForGettingNote(selectedText));
+    },
+    updatedSelectedText: (selectedText) => {
+      dispatch(actionCreatorForUpdatingSelectedText(selectedText));
+    },
+  };
+}
+
+export default connect(
+  getSelectedText,
+  dispactchActions
+)(renderUIActionsBasedOnTextSelectionChange);
