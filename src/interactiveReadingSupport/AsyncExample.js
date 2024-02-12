@@ -54,6 +54,7 @@ const overAllState = {
       },
     ],
   },
+  selectedText: '',
 };
 
 const actionCreatorForMeaningPayload = (payload) => {

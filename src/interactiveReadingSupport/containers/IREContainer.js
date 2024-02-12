@@ -44,46 +44,22 @@ function invokeInteractiveReadingExperienceActions(dispatch) {
     },
   };
 }
-function routingContainerForInteractiveReadingExperience(props) {
-  let selectedText = getSelectionText();
 
-  if (selectedText !== '' && selectedText !== undefined) {
-    return (
-      <p>
-        <button
-          value="Meaning"
-          key="1"
-          onClick={() => {
-            renderMeaningsUI(props);
-          }}
-        >
-          Check Meaning
-        </button>
-        <button
-          value="Pronounciation"
-          key="2"
-          onClick={() => {
-            renderPronounciationsUI(props);
-          }}
-        >
-          Pronounce It.. Plz..
-        </button>
-        <button
-          value="addnote"
-          key="3"
-          onClick={() => {
-            renderNotesUI(props);
-          }}
-        >
-          Add Note
-        </button>
-      </p>
-    );
+function routingContainerForInteractiveReadingExperience_new(props) {
+  let invokedAction = props.action;
+  let invokeHandler;
+  if (invokedAction === 'meaning') {
+    invokeHandler = renderMeaningsUI;
+  } else if (invokedAction === 'pronounciation') {
+    invokeHandler = renderPronounciationsUI;
+  } else {
+    invokeHandler = renderNotesUI;
   }
-  return null;
+
+  return <div>{invokeHandler()}</div>;
 }
 
-function renderMeaningsUI(props) {
+let renderMeaningsUI = (props) => {
   return (
     <ShowMeaningForWord
       meaningInfo={props.meaningObj}
@@ -91,9 +67,9 @@ function renderMeaningsUI(props) {
       serverAction={fetchMeaningsFromServer}
     />
   );
-}
+};
 
-function renderPronounciationsUI(props) {
+let renderPronounciationsUI = (props) => {
   return (
     <ShowProuniciationAudioForGivenWord
       pronounciationInfo={props.pronounciationObj}
@@ -101,9 +77,9 @@ function renderPronounciationsUI(props) {
       serverAction={fetchPronounciationURLFromServer}
     />
   );
-}
+};
 
-function renderNotesUI(props) {
+let renderNotesUI = (props) => {
   return (
     <ShowNotesForSentence
       sentence={props.selectedText}
@@ -114,7 +90,7 @@ function renderNotesUI(props) {
       deleteNote={props.deleteNote}
     />
   );
-}
+};
 
 export default connect(
   getDataFromStore,
