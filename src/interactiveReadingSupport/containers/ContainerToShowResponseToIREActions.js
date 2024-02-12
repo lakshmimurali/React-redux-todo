@@ -16,7 +16,7 @@ import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js'
 import ShowNotesForSentence from '../components/EnglishTrainer.js';
 
 function getDataFromStore(state) {
-  let selectedText = state.selectedNode.selectedText;
+  let selectedText = state.selectedNode;
   return {
     meaningObj: state.meanings.synonyms[selectedText],
     pronounciationObj: state.pronounciations.urls[selectedText],

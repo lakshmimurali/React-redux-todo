@@ -20,6 +20,7 @@ function UpdateSelectedText({ dispatch }) {
       document.removeEventListener('mouseup', handleSelection);
     };
   }, []);
+  return null;
 }
 
 export default connect()(UpdateSelectedText);

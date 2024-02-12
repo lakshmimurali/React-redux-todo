@@ -1,11 +1,8 @@
 const initialStateForSelectedTextReducer = { selectedText: '' };
 
-const selectedTextReducer = (
-  state = initialStateForSelectedTextReducer,
-  action
-) => {
-  let selectedWord = action.text;
-  return { ...state, selectedText: selectedWord };
+const selectedTextReducer = (state = 'notselected', action) => {
+  state = action.text || 'Hello';
+  return state;
 };
 
 export default selectedTextReducer;
