@@ -8,4 +8,4 @@ const selectedTextReducer = (
   return { ...state, selectedText: selectedWord };
 };
 
-export default initialStateForSelectedTextReducer;
+export default selectedTextReducer;

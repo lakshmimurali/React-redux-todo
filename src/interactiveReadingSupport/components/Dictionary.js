@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 function ShowMeaningForWord(props) {
   let [fetchData, setFetchData] = useState(false);
   let meaningForSelectedText = props.meaningObj.meaning;

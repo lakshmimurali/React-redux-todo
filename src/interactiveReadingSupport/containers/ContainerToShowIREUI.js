@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { connect } from 'react-redux';
 import { actionCreatorForMeaningPayload } from '../actionCreators/IRE-Meanings.js';
 import { actionCreatorForPronounciationPayload } from '../actionCreators/IRE-Pronounciation.js';
@@ -18,7 +20,7 @@ function RenderUIActionsBasedOnTextSelectionChange(props) {
 }
 
 function getSelectedText(state) {
-  console.log(state);
+  console.log('insidegetSelectedText >>>>>>>>.', state);
   return {
     selectedText: state.selectedNode.selectedText,
   };

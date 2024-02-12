@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { connect } from 'react-redux';
 import { actionCreatorForStoringMeaningPayload } from '../actionCreators/IRE-Meanings.js';
 import { actionCreatorForStoringPronounciationPayload } from '../actionCreators/IRE-Pronounciation.js';
@@ -14,7 +16,7 @@ import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js'
 import ShowNotesForSentence from '../components/EnglishTrainer.js';
 
 function getDataFromStore(state) {
-  let selectedText = getSelectionText();
+  let selectedText = state.selectedNode.selectedText;
   return {
     meaningObj: state.meanings.synonyms[selectedText],
     pronounciationObj: state.pronounciations.urls[selectedText],

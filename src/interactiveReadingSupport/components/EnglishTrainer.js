@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 function ShowProuniciationAudioForGivenWord(props) {
   let [fetchData, setFetchData] = useState(false);
   let audioURLForSelectedText = props.pronounciationObj.url;
