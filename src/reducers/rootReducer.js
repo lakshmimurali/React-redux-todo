@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   meanings: meaningsReducer,
   pronounciations: pronounciationReducer,
   writeups: notesReducer,
-  selectedNote: selectedTextReducer,
+  selectedNode: selectedTextReducer,
 });
 
 export default rootReducer;

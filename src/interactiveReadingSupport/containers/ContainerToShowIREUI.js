@@ -20,7 +20,11 @@ function RenderUIActionsBasedOnTextSelectionChange(props) {
 }
 
 function getSelectedText(state) {
-  console.log('insidegetSelectedText >>>>>>>>.', state);
+  console.log('Meanings >>>>>>>>.', state.meanings);
+  console.log('Pronounciations >>>>>>>>.', state.pronounciations);
+  console.log('WriteUps >>>>>>>>.', state.writeups);
+  console.log('Selected Text >>>>>>>>.', state.selectedNode);
+  console.log('Selected Text >>>>>>>>.', state.selectedNode);
 
   return {
     selectedText: state.selectedNode.selectedText,
