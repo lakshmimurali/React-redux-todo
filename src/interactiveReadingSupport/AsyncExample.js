@@ -135,6 +135,7 @@ const actionCreatorForFetchingPronounciationOfWord = (payload) => {
 const initialStateForMeaningsReducer = { synonyms: {} };
 const initialStateForPronounciationReducer = { urls: {} };
 const initialStateForWriteUpsReducer = { notes: [] };
+const initialStateForSelectedTextReducer = { selectedText: '' };
 
 const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
   // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
@@ -305,10 +306,19 @@ const notesReducer = (state = initialStateForWriteUpsReducer, action) => {
   }
 };
 
+const selectedTextReducer = (
+  state = initialStateForSelectedTextReducer,
+  action
+) => {
+  let selectedWord = action.selectedText;
+  return { ...state, selectedText: selectedWord };
+};
+
 const rootReducer = combineReducers({
   meanings: meaningsReducer,
   pronounciations: pronounciationReducer,
   writeups: notesReducer,
+  selectedNote: selectedTextReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
