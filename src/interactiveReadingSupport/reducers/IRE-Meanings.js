@@ -39,6 +39,7 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
       },
     };
   }
+  return state;
 };
 
 export default meaningsReducer;

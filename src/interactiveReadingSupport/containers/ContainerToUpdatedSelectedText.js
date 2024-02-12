@@ -1,4 +1,7 @@
-import actionCreatorForUpdatingSelectedText from '../acionCreators/IRE-UpdatedSelectedText.js';
+import { connect } from 'react-redux';
+
+import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSelectedText.js';
+
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = () => {

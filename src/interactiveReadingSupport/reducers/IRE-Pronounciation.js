@@ -41,6 +41,7 @@ const pronounciationReducer = (
       },
     };
   }
+  return state;
 };
 
 export default pronounciationReducer;

@@ -4,7 +4,7 @@ const selectedTextReducer = (
   state = initialStateForSelectedTextReducer,
   action
 ) => {
-  let selectedWord = action.selectedText;
+  let selectedWord = action.text;
   return { ...state, selectedText: selectedWord };
 };
 
