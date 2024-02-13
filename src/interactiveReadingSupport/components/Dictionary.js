@@ -16,7 +16,6 @@ function ShowMeaningForWord(props) {
     <div>
       <div> Selected Text:{props.selectedText} </div>
       <div> Meaning For Selected Text: {meaningForSelectedText}</div>
-      <button value="FetchMeaning"> Fetch Meaning</button>
     </div>
   );
 }
