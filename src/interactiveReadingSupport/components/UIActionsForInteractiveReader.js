@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
   let [showIRETools, setStateForIRETools] = useState(true);
-  let [action, setAction] = useState('');
+  let [selAction, setAction] = useState('');
   console.log('Inside Interactive Reader Components', selectedText);
   if (showIRETools === true) {
     return (
@@ -13,7 +13,8 @@ const InteractiveReader = (props) => {
             value="meaning"
             key="1"
             onClick={() => {
-              props.notifyParent('meaning');
+              // props.notifyParent('meaning');
+              setAction('meaning');
             }}
           >
             Check Meaning
@@ -22,7 +23,7 @@ const InteractiveReader = (props) => {
             value="pronounciation"
             key="2"
             onClick={() => {
-              props.notifyParent('pronounciation');
+              // props.notifyParent('pronounciation');
             }}
           >
             Pronounce It.. Plz..
@@ -31,7 +32,7 @@ const InteractiveReader = (props) => {
             value="addnote"
             key="3"
             onClick={() => {
-              props.notifyParent('notes');
+              //props.notifyParent('notes');
             }}
           >
             Add Note
@@ -46,6 +47,7 @@ const InteractiveReader = (props) => {
             Cancel
           </button>
         </p>
+        <div>{selAction === 'meaning' ? props.Meaningrenderer : null}</div>
       </div>
     );
   } else {

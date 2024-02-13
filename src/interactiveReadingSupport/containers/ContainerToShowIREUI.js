@@ -82,47 +82,41 @@ function dispactchActions(dispatch) {
 }
 
 function RespondToUIActionsBasedOnTextSelectionChange(props) {
-  let [currentIREAction, setFetchingData] = useState('');
   if (props.selectedText === '0000') {
     return null;
   }
-  let componentToRender = null;
 
-  console.log('currentIREAction', currentIREAction);
-  if (currentIREAction === 'meaning') {
-    componentToRender = (
-      <ShowMeaningForWord
-        meaningInfo={props.meaningObj}
-        invokelocalFetch={props.getMeaning}
-        serverAction={props.fetchMeaningsFromServer}
-        selectedText={props.selectedText}
-        updateCurrentSelectedText={props.updateCurrentSelectedText}
-      />
-    );
-  }
-  if (currentIREAction === 'pronounciation') {
-    componentToRender = (
-      <ShowProuniciationAudioForGivenWord
-        pronounciationInfo={props.pronounciationObj}
-        invokelocalFetch={props.getPronounciation}
-        serverAction={props.fetchPronounciationURLFromServer}
-        selectedText={props.selectedText}
-      />
-    );
-  }
-  if (currentIREAction === 'notes') {
-    componentToRender = (
-      <ShowNotesForSentence
-        sentence={props.selectedText}
-        fetchNote={props.fetchNote}
-        fetchAllNotes={props.listNotes}
-        editNote={props.editNote}
-        storeNote={props.storeNote}
-        deleteNote={props.deleteNote}
-        updateCurrentIREAction={props.updateCurrentIREAction}
-      />
-    );
-  }
+  let meaningRenderer = (
+    <ShowMeaningForWord
+      meaningInfo={props.meaningObj}
+      invokelocalFetch={props.getMeaning}
+      serverAction={props.fetchMeaningsFromServer}
+      selectedText={props.selectedText}
+      updateCurrentSelectedText={props.updateCurrentSelectedText}
+    />
+  );
+
+  let pronounceRenderer = (
+    <ShowProuniciationAudioForGivenWord
+      pronounciationInfo={props.pronounciationObj}
+      invokelocalFetch={props.getPronounciation}
+      serverAction={props.fetchPronounciationURLFromServer}
+      selectedText={props.selectedText}
+    />
+  );
+
+  let notesRenderer = (
+    <ShowNotesForSentence
+      sentence={props.selectedText}
+      fetchNote={props.fetchNote}
+      fetchAllNotes={props.listNotes}
+      editNote={props.editNote}
+      storeNote={props.storeNote}
+      deleteNote={props.deleteNote}
+      updateCurrentIREAction={props.updateCurrentIREAction}
+    />
+  );
+
   return (
     <div>
       <InteractiveReader
@@ -130,9 +124,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         invokelocalFetch={props.getMeaning}
         invokelocalFetch={props.getPronounciation}
         invokeAddNotes={props.invokeAddNotes}
-        notifyParent={setFetchingData}
+        Meaningrenderer={meaningRenderer}
       />
-      {componentToRender}
     </div>
   );
 }
