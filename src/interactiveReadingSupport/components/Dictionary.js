@@ -19,7 +19,13 @@ function ShowMeaningForWord(props) {
     <div>
       <div> Selected Text:{props.selectedText} </div>
       <div> Meaning For Selected Text: {meaningForSelectedText}</div>
-      <button onClick ={props.serverAction(props.selectedText)} value="FetchMeaning" > </button>  
+      <button
+        onClick={props.serverAction(props.selectedText)}
+        value="FetchMeaning"
+      >
+        {' '}
+        Fetch Meaning
+      </button>
     </div>
   );
 }
