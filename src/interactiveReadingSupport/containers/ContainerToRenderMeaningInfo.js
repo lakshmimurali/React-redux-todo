@@ -14,10 +14,9 @@ function getDataFromStore(state) {
 
   let selectedText = state.selectedNode;
   let meaningInfo = state.meanings.synonyms[selectedText];
-  let meaningText = ""
-  if(meaningInfo !== undefined)
-  {
-     meaningText = meaningInfo.meaning;
+  let meaningText = '';
+  if (meaningInfo !== undefined) {
+    meaningText = meaningInfo.meaning;
   }
   console.log('RenderMeaningInfo Container ', meaningInfo, meaningText);
   return {
@@ -32,7 +31,7 @@ function RenderMeaningInfo(props) {
   return (
     <div>
       <ShowMeaningForWord
-        meaningInfo={props.meaningObj}
+        meaningInfo={props.meaning}
         selectedText={props.selectedText}
       />
     </div>
