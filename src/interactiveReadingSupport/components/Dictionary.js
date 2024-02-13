@@ -10,7 +10,7 @@ function ShowMeaningForWord(props) {
   if (meaningInfoExists) {
     setMeaning(props.meaningInfo.meaning);
   } else {
-    props.serverAction(props.selectedText);
+    //props.serverAction(props.selectedText);
     //props.updateCurrentSelectedText('0000');
     //props.updateCurrentIREAction('meaning');
   }
@@ -19,6 +19,7 @@ function ShowMeaningForWord(props) {
     <div>
       <div> Selected Text:{props.selectedText} </div>
       <div> Meaning For Selected Text: {meaningForSelectedText}</div>
+      <button onClick ={props.serverAction(props.selectedText)} value="FetchMeaning" > </button>  
     </div>
   );
 }
