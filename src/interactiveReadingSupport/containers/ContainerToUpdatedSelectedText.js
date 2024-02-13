@@ -9,7 +9,7 @@ import getSelectionText from './helperToGetSelectedText.js';
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = (event) => {
-      if ((event.target.tagName = 'input')) {
+      if (event.target.tagName = 'input') {
         //let selectedWord = getSelectionText();
         let selectedWord = window.getSelection().toString();
         console.log(
