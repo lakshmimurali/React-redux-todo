@@ -39,7 +39,7 @@ function getDataFromStore(state) {
   };
 }
 
-function dispactchActions(dispatch) {
+function dispatchActions(dispatch) {
   return {
     getMeaning: (selectedText) => {
       dispatch(actionCreatorForMeaningPayload(selectedText));
@@ -132,5 +132,5 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
 
 export default connect(
   getDataFromStore,
-  dispactchActions
+  dispatchActions
 )(RespondToUIActionsBasedOnTextSelectionChange);
