@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ShowMeaningForWord(props) {
   let [meaningForSelectedText, setMeaning] = useState('Loading...');
@@ -16,19 +16,15 @@ function ShowMeaningForWord(props) {
     //props.updateCurrentIREAction('meaning');
   }
 
+  useEffect(() => {
+    props.serverAction(props.selectedText);
+  }, [props.selectedText]);
+
   return (
     <div>
       <div> Selected Text:{props.selectedText} </div>
       <div> Meaning For Selected Text: {meaningForSelectedText}</div>
-      <button
-        onClick={() => {
-          props.serverAction(props.selectedText);
-        }}
-        value="FetchMeaning"
-      >
-        {' '}
-        Fetch Meaning
-      </button>
+      <button value="FetchMeaning"> Fetch Meaning</button>
     </div>
   );
 }
