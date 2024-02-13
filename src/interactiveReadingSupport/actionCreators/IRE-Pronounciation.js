@@ -16,6 +16,10 @@ const actionCreatorForStoringPronounciationPayload = (payload) => {
 
 const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
   return function (dispatch) {
+    console.log(
+      'selectedWord inside actionCreatorForFetchingPronounciationOfWord',
+      selectedWord
+    );
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
       .then((response) => {
         console.log(response.data);
