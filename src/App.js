@@ -4,7 +4,7 @@ import ConnectAddToDoForm from './containers/connectAddToDoForm.js';
 import Footer from './components/footer.js';
 
 import RenderUIActionsBasedOnTextSelectionChange from './interactiveReadingSupport/containers/ContainerToShowIREUI.js';
-import DisplayResponseToUserAction from './interactiveReadingSupport/containers/ContainerToShowResponseToIREActions.js';
+
 import UpdateSelectedText from './interactiveReadingSupport/containers/ContainerToUpdatedSelectedText.js';
 
 import './style.css';
