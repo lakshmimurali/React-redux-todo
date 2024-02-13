@@ -17,7 +17,7 @@ function getDataFromStore(state) {
 }
 
 function RenderMeaningInfo(props) {
-  console.log('props in RespondToUIActionsBasedOnTextSelectionChange', props);
+  console.log('props in RenderMeaningInfo', props);
 
   return (
     <div>
