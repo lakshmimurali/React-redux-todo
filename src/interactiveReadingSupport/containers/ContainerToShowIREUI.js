@@ -79,6 +79,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     return null;
   }
   let componentToRender = null;
+  console.log('currentIREAction', currentIREAction);
   if (currentIREAction === 'meaning') {
     componentToRender = (
       <ShowMeaningForWord
