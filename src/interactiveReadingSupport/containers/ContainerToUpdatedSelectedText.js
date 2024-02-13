@@ -4,18 +4,17 @@ import { connect } from 'react-redux';
 
 import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSelectedText.js';
 
+import getSelectionText from './helperToGetSelectedText.js';
+
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = () => {
-      const selection = window.getSelection();
-      if (selection && selection.toString()) {
-        const selectedWord = selection.toString();
-        console.log(
-          'In  UpdateSelectedText container useeffect for mouseup event',
-          selectedWord
-        );
-        dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
-      }
+      let selectedWord = getSelectionText();
+      console.log(
+        'In  UpdateSelectedText container useeffect for mouseup event',
+        selectedWord
+      );
+      dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
     };
 
     document.addEventListener('mouseup', handleSelection);
