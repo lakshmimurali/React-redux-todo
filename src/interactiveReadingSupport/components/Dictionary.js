@@ -16,10 +16,10 @@ function ShowMeaningForWord(props) {
     props.updateCurrentIREAction('meaning'); */
   }
 
-  /*useEffect(() => {
+  useEffect(() => {
     props.invokelocalFetch(props.selectedText);
     props.serverAction(props.selectedText);
-  }, [props.selectedText]); */
+  }, [props.selectedText]);
 
   /*useEffect(() => {
     props.updateCurrentSelectedText('0000');
