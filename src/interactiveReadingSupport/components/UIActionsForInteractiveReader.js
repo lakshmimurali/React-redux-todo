@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
   let [showIRETools, setStateForIRETools] = useState(true);
+  let [action, setAction] = useState('');
   console.log('Inside Interactive Reader Components', selectedText);
   if (showIRETools === true) {
     return (

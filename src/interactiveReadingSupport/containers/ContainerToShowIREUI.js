@@ -33,7 +33,6 @@ function getDataFromStore(state) {
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
-    currentAction: state.currentAction,
     meaningObj: state.meanings.synonyms[selectedText],
     pronounciationObj: state.pronounciations.urls[selectedText],
     notes: state.writeups.notes,
@@ -87,7 +86,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
   let componentToRender = null;
 
   console.log('currentIREAction', currentIREAction);
-  if (currentIREAction === 'meaning' || props.currentAction === 'meaning') {
+  if (currentIREAction === 'meaning') {
     componentToRender = (
       <ShowMeaningForWord
         meaningInfo={props.meaningObj}
@@ -98,10 +97,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       />
     );
   }
-  if (
-    currentIREAction === 'pronounciation' ||
-    props.currentAction === 'pronounciation'
-  ) {
+  if (currentIREAction === 'pronounciation') {
     componentToRender = (
       <ShowProuniciationAudioForGivenWord
         pronounciationInfo={props.pronounciationObj}
@@ -112,7 +108,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       />
     );
   }
-  if (currentIREAction === 'notes' || props.currentAction === 'notes') {
+  if (currentIREAction === 'notes') {
     componentToRender = (
       <ShowNotesForSentence
         sentence={props.selectedText}
