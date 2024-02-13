@@ -9,18 +9,18 @@ import getSelectionText from './helperToGetSelectedText.js';
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = (event) => {
-      if (
-        event.target.value !== 'meaning' &&
-        event.target.value !== 'pronounciation' &&
-        event.target.value !== 'addnote'
-      ) {
+      if ((event.target.tagName = 'input')) {
         //let selectedWord = getSelectionText();
         let selectedWord = window.getSelection().toString();
         console.log(
           'In  UpdateSelectedText container useeffect for mouseup event',
           selectedWord
         );
-        console.log('event.target IS >>>>>>>>>', event.target.value);
+        console.log(
+          'event.target IS >>>>>>>>>',
+          event.target.value,
+          event.target
+        );
 
         dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
       }
