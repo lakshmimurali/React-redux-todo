@@ -20,7 +20,7 @@ function ShowMeaningForWord(props) {
   return (
     <div>
       <div> Selected Text:{props.selectedText} </div>
-      <div> Meaning For Selected Text: {meaningForSelectedText}</div>
+      <div> Meaning For Selected Text: {props.meaning}</div>
     </div>
   );
 }
