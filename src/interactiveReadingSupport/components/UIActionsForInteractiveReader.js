@@ -9,7 +9,7 @@ const InteractiveReader = (props) => {
     selectedText,
     showIRETools
   );
-  if (showIRETools === true) {
+  if (showIRETools) {
     return (
       <div>
         <p>
