@@ -17,7 +17,7 @@ const InteractiveReader = (props) => {
     setAction('');
   }, [selectedText]);
 
-  if (showIRETools) {
+  if (showIRETools && selectedText !== '0000') {
     return (
       <div>
         <p>
