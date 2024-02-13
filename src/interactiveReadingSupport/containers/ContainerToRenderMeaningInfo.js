@@ -13,9 +13,12 @@ function getDataFromStore(state) {
   );
 
   let selectedText = state.selectedNode;
+  let meaningInfo = state.meanings.synonyms[selectedText];
+  let meaningText = meaningInfo.meaning;
+  console.log('RenderMeaningInfo Container ', meaningInfo, meaningText);
   return {
     selectedText: selectedText,
-    meaningObj: state.meanings.synonyms[selectedText],
+    meaning: meaningText,
   };
 }
 
