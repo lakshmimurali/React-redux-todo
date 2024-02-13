@@ -120,7 +120,6 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       <InteractiveReader
         selectedText={props.selectedText}
         invokeServerFetch={props.fetchMeaningsFromServer}
-        invokeAddNotes={props.invokeAddNotes}
       />
     </div>
   );
