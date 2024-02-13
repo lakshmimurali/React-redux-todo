@@ -14,7 +14,7 @@ const InteractiveReader = (props) => {
   }, [selectedText]);
 */
   let meaningsInvokeHandler = () => {
-    return props.localFetch(selectedText);
+    return props.invokeServerFetch(selectedText);
   };
 
   let hideAction = () => {
