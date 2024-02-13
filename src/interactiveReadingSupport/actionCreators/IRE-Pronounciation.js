@@ -1,7 +1,7 @@
-const actionCreatorForPronounciationPayload = (payload) => {
+const actionCreatorForPronounciationPayload = (selectedWord) => {
   return {
     type: 'please-tell-the-pronounciation',
-    selectedWord: payload.word,
+    selectedWord: selectedWord,
   };
 };
 

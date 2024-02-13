@@ -2,6 +2,7 @@ import React from 'react';
 
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
+  console.log('Inside Interactive Reader Components', selectedText);
   return (
     <div>
       <p>

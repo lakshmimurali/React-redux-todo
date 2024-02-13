@@ -7,9 +7,7 @@ const pronounciationReducer = (
   let selectedWord = action.selectedWord;
   if (actionType === 'please-tell-the-pronounciation') {
     let urlsList = state.urls;
-    let selectedWord = action.selectedWord;
-
-    let detailsForGivenWord = meaningList[selectedWord];
+    let detailsForGivenWord = urlsList[selectedWord];
     if (detailsForGivenWord !== undefined) {
       return detailsForGivenWord;
     } else {

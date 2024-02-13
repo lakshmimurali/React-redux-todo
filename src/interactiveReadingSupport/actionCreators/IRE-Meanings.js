@@ -1,7 +1,7 @@
-const actionCreatorForMeaningPayload = (payload) => {
+const actionCreatorForMeaningPayload = (selectedWord) => {
   return {
     type: 'please-tell-the-meaning',
-    selectedWord: payload.selectedWord,
+    selectedWord: selectedWord,
   };
 };
 

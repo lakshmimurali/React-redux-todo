@@ -6,10 +6,10 @@ const actionCreatorForStoringNote = (payload) => {
   };
 };
 
-const actionCreatorForGettingNote = (payload) => {
+const actionCreatorForGettingNote = (sentence) => {
   return {
     type: 'get-the-note',
-    sentence: payload.sentence,
+    sentence: sentence,
   };
 };
 const actionCreatorForGettingAllNotes = () => {
