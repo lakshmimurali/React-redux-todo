@@ -21,7 +21,9 @@ function ShowMeaningForWord(props) {
       <div> Selected Text:{props.selectedText} </div>
       <div> Meaning For Selected Text: {meaningForSelectedText}</div>
       <button
-        onClick={props.serverAction(props.selectedText)}
+        onClick={() => {
+          props.serverAction(props.selectedText);
+        }}
         value="FetchMeaning"
       >
         {' '}
