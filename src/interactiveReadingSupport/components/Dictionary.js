@@ -10,7 +10,7 @@ function ShowMeaningForWord(props) {
   if (meaningInfoExists) {
     setMeaning(props.meaningInfo.meaning);
   } else {
-    //props.serverAction(props.selectedText);
+    props.serverAction(props.selectedText);
     //props.updateCurrentSelectedText('0000');
     //props.updateCurrentIREAction('meaning');
   }
