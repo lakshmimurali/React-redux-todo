@@ -8,7 +8,7 @@ import {
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
 function getDataFromStore({ selectedNode }) {
-  console.log('Selected Text >>>>>>>>.', selectedNode);
+  console.log('Selected Text in toolscontainer', selectedNode);
 
   return {
     selectedText: selectedNode,
