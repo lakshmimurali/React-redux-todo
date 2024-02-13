@@ -10,20 +10,7 @@ function ShowMeaningForWord(props) {
   if (meaningInfoExists) {
     //console.log('props.meaningInfo.meaning', props.meaningInfo.meaning);
     setMeaning(props.meaningInfo.meaning);
-  } else {
-    /*props.serverAction(props.selectedText);
-    props.updateCurrentSelectedText('0000');
-    props.updateCurrentIREAction('meaning'); */
   }
-
-  useEffect(() => {
-    //props.invokelocalFetch(props.selectedText);
-    props.serverAction(props.selectedText);
-  }, [props.selectedText]);
-
-  /*useEffect(() => {
-    props.updateCurrentSelectedText('0000');
-  }, [props.selectedText]); */
 
   return (
     <div>

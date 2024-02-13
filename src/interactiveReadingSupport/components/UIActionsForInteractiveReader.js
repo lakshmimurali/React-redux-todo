@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
   let [showIRETools, setStateForIRETools] = useState(true);
-  let [selAction, setAction] = useState('');
+
   console.log(
     'Inside Interactive Reader Components',
     selectedText,
@@ -13,11 +13,11 @@ const InteractiveReader = (props) => {
     setStateForIRETools(true);
   }, [selectedText]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     setAction('');
   }, [selectedText]);
-
-  if (showIRETools && selectedText !== '0000') {
+*/
+  if (showIRETools) {
     return (
       <div>
         <p>
@@ -26,7 +26,7 @@ const InteractiveReader = (props) => {
             key="1"
             onClick={() => {
               // props.notifyParent('meaning');
-              setAction('meaning');
+              props.invokeServerFetch(selectedText);
             }}
           >
             Check Meaning
@@ -59,7 +59,6 @@ const InteractiveReader = (props) => {
             Cancel
           </button>
         </p>
-        <div>{selAction === 'meaning' ? props.Meaningrenderer : null}</div>
       </div>
     );
   } else {

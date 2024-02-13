@@ -7,6 +7,8 @@ import RenderUIActionsBasedOnTextSelectionChange from './interactiveReadingSuppo
 
 import UpdateSelectedText from './interactiveReadingSupport/containers/ContainerToUpdatedSelectedText.js';
 
+import RenderMeaningInfo from './interactiveReadingSupport/containers/ContainerToRenderMeaningInfo.js';
+
 import './style.css';
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
       <Footer />
       <UpdateSelectedText />
       <RenderUIActionsBasedOnTextSelectionChange />
+      <RenderMeaningInfo />
     </div>
   );
 }

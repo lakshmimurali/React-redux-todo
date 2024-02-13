@@ -33,7 +33,7 @@ function getDataFromStore(state) {
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
-    meaningObj: state.meanings.synonyms[selectedText],
+    //meaningObj: state.meanings.synonyms[selectedText],
     // pronounciationObj: state.pronounciations.urls[selectedText],
     //notes: state.writeups.notes,
   };
@@ -87,7 +87,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     return null;
   }*/
 
-  let meaningRenderer = (
+  /*let meaningRenderer = (
     <ShowMeaningForWord
       meaningInfo={props.meaningObj}
       invokelocalFetch={props.getMeaning}
@@ -116,16 +116,15 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       deleteNote={props.deleteNote}
       updateCurrentIREAction={props.updateCurrentIREAction}
     />
-  );
+  );*/
 
   return (
     <div>
       <InteractiveReader
         selectedText={props.selectedText}
         invokelocalFetch={props.getMeaning}
-        invokelocalFetch={props.getPronounciation}
+        invokeServerFetch={props.fetchMeaningsFromServer}
         invokeAddNotes={props.invokeAddNotes}
-        Meaningrenderer={meaningRenderer}
       />
     </div>
   );
