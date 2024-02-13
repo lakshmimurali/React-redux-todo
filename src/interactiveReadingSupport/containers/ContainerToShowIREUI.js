@@ -89,40 +89,6 @@ function RespondToUIActionsBasedOnTextSelectionChange({
     getMeaning,
     fetchMeaningsFromServer
   );
-  /*if (props.selectedText === '0000') {
-    return null;
-  }*/
-
-  /*let meaningRenderer = (
-    <ShowMeaningForWord
-      meaningInfo={props.meaningObj}
-      invokelocalFetch={props.getMeaning}
-      serverAction={props.fetchMeaningsFromServer}
-      selectedText={props.selectedText}
-      updateCurrentSelectedText={props.updateCurrentSelectedText}
-    />
-  );
-
-  let pronounceRenderer = (
-    <ShowProuniciationAudioForGivenWord
-      pronounciationInfo={props.pronounciationObj}
-      invokelocalFetch={props.getPronounciation}
-      serverAction={props.fetchPronounciationURLFromServer}
-      selectedText={props.selectedText}
-    />
-  );
-
-  let notesRenderer = (
-    <ShowNotesForSentence
-      sentence={props.selectedText}
-      fetchNote={props.fetchNote}
-      fetchAllNotes={props.listNotes}
-      editNote={props.editNote}
-      storeNote={props.storeNote}
-      deleteNote={props.deleteNote}
-      updateCurrentIREAction={props.updateCurrentIREAction}
-    />
-  );*/
 
   return (
     <div>
