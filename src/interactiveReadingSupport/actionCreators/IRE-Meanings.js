@@ -24,8 +24,8 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
         return dispatch(
           actionCreatorForStoringMeaningPayload({
             selectedWord: selectedWord,
-            meaning: response.data.meaning,
-            exampleSentence: response.data.exampleSentence,
+            meaning: 'Not Available',
+            exampleSentence: 'Not Available',
           })
         );
       })
