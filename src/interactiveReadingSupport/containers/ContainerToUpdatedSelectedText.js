@@ -9,7 +9,8 @@ import getSelectionText from './helperToGetSelectedText.js';
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = () => {
-      let selectedWord = getSelectionText();
+      //let selectedWord = getSelectionText();
+      let selectedWord = window.getSelection().toString();
       console.log(
         'In  UpdateSelectedText container useeffect for mouseup event',
         selectedWord
@@ -17,10 +18,10 @@ function UpdateSelectedText({ dispatch }) {
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
     };
 
-    document.addEventListener('mouseup', handleSelection);
+    document.addEventListener('mouseup', handleSelection, true);
 
     return () => {
-      document.removeEventListener('mouseup', handleSelection);
+      document.removeEventListener('mouseup', handleSelection, true);
     };
   }, []);
   return null;
