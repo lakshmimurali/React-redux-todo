@@ -17,19 +17,14 @@ const InteractiveReader = (props) => {
     setAction('');
   }, [selectedText]);
 */
+  let invokeHandler = () => {
+    return props.localFetch(selectedText);
+  };
   if (showIRETools) {
     return (
       <div>
         <p>
-          <button
-            value="meaning"
-            key="1"
-            onClick={() => {
-              // props.notifyParent('meaning');
-              //props.invokeServerFetch(selectedText);
-              props.localFetch(selectedText);
-            }}
-          >
+          <button value="meaning" key="1" onClick={invokeHandler}>
             Check Meaning
           </button>
           <button
