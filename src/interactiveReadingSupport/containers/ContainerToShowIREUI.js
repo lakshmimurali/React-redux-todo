@@ -27,7 +27,9 @@ import ShowNotesForSentence from '../components/EnglishTrainer.js';
 function getDataFromStore(state) {
   console.log('Meanings >>>>>>>>.', state.meanings);
 
-  //  console.log('Selected Text >>>>>>>>.', state.selectedNode);
+  console.log('Selected Text >>>>>>>>.', state.selectedNode);
+
+  console.log('Selected Text >>>>>>>>.', state.currentAction);
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
@@ -83,7 +85,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     return null;
   }
   let componentToRender = null;
-  
+
   console.log('currentIREAction', currentIREAction);
   if (currentIREAction === 'meaning' || props.currentAction === 'meaning') {
     componentToRender = (
