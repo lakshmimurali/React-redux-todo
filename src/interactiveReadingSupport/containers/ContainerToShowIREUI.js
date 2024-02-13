@@ -17,7 +17,8 @@ import {
   actionCreatorForDeletingtheNote,
 } from '../actionCreators/IRE-Notes.js';
 
-import actionCreatorForUpdatingCurrentIREAction from '../actionCreators/IRE-CurrentExecution.js';
+import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSelectedText.js';
+
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
 import ShowMeaningForWord from '../components/Dictionary.js';
@@ -74,6 +75,9 @@ function dispactchActions(dispatch) {
     updateCurrentIREAction: (action) => {
       dispatch(actionCreatorForUpdatingCurrentIREAction(action));
     },
+    updateCurrentSelectedText: (text) => {
+      dispatch(actionCreatorForUpdatingSelectedText(text));
+    },
   };
 }
 
@@ -92,6 +96,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         invokelocalFetch={props.getMeaning}
         serverAction={props.fetchMeaningsFromServer}
         selectedText={props.selectedText}
+        updateCurrentSelectedText={props.updateCurrentSelectedText}
       />
     );
   }
