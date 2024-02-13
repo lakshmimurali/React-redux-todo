@@ -17,12 +17,13 @@ function ShowMeaningForWord(props) {
   }
 
   useEffect(() => {
-    props.serverAction(props.selectedText);
+    props.invokelocalFetch(props.selectedText);
+    //props.serverAction(props.selectedText);
   }, [props.selectedText]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     props.updateCurrentSelectedText('0000');
-  }, [props.selectedText]);
+  }, [props.selectedText]); */
 
   return (
     <div>
