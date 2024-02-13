@@ -8,6 +8,7 @@ function ShowMeaningForWord(props) {
   console.log(meaningInfoExists, props.meaningInfo, props.selectedText);
 
   if (meaningInfoExists) {
+    console.log('props.meaningInfo.meaning', props.meaningInfo.meaning);
     setMeaning(props.meaningInfo.meaning);
   } else {
     //props.serverAction(props.selectedText);
