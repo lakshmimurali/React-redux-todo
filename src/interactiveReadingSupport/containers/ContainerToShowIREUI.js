@@ -82,6 +82,7 @@ function dispatchActions(dispatch) {
 }
 
 function RespondToUIActionsBasedOnTextSelectionChange(props) {
+  console.log('props in RespondToUIActionsBasedOnTextSelectionChange', props);
   if (props.selectedText === '0000') {
     return null;
   }
