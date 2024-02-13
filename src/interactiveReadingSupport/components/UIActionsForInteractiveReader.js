@@ -17,41 +17,27 @@ const InteractiveReader = (props) => {
     setAction('');
   }, [selectedText]);
 */
-  let invokeHandler = () => {
+  let meaningsInvokeHandler = () => {
     return props.localFetch(selectedText);
+  };
+
+  let hideAction = () => {
+    setStateForIRETools(false);
   };
   if (showIRETools) {
     return (
       <div>
         <p>
-          <button value="meaning" key="1" onClick={invokeHandler}>
+          <button value="meaning" key="1" onClick={meaningsInvokeHandler}>
             Check Meaning
           </button>
-          <button
-            value="pronounciation"
-            key="2"
-            onClick={() => {
-              // props.notifyParent('pronounciation');
-            }}
-          >
+          <button value="pronounciation" key="2">
             Pronounce It.. Plz..
           </button>
-          <button
-            value="addnote"
-            key="3"
-            onClick={() => {
-              //props.notifyParent('notes');
-            }}
-          >
+          <button value="addnote" key="3">
             Add Note
           </button>
-          <button
-            value="hidetools"
-            key="4"
-            onClick={() => {
-              setStateForIRETools(false);
-            }}
-          >
+          <button value="hidetools" key="4" onClick={hideAction}>
             Cancel
           </button>
         </p>
