@@ -26,6 +26,7 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
     }
   }
   if (actionType === 'please-store-the-meaning') {
+    
     return initialStateForMeaningsReducer;
     let meaningOfWord = action.meaning;
     let sentence = action.exampleSentence;
