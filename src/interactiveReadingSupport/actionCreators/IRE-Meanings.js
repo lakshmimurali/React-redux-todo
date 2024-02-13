@@ -18,6 +18,7 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
   return function (dispatch) {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
       .then((response) => {
+        console.log('Thunk ahayaaaa>>>>>>>>>>>>>>>>>>>>');
         console.log('actionCreatorForFetchingMeaningOfPayload', response.data);
 
         return dispatch(
