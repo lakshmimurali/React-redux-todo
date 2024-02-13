@@ -5,13 +5,10 @@ function ShowMeaningForWord(props) {
   let meaningInfoExists = props.meaningObj !== undefined;
   if (meaningInfoExists) {
     let meaningForSelectedText = props.meaningObj.meaning;
-    if (meaningForSelectedText !== 'Not Available') {
-      setFetchData(true);
-    } else {
-      props.serverAction(meaningForSelectedText);
-    }
+    setFetchData(true);
   } else {
-    props.invokelocalFetch(props.selectedText);
+    props.serverAction(props.selectedText);
+    //props.invokelocalFetch(props.selectedText);
   }
 
   return (
@@ -20,7 +17,7 @@ function ShowMeaningForWord(props) {
       <div>
         {' '}
         Meaning For Selected Text:{' '}
-        {fetchData === false ? 'Loading ...' : meaningForSelectedText}
+        {fetchData === false ? 'Getting Meaning ...' : meaningForSelectedText}
       </div>
     </div>
   );

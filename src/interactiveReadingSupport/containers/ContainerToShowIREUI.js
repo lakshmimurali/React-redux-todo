@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
   actionCreatorForMeaningPayload,
-  actionCreatorForStoringMeaningPayload,
+  actionCreatorForFetchingMeaningOfPayload,
 } from '../actionCreators/IRE-Meanings.js';
 import {
   actionCreatorForPronounciationPayload,
-  actionCreatorForStoringPronounciationPayload,
+  actionCreatorForFetchingPronounciationOfWord,
 } from '../actionCreators/IRE-Pronounciation.js';
 import {
   actionCreatorForGettingNote,
@@ -49,11 +49,11 @@ function dispactchActions(dispatch) {
       dispatch(actionCreatorForGettingNote(selectedText));
     },
     fetchMeaningsFromServer: (word) => {
-      dispatch(actionCreatorForStoringMeaningPayload(word));
+      dispatch(actionCreatorForFetchingMeaningOfPayload(word));
     },
 
     fetchPronounciationURLFromServer: (word) => {
-      dispatch(actionCreatorForStoringPronounciationPayload(word));
+      dispatch(actionCreatorForFetchingPronounciationOfWord(word));
     },
     fetchNote: (sentence) => {
       dispatch(actionCreatorForGettingNote(sentence));

@@ -14,24 +14,28 @@ const actionCreatorForStoringMeaningPayload = (payload) => {
   };
 };
 
-const actionCreatorForFetchingMeaningOfPayload = (payload) => {
+const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
   return function (dispatch) {
-    fetch(`https://dictionaryapi.com/meaning/${payload.selectedWord}`)
+    fetch(`https://dictionaryapi.com/meaning/${selectedWord}`)
       .then((response) => {
         console.log(response.data);
-        return actionCreatorForStoringMeaningPayload({
-          selectedWord: payload.selectedWord,
-          meaning: response.data.meaning,
-          exampleSentence: response.data.exampleSentence,
-        });
+        return dispatch(
+          actionCreatorForStoringMeaningPayload({
+            selectedWord: selectedWord,
+            meaning: response.data.meaning,
+            exampleSentence: response.data.exampleSentence,
+          })
+        );
       })
       .catch((error) => {
         console.log(error.data);
-        return actionCreatorForStoringMeaningPayload({
-          selectedWord: payload.selectedWord,
-          meaning: 'Not Available',
-          exampleSentence: 'Not Available',
-        });
+        return dispatch(
+          actionCreatorForStoringMeaningPayload({
+            selectedWord: selectedWord,
+            meaning: 'Not Available',
+            exampleSentence: 'Not Available',
+          })
+        );
       });
   };
 };

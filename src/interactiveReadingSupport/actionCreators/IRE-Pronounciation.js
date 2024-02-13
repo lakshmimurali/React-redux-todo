@@ -14,24 +14,28 @@ const actionCreatorForStoringPronounciationPayload = (payload) => {
   };
 };
 
-const actionCreatorForFetchingPronounciationOfWord = (payload) => {
+const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
   return function (dispatch) {
-    fetch(`https://dictionaryapi.com/meaning/${payload.selectedWord}`)
+    fetch(`https://dictionaryapi.com/meaning/${selectedWord}`)
       .then((response) => {
         console.log(response.data);
-        return actionCreatorForStoringPronounciationPayload({
-          selectedWord: payload.selectedWord,
-          url: response.data.url,
-          language: response.data.language,
-        });
+        return dispatch(
+          actionCreatorForStoringPronounciationPayload({
+            selectedWord: selectedWord,
+            url: response.data.url,
+            language: response.data.language,
+          })
+        );
       })
       .catch((error) => {
         console.log(error.data);
-        return actionCreatorForStoringPronounciationPayload({
-          selectedWord: payload.selectedWord,
-          url: 'Not Available',
-          language: 'Not Available',
-        });
+        return dispatch(
+          actionCreatorForStoringPronounciationPayload({
+            selectedWord: selectedWord,
+            url: 'Not Available',
+            language: 'Not Available',
+          })
+        );
       });
   };
 };
