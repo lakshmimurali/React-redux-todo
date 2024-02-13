@@ -5,12 +5,14 @@ function ShowMeaningForWord(props) {
 
   let meaningInfoExists = props.meaningInfo !== undefined;
 
-  console.log(
+  /*console.log(
     'In Dictionary Component',
     meaningInfoExists,
     props.meaningInfo,
     props.selectedText
-  );
+  );*/
+
+  console.log('In Dictionary Component');
 
   if (meaningInfoExists) {
     //console.log('props.meaningInfo.meaning', props.meaningInfo.meaning);
