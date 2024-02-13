@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
@@ -9,6 +9,10 @@ const InteractiveReader = (props) => {
     selectedText,
     showIRETools
   );
+  useEffect(() => {
+    setStateForIRETools(true);
+  }, [selectedText]);
+
   if (showIRETools) {
     return (
       <div>
