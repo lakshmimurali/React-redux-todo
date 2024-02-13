@@ -5,7 +5,7 @@ function ShowMeaningForWord(props) {
   let meaningInfoExists = props.meaningObj !== undefined;
   console.log(meaningInfoExists, props.meaningObj);
   if (meaningInfoExists) {
-    setMeaning(props.meaningObj.meaning);
+    setMeaning(props.meaningObj.meaning, props.selectedText);
   } else {
     //props.serverAction(props.selectedText);
     //props.updateCurrentIREAction('meaning');
