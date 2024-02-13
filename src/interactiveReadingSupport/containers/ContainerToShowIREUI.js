@@ -16,6 +16,8 @@ import {
   actionCreatorForEditingtheNote,
   actionCreatorForDeletingtheNote,
 } from '../actionCreators/IRE-Notes.js';
+
+import actionCreatorForUpdatingCurrentIREAction from '../actionCreators/IRE-CurrentExecution.js';
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 
 import ShowMeaningForWord from '../components/Dictionary.js';
@@ -31,6 +33,7 @@ function getDataFromStore(state) {
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
+    currentAction: state.currentAction,
     meaningObj: state.meanings.synonyms[selectedText],
     pronounciationObj: state.pronounciations.urls[selectedText],
     notes: state.writeups.notes,
@@ -70,6 +73,9 @@ function dispactchActions(dispatch) {
     deleteNote: (sentence) => {
       dispatch(actionCreatorForDeletingtheNote(sentence));
     },
+    updateCurrentIREAction: (action) => {
+      dispatch(actionCreatorForUpdatingCurrentIREAction(action));
+    },
   };
 }
 
@@ -80,27 +86,32 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
   }
   let componentToRender = null;
   console.log('currentIREAction', currentIREAction);
-  if (currentIREAction === 'meaning') {
+  if (currentIREAction === 'meaning' || props.currentAction === 'meaning') {
     componentToRender = (
       <ShowMeaningForWord
         meaningInfo={props.meaningObj}
         invokelocalFetch={props.getMeaning}
+        updateCurrentIREAction={props.updateCurrentIREAction}
         serverAction={props.fetchMeaningsFromServer}
         selectedText={props.selectedText}
       />
     );
   }
-  if (currentIREAction === 'pronounciation') {
+  if (
+    currentIREAction === 'pronounciation' ||
+    props.currentAction === 'pronounciation'
+  ) {
     componentToRender = (
       <ShowProuniciationAudioForGivenWord
         pronounciationInfo={props.pronounciationObj}
         invokelocalFetch={props.getPronounciation}
+        updateCurrentIREAction={props.updateCurrentIREAction}
         serverAction={props.fetchPronounciationURLFromServer}
         selectedText={props.selectedText}
       />
     );
   }
-  if (currentIREAction === 'notes') {
+  if (currentIREAction === 'notes' || props.currentAction === 'notes') {
     componentToRender = (
       <ShowNotesForSentence
         sentence={props.selectedText}
@@ -109,6 +120,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         editNote={props.editNote}
         storeNote={props.storeNote}
         deleteNote={props.deleteNote}
+        updateCurrentIREAction={props.updateCurrentIREAction}
       />
     );
   }
