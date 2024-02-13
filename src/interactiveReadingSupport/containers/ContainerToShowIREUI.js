@@ -29,7 +29,6 @@ function getDataFromStore(state) {
 
   console.log('Selected Text >>>>>>>>.', state.selectedNode);
 
-  console.log('Current Action >>>>>>>>.', state.currentAction);
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
@@ -91,7 +90,6 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       <ShowMeaningForWord
         meaningInfo={props.meaningObj}
         invokelocalFetch={props.getMeaning}
-        updateCurrentIREAction={props.updateCurrentIREAction}
         serverAction={props.fetchMeaningsFromServer}
         selectedText={props.selectedText}
       />
@@ -102,7 +100,6 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       <ShowProuniciationAudioForGivenWord
         pronounciationInfo={props.pronounciationObj}
         invokelocalFetch={props.getPronounciation}
-        updateCurrentIREAction={props.updateCurrentIREAction}
         serverAction={props.fetchPronounciationURLFromServer}
         selectedText={props.selectedText}
       />
