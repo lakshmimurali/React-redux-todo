@@ -18,7 +18,7 @@ function ShowMeaningForWord(props) {
 
   useEffect(() => {
     props.invokelocalFetch(props.selectedText);
-    props.serverAction(props.selectedText);
+    //props.serverAction(props.selectedText);
   }, [props.selectedText]);
 
   /*useEffect(() => {
