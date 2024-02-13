@@ -78,8 +78,17 @@ function dispatchActions(dispatch) {
   };
 }
 
-function RespondToUIActionsBasedOnTextSelectionChange(props) {
-  console.log('props in RespondToUIActionsBasedOnTextSelectionChange', props);
+function RespondToUIActionsBasedOnTextSelectionChange({
+  selectedText,
+  getMeaning,
+  fetchMeaningsFromServer,
+}) {
+  console.log(
+    'props in RespondToUIActionsBasedOnTextSelectionChange',
+    selectedText,
+    getMeaning,
+    fetchMeaningsFromServer
+  );
   /*if (props.selectedText === '0000') {
     return null;
   }*/
@@ -118,9 +127,9 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
   return (
     <div>
       <InteractiveReader
-        selectedText={props.selectedText}
-        invokeServerFetch={props.fetchMeaningsFromServer}
-        localFetch={props.getMeaning}
+        selectedText={selectedText}
+        invokeServerFetch={fetchMeaningsFromServer}
+        localFetch={getMeaning}
       />
     </div>
   );
