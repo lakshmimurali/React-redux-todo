@@ -15,14 +15,14 @@ function ShowMeaningForWord(props) {
   }
 
   return (
-    <p>
+    <div>
       <div> Selected Text:{props.selectedText} </div>
       <div>
         {' '}
         Meaning For Selected Text:{' '}
         {fetchData === false ? 'Loading ...' : meaningForSelectedText}
       </div>
-    </p>
+    </div>
   );
 }
 

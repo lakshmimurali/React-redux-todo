@@ -10,14 +10,14 @@ function ShowProuniciationAudioForGivenWord(props) {
   }
 
   return (
-    <p>
+    <div>
       <div> Selected Text:{props.selectedText} </div>
       <div>
         {' '}
         Audio For Selected Text:{' '}
         {fetchData === false ? 'Loading ...' : audioURLForSelectedText}
       </div>
-    </p>
+    </div>
   );
 }
 
