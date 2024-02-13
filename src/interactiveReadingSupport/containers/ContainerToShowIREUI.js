@@ -34,8 +34,8 @@ function getDataFromStore(state) {
   return {
     selectedText: selectedText,
     meaningObj: state.meanings.synonyms[selectedText],
-    pronounciationObj: state.pronounciations.urls[selectedText],
-    notes: state.writeups.notes,
+    // pronounciationObj: state.pronounciations.urls[selectedText],
+    //notes: state.writeups.notes,
   };
 }
 
