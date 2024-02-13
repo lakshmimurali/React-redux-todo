@@ -7,7 +7,7 @@ function ShowMeaningForWord(props) {
     setMeaning(props.meaningObj.meaning);
   } else {
     props.serverAction(props.selectedText);
-    props.updateCurrentIREAction('meaning');
+    //props.updateCurrentIREAction('meaning');
   }
 
   return (
