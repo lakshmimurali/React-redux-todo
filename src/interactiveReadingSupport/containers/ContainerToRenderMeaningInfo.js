@@ -31,7 +31,7 @@ function RenderMeaningInfo(props) {
   return (
     <div>
       <ShowMeaningForWord
-        meaningInfo={props.meaning}
+        meaning={props.meaning}
         selectedText={props.selectedText}
       />
     </div>
