@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 function ShowMeaningForWord(props) {
   let [meaningForSelectedText, setMeaning] = useState('Loading...');
   let meaningInfoExists = props.meaningObj !== undefined;
-  console.log(meaningInfoExists, props.meaningObj);
+  console.log(meaningInfoExists, props.meaningObj, props.selectedText);
   if (meaningInfoExists) {
-    setMeaning(props.meaningObj.meaning, props.selectedText);
+    setMeaning(props.meaningObj.meaning);
   } else {
-    //props.serverAction(props.selectedText);
+    props.serverAction(props.selectedText);
     //props.updateCurrentIREAction('meaning');
   }
 

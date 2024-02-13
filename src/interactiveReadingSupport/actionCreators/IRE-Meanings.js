@@ -16,7 +16,7 @@ const actionCreatorForStoringMeaningPayload = (payload) => {
 
 const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
   return function (dispatch) {
-    fetch(`https://dictionaryapi.com/meaning/${selectedWord}`)
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
       .then((response) => {
         console.log(response.data);
 
