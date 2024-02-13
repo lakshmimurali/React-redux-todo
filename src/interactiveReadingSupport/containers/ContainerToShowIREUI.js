@@ -25,11 +25,11 @@ import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
 import ShowNotesForSentence from '../components/EnglishTrainer.js';
 
-function getDataFromStore(state) {
-  console.log('Selected Text >>>>>>>>.', state.selectedNode);
-  let selectedText = state.selectedNode;
+function getDataFromStore({ selectedNode }) {
+  console.log('Selected Text >>>>>>>>.', selectedNode);
+
   return {
-    selectedText: selectedText,
+    selectedText: selectedNode,
     //meaningObj: state.meanings.synonyms[selectedText],
     // pronounciationObj: state.pronounciations.urls[selectedText],
     //notes: state.writeups.notes,
