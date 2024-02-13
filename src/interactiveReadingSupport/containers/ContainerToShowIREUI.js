@@ -29,7 +29,7 @@ function getDataFromStore(state) {
 
   console.log('Selected Text >>>>>>>>.', state.selectedNode);
 
-  console.log('Selected Text >>>>>>>>.', state.currentAction);
+  console.log('Current Action >>>>>>>>.', state.currentAction);
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
