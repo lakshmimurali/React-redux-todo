@@ -7,7 +7,7 @@ const actionCreatorForMeaningPayload = (selectedWord) => {
 
 const actionCreatorForStoringMeaningPayload = (payload) => {
   console.log(
-    'After Thunk inside actionCreatorForStoringMeaningPayload',
+    'After Thunk inside actionCreatorForStoringMeaningPayload Meanings Action creator',
     payload
   );
   return {
@@ -22,8 +22,13 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
   return function (dispatch) {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
       .then((response) => {
-        console.log('Thunk ahayaaaa>>>>>>>>>>>>>>>>>>>>');
-        console.log('actionCreatorForFetchingMeaningOfPayload', response);
+        console.log(
+          'Thunk ahayaaaa>>>>>>>>>>>>>>>>>>>> Meanings Action creator'
+        );
+        console.log(
+          'actionCreatorForFetchingMeaningOfPayload Meanings Action creator',
+          response
+        );
 
         return dispatch(
           actionCreatorForStoringMeaningPayload({
@@ -34,7 +39,7 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
         );
       })
       .catch((error) => {
-        console.log(error.data);
+        console.log('Meanings Action creator', error.data);
         return dispatch(
           actionCreatorForStoringMeaningPayload({
             selectedWord: selectedWord,

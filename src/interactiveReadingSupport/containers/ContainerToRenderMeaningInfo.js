@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 import ShowMeaningForWord from '../components/Dictionary.js';
 
 function getDataFromStore(state) {
-  console.log('Meanings >>>>>>>>.', state.meanings);
+  console.log('Meanings >>>>>>>>. RenderMeaningInfo Container', state.meanings);
 
-  console.log('Selected Text >>>>>>>>.', state.selectedNode);
+  console.log(
+    'Selected Text >>>>>>>>. RenderMeaningInfo Container',
+    state.selectedNode
+  );
 
   let selectedText = state.selectedNode;
   return {
@@ -17,7 +20,7 @@ function getDataFromStore(state) {
 }
 
 function RenderMeaningInfo(props) {
-  console.log('props in RenderMeaningInfo', props);
+  console.log('props in RenderMeaningInfo Container', props);
 
   return (
     <div>

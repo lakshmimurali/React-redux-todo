@@ -33,7 +33,7 @@ function RespondToUIActionsBasedOnTextSelectionChange({
   fetchMeaningsFromServer,
 }) {
   console.log(
-    'props in RespondToUIActionsBasedOnTextSelectionChange',
+    'props in RespondToUIActionsBasedOnTextSelectionChange toolscontainer',
     selectedText,
     getMeaning,
     fetchMeaningsFromServer
