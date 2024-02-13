@@ -9,9 +9,9 @@ const InteractiveReader = (props) => {
     selectedText,
     showIRETools
   );
-  useEffect(() => {
+  /* useEffect(() => {
     setStateForIRETools(true);
-  }, [selectedText]);
+  }, [selectedText]);*/
 
   /*useEffect(() => {
     setAction('');
