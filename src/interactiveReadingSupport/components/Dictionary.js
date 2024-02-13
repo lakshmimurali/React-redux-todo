@@ -10,6 +10,8 @@ function ShowMeaningForWord(props) {
     } else {
       props.serverAction(meaningForSelectedText);
     }
+  } else {
+    props.invokelocalFetch(props.selectedText);
   }
 
   return (

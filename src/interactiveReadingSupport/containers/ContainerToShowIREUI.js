@@ -84,7 +84,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     componentToRender = (
       <ShowMeaningForWord
         meaningInfo={props.meaningObj}
-        localAction={props.getMeaning}
+        invokelocalFetch={props.getMeaning}
         serverAction={props.fetchMeaningsFromServer}
         selectedText={props.selectedText}
       />
@@ -94,7 +94,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     componentToRender = (
       <ShowProuniciationAudioForGivenWord
         pronounciationInfo={props.pronounciationObj}
-        localAction={props.getPronounciation}
+        invokelocalFetch={props.getPronounciation}
         serverAction={props.fetchPronounciationURLFromServer}
         selectedText={props.selectedText}
       />
@@ -116,8 +116,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <div>
       <InteractiveReader
         selectedText={props.selectedText}
-        invokeMeaning={props.invokeMeaning}
-        invokePronounciation={props.invokePronounciation}
+        invokelocalFetch={props.getMeaning}
+        invokelocalFetch={props.getPronounciation}
         invokeAddNotes={props.invokeAddNotes}
         notifyParent={setFetchingData}
       />
