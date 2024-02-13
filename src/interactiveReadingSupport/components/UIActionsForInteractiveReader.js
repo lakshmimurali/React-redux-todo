@@ -26,7 +26,8 @@ const InteractiveReader = (props) => {
             key="1"
             onClick={() => {
               // props.notifyParent('meaning');
-              props.invokeServerFetch(selectedText);
+              //props.invokeServerFetch(selectedText);
+              props.localFetch(selectedText);
             }}
           >
             Check Meaning

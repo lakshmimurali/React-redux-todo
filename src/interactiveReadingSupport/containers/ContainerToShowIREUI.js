@@ -38,10 +38,10 @@ function getDataFromStore(state) {
 
 function dispatchActions(dispatch) {
   return {
-    /*getMeaning: (selectedText) => {
+    getMeaning: (selectedText) => {
       dispatch(actionCreatorForMeaningPayload(selectedText));
     },
-    getPronounciation: (selectedText) => {
+    /*getPronounciation: (selectedText) => {
       dispatch(actionCreatorForPronounciationPayload(selectedText));
     },
     invokeAddNotes: (selectedText) => {
@@ -120,6 +120,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       <InteractiveReader
         selectedText={props.selectedText}
         invokeServerFetch={props.fetchMeaningsFromServer}
+        localFetch={props.getMeaning}
       />
     </div>
   );
