@@ -10,7 +10,7 @@ function ShowMeaningForWord(props) {
     props.selectedText
   );*/
 
-  console.log('In Dictionary Component', props.meaning);
+  console.log('In Dictionary Component', props.meaning, props.meaningInfo);
 
   if (props.meaning !== undefined) {
     //console.log('props.meaningInfo.meaning', props.meaningInfo.meaning);
