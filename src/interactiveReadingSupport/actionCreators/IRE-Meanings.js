@@ -6,6 +6,10 @@ const actionCreatorForMeaningPayload = (selectedWord) => {
 };
 
 const actionCreatorForStoringMeaningPayload = (payload) => {
+  console.log(
+    'After Thunk inside actionCreatorForStoringMeaningPayload',
+    payload
+  );
   return {
     type: 'please-store-the-meaning',
     selectedWord: payload.selectedWord,
