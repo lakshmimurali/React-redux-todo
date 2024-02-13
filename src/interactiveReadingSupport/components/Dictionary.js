@@ -18,6 +18,7 @@ function ShowMeaningForWord(props) {
 
   useEffect(() => {
     props.serverAction(props.selectedText);
+    props.updateCurrentSelectedText('0000');
   }, [props.selectedText]);
 
   return (
