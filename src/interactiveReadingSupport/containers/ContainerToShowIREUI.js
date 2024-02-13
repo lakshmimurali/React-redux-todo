@@ -26,9 +26,7 @@ import ShowNotesForSentence from '../components/EnglishTrainer.js';
 
 function getDataFromStore(state) {
   console.log('Meanings >>>>>>>>.', state.meanings);
-  console.log('Pronounciations >>>>>>>>.', state.pronounciations);
-  console.log('WriteUps >>>>>>>>.', state.writeups);
-  console.log('Selected Text >>>>>>>>.', state.selectedNode);
+
   //  console.log('Selected Text >>>>>>>>.', state.selectedNode);
   let selectedText = state.selectedNode;
   return {
