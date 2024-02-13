@@ -9,7 +9,7 @@ const InteractiveReader = (props) => {
       <div>
         <p>
           <button
-            value="Meaning"
+            value="meaning"
             key="1"
             onClick={() => {
               props.notifyParent('meaning');
@@ -18,7 +18,7 @@ const InteractiveReader = (props) => {
             Check Meaning
           </button>
           <button
-            value="Pronounciation"
+            value="pronounciation"
             key="2"
             onClick={() => {
               props.notifyParent('pronounciation');
