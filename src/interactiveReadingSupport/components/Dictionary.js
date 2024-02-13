@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 function ShowMeaningForWord(props) {
   let [meaningForSelectedText, setMeaning] = useState('Loading...');
 
-  let meaningInfoExists = props.meaningInfo !== undefined;
-
   /*console.log(
     'In Dictionary Component',
     meaningInfoExists,
@@ -14,9 +12,9 @@ function ShowMeaningForWord(props) {
 
   console.log('In Dictionary Component');
 
-  if (meaningInfoExists) {
+  if (props.meaning !== undefined) {
     //console.log('props.meaningInfo.meaning', props.meaningInfo.meaning);
-    setMeaning(props.meaningInfo.meaning);
+    setMeaning(props.meaning);
   }
 
   return (
