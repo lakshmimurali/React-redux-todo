@@ -26,10 +26,7 @@ import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js'
 import ShowNotesForSentence from '../components/EnglishTrainer.js';
 
 function getDataFromStore(state) {
-  console.log('Meanings >>>>>>>>.', state.meanings);
-
   console.log('Selected Text >>>>>>>>.', state.selectedNode);
-
   let selectedText = state.selectedNode;
   return {
     selectedText: selectedText,
@@ -41,7 +38,7 @@ function getDataFromStore(state) {
 
 function dispatchActions(dispatch) {
   return {
-    getMeaning: (selectedText) => {
+    /*getMeaning: (selectedText) => {
       dispatch(actionCreatorForMeaningPayload(selectedText));
     },
     getPronounciation: (selectedText) => {
@@ -49,12 +46,12 @@ function dispatchActions(dispatch) {
     },
     invokeAddNotes: (selectedText) => {
       dispatch(actionCreatorForGettingNote(selectedText));
-    },
+    },*/
     fetchMeaningsFromServer: (word) => {
       dispatch(actionCreatorForFetchingMeaningOfPayload(word));
     },
 
-    fetchPronounciationURLFromServer: (word) => {
+    /*fetchPronounciationURLFromServer: (word) => {
       dispatch(actionCreatorForFetchingPronounciationOfWord(word));
     },
     fetchNote: (sentence) => {
@@ -77,7 +74,7 @@ function dispatchActions(dispatch) {
     },
     updateCurrentSelectedText: (text) => {
       dispatch(actionCreatorForUpdatingSelectedText(text));
-    },
+    },*/
   };
 }
 
