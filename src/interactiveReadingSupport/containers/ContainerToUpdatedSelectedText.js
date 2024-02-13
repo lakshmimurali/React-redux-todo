@@ -15,7 +15,7 @@ function UpdateSelectedText({ dispatch }) {
         'In  UpdateSelectedText container useeffect for mouseup event',
         selectedWord
       );
-      console.log('event.target IS >>>>>>>>>');
+      console.log('event.target IS >>>>>>>>>', event.target);
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
     };
 
