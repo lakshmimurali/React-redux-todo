@@ -34,6 +34,7 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
       })
       .then((data) => {
         if (data.title === 'No Definitions Found') {
+          console.log('Inside word not exists in dictionary service');
           throw 'Word Not Exists';
         }
         let meaningList = data[0].meanings[0].definitions[0];

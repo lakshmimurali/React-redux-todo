@@ -1,10 +1,13 @@
-const initialStateForSelectedTextReducer = '0000';
+const initialStateForSelectedTextReducer = { textValue: '0000' };
 
 const selectedTextReducer = (
   state = initialStateForSelectedTextReducer,
   action
 ) => {
-  return action.text || state;
+  let updatedText = action.text || state.textValue;
+  console.log('Inside selectedTextReducer >>>>>>>>', updatedText);
+  //return action.text || state;
+  return { textValue: updatedText };
 };
 
 export default selectedTextReducer;

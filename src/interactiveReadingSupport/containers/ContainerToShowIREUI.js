@@ -16,7 +16,7 @@ function getDataFromStore(state) {
     state.meanings
   );
   return {
-    selectedText: state.selectedNode,
+    selectedText: state.selectedNode.textValue,
     meaningObj: state.meanings.synonyms,
   };
 }
