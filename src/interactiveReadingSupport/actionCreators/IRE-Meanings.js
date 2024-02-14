@@ -30,16 +30,25 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
           response
         );
 
+        return response.json();
+      })
+      .then((data) => {
+        if (data.title === 'No Definitions Found') {
+          throw 'Word Not Exists';
+        }
+        let meaningList = data[0].meanings[0].definitions[0];
+        let definition = meaningList.definition || 'Not Available';
+        let meaning = data[0].meanings[0].synonyms[0] || 'Not Available';
         return dispatch(
           actionCreatorForStoringMeaningPayload({
             selectedWord: selectedWord,
-            meaning: 'Not Available',
-            exampleSentence: 'Not Available',
+            meaning: meaning,
+            exampleSentence: definition,
           })
         );
       })
       .catch((error) => {
-        console.log('Meanings Action creator', error.data);
+        console.log('Meanings Action creator', error);
         return dispatch(
           actionCreatorForStoringMeaningPayload({
             selectedWord: selectedWord,
