@@ -16,7 +16,12 @@ const InteractiveReader = (props) => {
 
   let meaningsInvokeHandler = () => {
     setAction('meaning');
-    return props.invokeServerFetch(selectedText);
+    if (
+      props.meaningObj[selectedText] === undefined ||
+      props.meaningObj[selectedText] === ''
+    ) {
+      return props.invokeServerFetch(selectedText);
+    }
   };
 
   let hideAction = () => {

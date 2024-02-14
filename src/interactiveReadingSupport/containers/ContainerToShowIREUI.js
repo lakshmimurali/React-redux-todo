@@ -58,6 +58,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         selectedText={props.selectedText}
         invokeServerFetch={props.fetchMeaningsFromServer}
         localFetch={props.getMeaning}
+        meaningObj={props.meaningObj}
         Meaningrenderer={meaningRenderer}
       />
     </div>
