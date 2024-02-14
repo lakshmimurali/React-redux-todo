@@ -13,7 +13,7 @@ function getDataFromStore({ selectedNode, meanings }) {
   console.log('Selected Text in toolscontainer', selectedNode);
   return {
     selectedText: selectedNode,
-    meaningObj: meanings.synonyms[selectedNode],
+    meaningObj: meanings.synonyms,
   };
 }
 
@@ -46,10 +46,7 @@ function RespondToUIActionsBasedOnTextSelectionChange({
   );
 
   let meaningRenderer = (
-    <ShowMeaningForWord
-      meaning={meaningObj.meaning}
-      selectedText={selectedText}
-    />
+    <ShowMeaningForWord meaningObj={meaningObj} selectedText={selectedText} />
   );
 
   return (

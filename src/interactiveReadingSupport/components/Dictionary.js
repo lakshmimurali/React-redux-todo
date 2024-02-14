@@ -1,7 +1,8 @@
 import React from 'react';
 
 function ShowMeaningForWord(props) {
-  console.log('In Dictionary Component', props.meaning);
+  let meaning = props.meaningObj[selectedText].meaning;
+  console.log('In Dictionary Component', meaning);
 
   return (
     <div>
@@ -9,9 +10,7 @@ function ShowMeaningForWord(props) {
       <div>
         {' '}
         Meaning For Selected Text:{' '}
-        {props.meaning !== undefined && props.meaning !== ''
-          ? props.meaning
-          : 'Loading...'}
+        {meaning !== undefined && meaning !== '' ? meaning : 'Loading...'}
       </div>
     </div>
   );
