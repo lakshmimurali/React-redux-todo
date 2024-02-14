@@ -9,7 +9,7 @@ import {
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 
-function getDataFromStore({ selectedNode,meanings }) {
+function getDataFromStore({ selectedNode, meanings }) {
   console.log('Selected Text in toolscontainer', selectedNode);
   return {
     selectedText: selectedNode,
@@ -33,7 +33,7 @@ function RespondToUIActionsBasedOnTextSelectionChange({
   selectedText,
   getMeaning,
   fetchMeaningsFromServer,
-  meaningObj
+  meaningObj,
 }) {
   if (selectedText === '0000' || selectedText.length === 0) {
     return null;
@@ -47,9 +47,8 @@ function RespondToUIActionsBasedOnTextSelectionChange({
 
   let meaningRenderer = (
     <ShowMeaningForWord
-    meaning={meaningObj.meaning}
-    selectedText={selectedText}
-      
+      meaning={meaningObj.meaning}
+      selectedText={selectedText}
     />
   );
 
@@ -69,9 +68,3 @@ export default connect(
   getDataFromStore,
   dispatchActions
 )(RespondToUIActionsBasedOnTextSelectionChange);
-
-
-
-
-
-
