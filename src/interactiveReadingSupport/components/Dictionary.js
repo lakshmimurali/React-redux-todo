@@ -4,8 +4,10 @@ function ShowMeaningForWord(props) {
   let selectedText = props.selectedText;
   let meaningInfo = props.meaningObj[selectedText];
   let meaning = '';
+  let exampleSentence = '';
   if (meaningInfo !== undefined) {
     meaning = meaningInfo.meaning;
+    exampleSentence = meaningInfo.exampleSentence;
   }
   //console.log('In Dictionary Component', meaning);
 
@@ -16,6 +18,11 @@ function ShowMeaningForWord(props) {
         {' '}
         Meaning For Selected Text:{' '}
         {meaning !== undefined && meaning !== '' ? meaning : 'Loading...'}
+        <br />
+        Example Sentence for Selected Text:
+        {exampleSentence !== undefined && exampleSentence !== ''
+          ? exampleSentence
+          : 'Loading...'}
       </div>
     </div>
   );

@@ -39,6 +39,7 @@ const actionCreatorForFetchingMeaningOfPayload = (selectedWord) => {
         let meaningList = data[0].meanings[0].definitions[0];
         let definition = meaningList.definition || 'Not Available';
         let meaning = data[0].meanings[0].synonyms[0] || 'Not Available';
+        console.log(definition, meaning);
         return dispatch(
           actionCreatorForStoringMeaningPayload({
             selectedWord: selectedWord,
