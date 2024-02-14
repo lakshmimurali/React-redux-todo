@@ -13,7 +13,7 @@ function getDataFromStore({ selectedNode, meanings }) {
   console.log('Selected Text in toolscontainer', selectedNode);
   return {
     selectedText: selectedNode,
-    meaningObj: meanings.synonyms[selectedText],
+    meaningObj: meanings.synonyms[selectedNode],
   };
 }
 

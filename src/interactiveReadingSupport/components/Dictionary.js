@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 function ShowMeaningForWord(props) {
-  /*console.log(
-    'In Dictionary Component',
-    meaningInfoExists,
-    props.meaningInfo,
-    props.selectedText
-  );*/
-
-  console.log('In Dictionary Component', props.meaning, props.meaningInfo);
+  console.log('In Dictionary Component', props.meaning);
 
   return (
     <div>
