@@ -27,7 +27,9 @@ function getDataFromStore(state) {
 
 function RenderMeaningInfo(props) {
   console.log('props in RenderMeaningInfo Container', props);
-
+  if (props.selectedText === '0000' || props.selectedText.length === 0) {
+    return null;
+  }
   return (
     <div>
       <ShowMeaningForWord

@@ -5,9 +5,9 @@ const InteractiveReader = (props) => {
   let [showIRETools, setStateForIRETools] = useState(true);
 
   console.log('Inside Tool Component', selectedText, showIRETools);
-  /* useEffect(() => {
+  useEffect(() => {
     setStateForIRETools(true);
-  }, [selectedText]);*/
+  }, [selectedText]);
 
   /*useEffect(() => {
     setAction('');

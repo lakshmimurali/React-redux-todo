@@ -32,6 +32,9 @@ function RespondToUIActionsBasedOnTextSelectionChange({
   getMeaning,
   fetchMeaningsFromServer,
 }) {
+  if (selectedText === '0000' || props.selectedText.length === 0) {
+    return null;
+  }
   console.log(
     'props in RespondToUIActionsBasedOnTextSelectionChange toolscontainer',
     selectedText,
