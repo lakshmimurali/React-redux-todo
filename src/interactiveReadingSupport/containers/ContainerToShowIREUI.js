@@ -9,11 +9,15 @@ import {
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 
-function getDataFromStore({ selectedNode, meanings }) {
-  console.log('Selected Text in toolscontainer', selectedNode);
+function getDataFromStore(state) {
+  console.log(
+    'Selected Text in toolscontainer',
+    state.selectedNode,
+    state.meanings
+  );
   return {
-    selectedText: selectedNode,
-    meaningObj: meanings.synonyms,
+    selectedText: state.selectedNode,
+    meaningObj: state.meanings,
   };
 }
 
@@ -29,32 +33,31 @@ function dispatchActions(dispatch) {
   };
 }
 
-function RespondToUIActionsBasedOnTextSelectionChange({
-  selectedText,
-  getMeaning,
-  fetchMeaningsFromServer,
-  meaningObj,
-}) {
-  if (selectedText === '0000' || selectedText.length === 0) {
+function RespondToUIActionsBasedOnTextSelectionChange(props) {
+  if (props.selectedText === '0000' || props.selectedText.length === 0) {
     return null;
   }
   console.log(
     'props in RespondToUIActionsBasedOnTextSelectionChange toolscontainer',
-    selectedText,
-    getMeaning,
-    fetchMeaningsFromServer
+    props.selectedText,
+    props.getMeaning,
+    props.fetchMeaningsFromServer,
+    props.meaningObj
   );
 
   let meaningRenderer = (
-    <ShowMeaningForWord meaningObj={meaningObj} selectedText={selectedText} />
+    <ShowMeaningForWord
+      meaningObj={props.meaningObj}
+      selectedText={props.selectedText}
+    />
   );
 
   return (
     <div>
       <InteractiveReader
-        selectedText={selectedText}
-        invokeServerFetch={fetchMeaningsFromServer}
-        localFetch={getMeaning}
+        selectedText={props.selectedText}
+        invokeServerFetch={props.fetchMeaningsFromServer}
+        localFetch={props.getMeaning}
         Meaningrenderer={meaningRenderer}
       />
     </div>

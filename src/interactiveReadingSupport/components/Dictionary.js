@@ -2,6 +2,7 @@ import React from 'react';
 
 function ShowMeaningForWord(props) {
   let meaningInfo = props.meaningObj[props.selectedText];
+  console.log(meaningInfo);
   let meaning = '';
   if (meaningInfo !== 'undefined') {
     meaning = meaningInfo.meaning;
