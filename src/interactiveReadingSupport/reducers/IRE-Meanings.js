@@ -2,15 +2,16 @@ const initialStateForMeaningsReducer = { synonyms: {} };
 
 const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
   // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
-  console.log('inside meaningsReducer');
+  console.log('inside meaningsReducer', action, state);
   let actionType = action.type;
-  let selectedWord = action.selectedWord;
-  let meaningList = state.synonyms;
-  let detailsForGivenWord = meaningList[selectedWord];
-  if (detailsForGivenWord !== undefined) {
-    return state;
-  }
+
   if (actionType === 'please-store-the-meaning') {
+    let selectedWord = action.selectedWord;
+    let meaningList = state.synonyms;
+    let detailsForGivenWord = meaningList[selectedWord];
+    if (detailsForGivenWord !== undefined) {
+      return state;
+    }
     let meaningOfWord = action.meaning;
     let sentence = action.exampleSentence;
     return {
