@@ -5,9 +5,10 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
 
   let actionType = action.type;
   let selectedWord = action.selectedWord;
+  let meaningList = state.synonyms;
   if (actionType === 'please-tell-the-meaning') {
     //return initialStateForMeaningsReducer;
-    let meaningList = state.synonyms;
+
     let detailsForGivenWord = meaningList[selectedWord];
     if (detailsForGivenWord !== undefined) {
       return detailsForGivenWord;
@@ -26,6 +27,10 @@ const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
     }
   }
   if (actionType === 'please-store-the-meaning') {
+    let detailsForGivenWord = meaningList[selectedWord];
+    if (detailsForGivenWord !== undefined) {
+      return detailsForGivenWord;
+    }
     // return initialStateForMeaningsReducer;
     let meaningOfWord = action.meaning;
     let sentence = action.exampleSentence;
