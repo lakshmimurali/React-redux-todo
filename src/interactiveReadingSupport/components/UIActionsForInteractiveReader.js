@@ -3,16 +3,17 @@ import React, { useState, useEffect } from 'react';
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
   let [showIRETools, setStateForIRETools] = useState(true);
+  let [selAction, setAction] = useState('');
 
   console.log('Inside Tool Component', selectedText, showIRETools);
   useEffect(() => {
     setStateForIRETools(true);
   }, [selectedText]);
 
-  /*useEffect(() => {
+  useEffect(() => {
     setAction('');
   }, [selectedText]);
-*/
+
   let meaningsInvokeHandler = () => {
     return props.invokeServerFetch(selectedText);
   };
@@ -37,6 +38,7 @@ const InteractiveReader = (props) => {
             Cancel
           </button>
         </p>
+        <div>{selAction === 'meaning' ? props.Meaningrenderer : null}</div>
       </div>
     );
   } else {

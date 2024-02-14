@@ -5,13 +5,15 @@ import {
   actionCreatorForMeaningPayload,
   actionCreatorForFetchingMeaningOfPayload,
 } from '../actionCreators/IRE-Meanings.js';
+
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
+import ShowMeaningForWord from '../components/Dictionary.js';
 
-function getDataFromStore({ selectedNode }) {
+function getDataFromStore({ selectedNode,meanings }) {
   console.log('Selected Text in toolscontainer', selectedNode);
-
   return {
     selectedText: selectedNode,
+    meaningObj: meanings.synonyms[selectedText],
   };
 }
 
@@ -31,6 +33,7 @@ function RespondToUIActionsBasedOnTextSelectionChange({
   selectedText,
   getMeaning,
   fetchMeaningsFromServer,
+  meaningObj
 }) {
   if (selectedText === '0000' || selectedText.length === 0) {
     return null;
@@ -42,12 +45,21 @@ function RespondToUIActionsBasedOnTextSelectionChange({
     fetchMeaningsFromServer
   );
 
+  let meaningRenderer = (
+    <ShowMeaningForWord
+    meaning={meaningObj.meaning}
+    selectedText={selectedText}
+      
+    />
+  );
+
   return (
     <div>
       <InteractiveReader
         selectedText={selectedText}
         invokeServerFetch={fetchMeaningsFromServer}
         localFetch={getMeaning}
+        Meaningrenderer={meaningRenderer}
       />
     </div>
   );
@@ -57,3 +69,9 @@ export default connect(
   getDataFromStore,
   dispatchActions
 )(RespondToUIActionsBasedOnTextSelectionChange);
+
+
+
+
+
+
