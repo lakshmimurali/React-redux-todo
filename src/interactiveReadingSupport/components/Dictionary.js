@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ShowMeaningForWord(props) {
-  let meaning = props.meaningObj[selectedText].meaning;
+  let meaning = props.meaningObj[props.selectedText].meaning;
   console.log('In Dictionary Component', meaning);
 
   return (

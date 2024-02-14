@@ -15,6 +15,7 @@ const InteractiveReader = (props) => {
   }, [selectedText]);
 
   let meaningsInvokeHandler = () => {
+    setAction('meaning');
     return props.invokeServerFetch(selectedText);
   };
 
