@@ -10,7 +10,7 @@ function ShowProuniciationAudioForGivenWord(props) {
     pronounciationUrl = pronounciationInfo.audioUrl;
     phonetic = pronounciationInfo.phonetic;
     audioElement = (
-      <audio controls autoplay name="media">
+      <audio controls autoPlay name="media">
         <source src={pronounciationUrl} type="audio/mpeg" />
       </audio>
     );
