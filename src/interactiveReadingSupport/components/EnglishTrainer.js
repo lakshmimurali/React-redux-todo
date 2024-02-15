@@ -14,7 +14,7 @@ function ShowProuniciationAudioForGivenWord(props) {
   console.log(
     'In  Pronounciation Component',
     pronounciationUrl,
-    pronounciationUrl
+    pronounciationInfo
   );
 
   return (

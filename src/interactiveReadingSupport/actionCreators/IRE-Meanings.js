@@ -1,10 +1,3 @@
-const actionCreatorForMeaningPayload = (selectedWord) => {
-  return {
-    type: 'please-tell-the-meaning',
-    selectedWord: selectedWord,
-  };
-};
-
 const actionCreatorForStoringMeaningPayload = (payload) => {
   console.log(
     'After Thunk inside actionCreatorForStoringMeaningPayload Meanings Action creator',
@@ -70,7 +63,6 @@ const actionCreatorForUpdatingSelectedText = (text) => {
 };
 
 export {
-  actionCreatorForMeaningPayload,
   actionCreatorForStoringMeaningPayload,
   actionCreatorForFetchingMeaningOfPayload,
 };

@@ -1,10 +1,3 @@
-const actionCreatorForPronounciationPayload = (selectedWord) => {
-  return {
-    type: 'please-tell-the-pronounciation',
-    selectedWord: selectedWord,
-  };
-};
-
 const actionCreatorForStoringPronounciationPayload = (payload) => {
   console.log('In actionCreatorForStoringPronounciationPayload', payload);
   return {
@@ -26,6 +19,10 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
         console.log(
           'Thunk ahayaaaa>>>>>>>>>>>>>>>>>>>> Pronounciation Action creator'
         );
+        console.log(
+          'actionCreatorForFetchingPronounciationOfWord Action creator',
+          response
+        );
         return response.json();
       })
       .then((data) => {
@@ -36,7 +33,7 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
 
         let audioUrl = data[0].phonetics[0].audio || 'Not Available';
         let phonetic = data[0].phonetic || 'Not Available';
-        console.log(audioUrl, phonetic);
+        console.log('output for pronounciation api', audioUrl, phonetic);
         return dispatch(
           actionCreatorForStoringPronounciationPayload({
             selectedWord: selectedWord,
@@ -62,7 +59,6 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
 };
 
 export {
-  actionCreatorForPronounciationPayload,
   actionCreatorForStoringPronounciationPayload,
   actionCreatorForFetchingPronounciationOfWord,
 };
