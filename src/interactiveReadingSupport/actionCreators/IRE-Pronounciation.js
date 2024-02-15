@@ -9,7 +9,7 @@ const actionCreatorForStoringPronounciationPayload = (payload) => {
   return {
     type: 'please-store-the-pronounciation',
     selectedWord: payload.selectedWord,
-    audioUrl: payload.url,
+    audioUrl: payload.audioUrl,
     phonetic: payload.phonetic,
   };
 };

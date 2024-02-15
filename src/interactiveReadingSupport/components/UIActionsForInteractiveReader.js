@@ -15,6 +15,7 @@ const InteractiveReader = (props) => {
   }, [selectedText]);
 
   let actionHandler = (event) => {
+    console.log('Clicked Element', event.target.value);
     setAction(event.target.value);
     if (
       event.target.value === 'meaning' &&
@@ -28,6 +29,7 @@ const InteractiveReader = (props) => {
       (props.urlList[selectedText] === undefined ||
         props.urlList[selectedText] === '')
     ) {
+      console.log('Inside pronounciation ');
       return props.invokeServerFetchForPronounciation(selectedText);
     }
   };
