@@ -9,8 +9,8 @@ const actionCreatorForStoringPronounciationPayload = (payload) => {
   return {
     type: 'please-store-the-pronounciation',
     selectedWord: payload.selectedWord,
-    url: payload.url,
-    language: payload.language,
+    audioUrl: payload.url,
+    phonetic: payload.phonetic,
   };
 };
 
@@ -22,12 +22,25 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
     );
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(
+          'Thunk ahayaaaa>>>>>>>>>>>>>>>>>>>> Pronounciation Action creator'
+        );
+        return response.json();
+      })
+      .then((data) => {
+        if (data.title === 'No Definitions Found') {
+          console.log('Inside word not exists in dictionary service');
+          throw 'Word Not Exists';
+        }
+
+        let audioUrl = data[0].phonetics[0].audio || 'Not Available';
+        let phonetic = data[0].phonetic || 'Not Available';
+        console.log(audioUrl, phonetic);
         return dispatch(
           actionCreatorForStoringPronounciationPayload({
             selectedWord: selectedWord,
-            url: response.data.url,
-            language: response.data.language,
+            audioUrl: audioUrl,
+            phonetic: phonetic,
           })
         );
       })
@@ -36,8 +49,8 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
         return dispatch(
           actionCreatorForStoringPronounciationPayload({
             selectedWord: selectedWord,
-            url: 'Not Available',
-            language: 'Not Available',
+            audioUrl: 'Not Available',
+            phonetic: 'Not Available',
           })
         );
       });

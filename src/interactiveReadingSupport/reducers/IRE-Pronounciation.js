@@ -4,36 +4,22 @@ const pronounciationReducer = (
   action
 ) => {
   let actionType = action.type;
-  let selectedWord = action.selectedWord;
-  if (actionType === 'please-tell-the-pronounciation') {
-    let urlsList = state.urls;
-    let detailsForGivenWord = urlsList[selectedWord];
+
+  if (actionType === 'please-store-the-pronounciation') {
+    let audioList = state.urls;
+    let detailsForGivenWord = audioList[selectedWord];
     if (detailsForGivenWord !== undefined) {
-      return detailsForGivenWord;
-    } else {
-      return {
-        ...state,
-        urls: {
-          ...state.urls,
-          [selectedWord]: {
-            url: 'Not Available',
-            language: 'Not Available',
-            name: selectedWord,
-          },
-        },
-      };
+      return state;
     }
-  }
-  if (actionType === 'please-store-the-meaning') {
-    let url = action.url;
-    let language = action.language;
+    let audioUrl = action.audioUrl;
+    let phonetic = action.phonetic;
     return {
       ...state,
       urls: {
         ...state.urls,
         [selectedWord]: {
-          url: url,
-          language: language,
+          audioUrl: audioUrl,
+          phonetic: phonetic,
           name: selectedWord,
         },
       },
