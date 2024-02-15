@@ -43,6 +43,7 @@ const actionCreatorForFetchingPronounciationOfWord = (selectedWord) => {
         );
       })
       .catch((error) => {
+        return null;
         console.log(
           'Inside Error Block of pronounciation action creator',
           error.data

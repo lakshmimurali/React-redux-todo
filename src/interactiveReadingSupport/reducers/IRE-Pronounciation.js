@@ -13,7 +13,9 @@ const pronounciationReducer = (
     );
     let audioList = state.urls;
     let detailsForGivenWord = audioList[selectedWord];
+    console.log('detailsForGivenWord is >>>>>>>', detailsForGivenWord);
     if (detailsForGivenWord !== undefined) {
+      console.log('inside existing case', detailsForGivenWord);
       return state;
     }
     let audioUrl = action.audioUrl;
