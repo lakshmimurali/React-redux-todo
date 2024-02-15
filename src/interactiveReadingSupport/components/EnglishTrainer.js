@@ -9,9 +9,13 @@ function ShowProuniciationAudioForGivenWord(props) {
   if (pronounciationInfo !== undefined) {
     pronounciationUrl = pronounciationInfo.audioUrl;
     phonetic = pronounciationInfo.phonetic;
-    audioElement = <audio src="pronounciationUrl"></audio>;
+    audioElement = <audio src={pronounciationUrl}></audio>;
   }
-  //console.log('In Dictionary Component', meaning);
+  console.log(
+    'In  Pronounciation Component',
+    pronounciationUrl,
+    pronounciationUrl
+  );
 
   return (
     <div>
@@ -20,7 +24,7 @@ function ShowProuniciationAudioForGivenWord(props) {
         {' '}
         Pronounciation Details For Selected Text:{' '}
         {pronounciationUrl !== undefined && pronounciationUrl !== ''
-          ? pronounciationUrl
+          ? audioElement
           : 'Loading...'}
         <br />
         Phonetic for Selected Text:
