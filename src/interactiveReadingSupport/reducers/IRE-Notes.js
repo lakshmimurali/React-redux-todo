@@ -18,14 +18,14 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
       ],
     };
   }
-  if (actionType === 'get-the-note') {
+  /*if (actionType === 'get-the-note') {
     let sentence = action.sentence;
     let requiredNoteInfo = state.notes.filter((noteObj) => {
       return noteObj[sentence] !== undefined;
     });
 
     return requiredNoteInfo;
-  }
+  }*/
   if (actionType === 'delete-the-note') {
     let sentence = action.sentence;
     let updatedNoteInfo = state.notes.filter((noteObj) => {
