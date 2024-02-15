@@ -6,11 +6,6 @@ const pronounciationReducer = (
   let actionType = action.type;
 
   if (actionType === 'please-store-the-pronounciation') {
-    console.log(
-      'inside pronounciation reducer',
-      action.audioUrl,
-      action.phonetic
-    );
     let audioList = state.urls;
     let detailsForGivenWord = audioList[selectedWord];
     console.log('detailsForGivenWord is >>>>>>>', detailsForGivenWord);
