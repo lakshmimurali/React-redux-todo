@@ -9,21 +9,20 @@ import getSelectionText from './helperToGetSelectedText.js';
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = (event) => {
-      //let selectedWord = getSelectionText();
       if (event.target.nodeName === 'INPUT') {
         let selectedWord = window.getSelection().toString();
         console.log(
-          'In  UpdateSelectedText container useeffect for mouseup event',
+          'In  UpdateSelectedText container useeffect for selectionchange event',
           selectedWord
         );
 
         dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
       }
     };
-    document.addEventListener('mouseup', handleSelection, true);
+    document.addEventListener('selectionchange', handleSelection, true);
 
     return () => {
-      document.removeEventListener('mouseup', handleSelection, true);
+      document.removeEventListener('selectionchange', handleSelection, true);
     };
   }, []);
   return null;
