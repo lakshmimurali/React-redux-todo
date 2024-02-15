@@ -6,7 +6,7 @@ const actionCreatorForStoringNote = (payload) => {
   };
 };
 
-const actionCreatorForGettingNote = (sentence) => {
+/*const actionCreatorForGettingNote = (sentence) => {
   return {
     type: 'get-the-note',
     sentence: sentence,
@@ -16,7 +16,7 @@ const actionCreatorForGettingAllNotes = () => {
   return {
     type: 'get-all-notes',
   };
-};
+};*/
 
 const actionCreatorForDeletingtheNote = (sentence) => {
   return {
@@ -35,8 +35,6 @@ const actionCreatorForEditingtheNote = (payload) => {
 
 export {
   actionCreatorForStoringNote,
-  actionCreatorForGettingNote,
-  actionCreatorForGettingAllNotes,
   actionCreatorForDeletingtheNote,
   actionCreatorForEditingtheNote,
 };

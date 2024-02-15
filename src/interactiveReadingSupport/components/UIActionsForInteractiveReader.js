@@ -32,14 +32,6 @@ const InteractiveReader = (props) => {
       console.log('Inside pronounciation ');
       return props.invokeServerFetchForPronounciation(selectedText);
     }
-    if (
-      event.target.value === 'notes' &&
-      (props.notesList[selectedText] === undefined ||
-        props.notesList[selectedText] === '')
-    ) {
-      console.log('Inside notes ');
-      //return props.invokeServerFetchForPronounciation(selectedText);
-    }
   };
 
   let hideAction = () => {
@@ -67,6 +59,7 @@ const InteractiveReader = (props) => {
         <div>
           {selAction === 'pronounciation' ? props.PronounciationRenderer : null}
         </div>
+        <div>{selAction === 'notes' ? props.NotesRenderer : null}</div>
       </div>
     );
   } else {

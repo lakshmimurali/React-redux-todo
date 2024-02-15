@@ -11,7 +11,7 @@ import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js'
 
 function getDataFromStore(state) {
   console.log(
-    'Selected Text in toolscontainer',
+    'Selected Text in Toolscontainer',
     state.selectedNode,
     state.meanings,
     state.pronounciations
@@ -20,6 +20,7 @@ function getDataFromStore(state) {
     selectedText: state.selectedNode.textValue,
     meaningObj: state.meanings.synonyms,
     urlList: state.pronounciations.urls,
+    notesList: state.writeups.notes,
   };
 }
 
@@ -43,6 +44,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     props.selectedText,
     props.meaningObj,
     props.urlList,
+    props.notesList,
     props.fetchMeaningsFromServer,
     props.fetchPronounciationDetailsFromServer
   );
@@ -60,6 +62,12 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     />
   );
 
+  let notesRenderer = (
+    <ShowUserWrittenNotes
+      selectedText={props.selectedText}
+      notesList={props.notesList}
+    />
+  );
   return (
     <div>
       <InteractiveReader
@@ -72,6 +80,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
         PronounciationRenderer={pronounciationRenderer}
+        NotesRenderer={notesRenderer}
       />
     </div>
   );
