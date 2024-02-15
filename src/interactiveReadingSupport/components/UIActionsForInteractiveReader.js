@@ -14,8 +14,8 @@ const InteractiveReader = (props) => {
     setAction('');
   }, [selectedText]);
 
-  let meaningsInvokeHandler = () => {
-    setAction('meaning');
+  let actionHandler = (event) => {
+    setAction(event.target.value);
     if (
       props.meaningObj[selectedText] === undefined ||
       props.meaningObj[selectedText] === ''
@@ -31,13 +31,17 @@ const InteractiveReader = (props) => {
     return (
       <div>
         <p>
-          <button value="meaning" key="1" onClick={meaningsInvokeHandler}>
+          <button value="meaning" key="1" onClick={actionHandler}>
             Check Meaning
           </button>
-          <button value="pronounciation" key="2">
+          <button
+            value="pronounciation"
+            key="2"
+            onClick={actionHandler}
+          >
             Pronounce It.. Plz..
           </button>
-          <button value="addnote" key="3">
+          <button value="addnote" key="3" onClick={actionHandler} >
             Add Note
           </button>
           <button value="hidetools" key="4" onClick={hideAction}>
@@ -45,6 +49,9 @@ const InteractiveReader = (props) => {
           </button>
         </p>
         <div>{selAction === 'meaning' ? props.Meaningrenderer : null}</div>
+        <div>
+          {selAction === 'pronounciation' ? props.PronounciationRenderer : null}
+        </div>
       </div>
     );
   } else {
