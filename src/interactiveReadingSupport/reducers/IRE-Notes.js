@@ -1,8 +1,9 @@
 const initialStateForWNotesReducer = { notes: [] };
 const notesReducer = (state = initialStateForWNotesReducer, action) => {
   let actionType = action.type;
-  let sentence = action.sentence;
+
   if (actionType === 'store-the-note') {
+    let sentence = action.sentence;
     let note = action.note;
     return {
       ...state,
@@ -18,6 +19,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     };
   }
   if (actionType === 'get-the-note') {
+    let sentence = action.sentence;
     let requiredNoteInfo = state.notes.filter((noteObj) => {
       return noteObj[sentence] !== undefined;
     });
@@ -25,6 +27,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     return requiredNoteInfo;
   }
   if (actionType === 'delete-the-note') {
+    let sentence = action.sentence;
     let updatedNoteInfo = state.notes.filter((noteObj) => {
       return noteObj[sentence] === undefined;
     });
@@ -34,6 +37,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     };
   }
   if (actionType === 'edit-the-note') {
+    let sentence = action.sentence;
     let updatedNoteInfo = state.notes.map((noteObj) => {
       if (noteObj[sentence] !== undefined) {
         noteObj[sentence].note = action.note;

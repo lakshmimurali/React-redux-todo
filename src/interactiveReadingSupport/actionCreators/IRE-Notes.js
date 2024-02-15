@@ -15,14 +15,13 @@ const actionCreatorForGettingNote = (sentence) => {
 const actionCreatorForGettingAllNotes = () => {
   return {
     type: 'get-all-notes',
-    sentence: payload.sentence,
   };
 };
 
-const actionCreatorForDeletingtheNote = (payload) => {
+const actionCreatorForDeletingtheNote = (sentence) => {
   return {
     type: 'delete-the-note',
-    sentence: payload.sentence,
+    sentence: sentence,
   };
 };
 
