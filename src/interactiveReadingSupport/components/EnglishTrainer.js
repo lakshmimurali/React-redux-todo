@@ -9,7 +9,11 @@ function ShowProuniciationAudioForGivenWord(props) {
   if (pronounciationInfo !== undefined) {
     pronounciationUrl = pronounciationInfo.audioUrl;
     phonetic = pronounciationInfo.phonetic;
-    audioElement = <audio src={pronounciationUrl}></audio>;
+    audioElement = (
+      <audio controls autoplay name="media">
+        <source src={pronounciationUrl} type="audio/mpeg" />
+      </audio>
+    );
   }
   console.log(
     'In  Pronounciation Component',
