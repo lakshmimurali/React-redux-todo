@@ -41,10 +41,10 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
   console.log(
     'props in RespondToUIActionsBasedOnTextSelectionChange toolscontainer',
     props.selectedText,
-    props.getMeaning,
-    props.fetchMeaningsFromServer,
     props.meaningObj,
-    props.urlList
+    props.urlList,
+    props.fetchMeaningsFromServer,
+    props.fetchPronounciationDetailsFromServer
   );
 
   let meaningRenderer = (
