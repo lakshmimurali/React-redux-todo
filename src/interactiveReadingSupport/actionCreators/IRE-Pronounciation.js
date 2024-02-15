@@ -6,6 +6,7 @@ const actionCreatorForPronounciationPayload = (selectedWord) => {
 };
 
 const actionCreatorForStoringPronounciationPayload = (payload) => {
+  console.log('In actionCreatorForStoringPronounciationPayload', payload);
   return {
     type: 'please-store-the-pronounciation',
     selectedWord: payload.selectedWord,

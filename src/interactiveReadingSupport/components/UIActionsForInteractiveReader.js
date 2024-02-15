@@ -37,6 +37,7 @@ const InteractiveReader = (props) => {
   let hideAction = () => {
     setStateForIRETools(false);
   };
+  console.log('selAction is', selAction);
   if (showIRETools) {
     return (
       <div>
