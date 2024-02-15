@@ -2,7 +2,7 @@ const initialStateForMeaningsReducer = { synonyms: {} };
 
 const meaningsReducer = (state = initialStateForMeaningsReducer, action) => {
   // can think of supporting different type of actions for getting new meaning, retrying meaning for unavailable case, etc...
-  console.log('inside meaningsReducer', action, state);
+
   let actionType = action.type;
 
   if (actionType === 'please-store-the-meaning') {
