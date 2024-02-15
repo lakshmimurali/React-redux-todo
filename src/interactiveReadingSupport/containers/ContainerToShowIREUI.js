@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import {
-  actionCreatorForMeaningPayload,
-  actionCreatorForFetchingMeaningOfPayload,
-} from '../actionCreators/IRE-Meanings.js';
+import { actionCreatorForFetchingMeaningOfPayload } from '../actionCreators/IRE-Meanings.js';
+
+import { actionCreatorForFetchingPronounciationOfWord } from '../actionCreators/IRE-Pronounciation.js';
 
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
+import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
 
 function getDataFromStore(state) {
   console.log(
     'Selected Text in toolscontainer',
     state.selectedNode,
-    state.meanings
+    state.meanings,
+    state.pronounciations
   );
   return {
     selectedText: state.selectedNode.textValue,
     meaningObj: state.meanings.synonyms,
+    urlList: state.pronounciations.urls,
   };
 }
 
 function dispatchActions(dispatch) {
   return {
-    getMeaning: (selectedText) => {
-      dispatch(actionCreatorForMeaningPayload(selectedText));
-    },
-
     fetchMeaningsFromServer: (word) => {
       dispatch(actionCreatorForFetchingMeaningOfPayload(word));
+    },
+    fetchPronounciationDetailsFromServer: (word) => {
+      dispatch(actionCreatorForFetchingPronounciationOfWord(word));
     },
   };
 }
@@ -42,7 +43,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     props.selectedText,
     props.getMeaning,
     props.fetchMeaningsFromServer,
-    props.meaningObj
+    props.meaningObj,
+    props.urlList
   );
 
   let meaningRenderer = (
@@ -51,15 +53,25 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       selectedText={props.selectedText}
     />
   );
+  let pronounciationRenderer = (
+    <ShowProuniciationAudioForGivenWord
+      selectedText={props.selectedText}
+      urlList={props.urlList}
+    />
+  );
 
   return (
     <div>
       <InteractiveReader
         selectedText={props.selectedText}
         invokeServerFetch={props.fetchMeaningsFromServer}
-        localFetch={props.getMeaning}
+        invokeServerFetchForPronounciation={
+          props.fetchPronounciationDetailsFromServer
+        }
         meaningObj={props.meaningObj}
+        urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
+        PronounciationRenderer={pronounciationRenderer}
       />
     </div>
   );
