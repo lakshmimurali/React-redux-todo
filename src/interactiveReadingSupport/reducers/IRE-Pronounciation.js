@@ -6,7 +6,9 @@ const pronounciationReducer = (
   let actionType = action.type;
 
   if (actionType === 'please-store-the-pronounciation') {
+    let selectedWord = action.selectedWord;
     let audioList = state.urls;
+    console.log('before detailsForGivenWord is >>>>>>>');
     let detailsForGivenWord = audioList[selectedWord];
     console.log('detailsForGivenWord is >>>>>>>', detailsForGivenWord);
     if (detailsForGivenWord !== undefined) {
