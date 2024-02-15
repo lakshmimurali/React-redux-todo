@@ -34,14 +34,10 @@ const InteractiveReader = (props) => {
           <button value="meaning" key="1" onClick={actionHandler}>
             Check Meaning
           </button>
-          <button
-            value="pronounciation"
-            key="2"
-            onClick={actionHandler}
-          >
+          <button value="pronounciation" key="2" onClick={actionHandler}>
             Pronounce It.. Plz..
           </button>
-          <button value="addnote" key="3" onClick={actionHandler} >
+          <button value="addnote" key="3" onClick={actionHandler}>
             Add Note
           </button>
           <button value="hidetools" key="4" onClick={hideAction}>

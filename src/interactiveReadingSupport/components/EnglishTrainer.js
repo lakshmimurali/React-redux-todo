@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 
 function ShowProuniciationAudioForGivenWord(props) {
-  let [fetchData, setFetchData] = useState(false);
-  let audioURLForSelectedText = props.pronounciationObj.url;
-  if (audioURLForSelectedText !== 'Not Available') {
-    setFetchData(true);
-  } else {
-    props.serverAction(audioURLForSelectedText);
+  let selectedText = props.selectedText;
+  let pronounciationInfo = props.urlList[selectedText];
+  let pronounciationUrl = '';
+  let phonetic = '';
+  if (pronounciationInfo !== undefined) {
+    pronounciationUrl = pronounciationInfo.audioUrl;
+    phonetic = pronounciationInfo.phonetic;
   }
+  //console.log('In Dictionary Component', meaning);
 
   return (
     <div>
-      <div> Selected Text:{props.selectedText} </div>
+      <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
-        Audio For Selected Text:{' '}
-        {fetchData === false ? 'Loading ...' : audioURLForSelectedText}
+        Pronounciation Details For Selected Text:{' '}
+        {pronounciationUrl !== undefined && pronounciationUrl !== ''
+          ? pronounciationUrl
+          : 'Loading...'}
+        <br />
+        Phonetic for Selected Text:
+        {phonetic !== undefined && phonetic !== '' ? phonetic : 'Loading...'}
       </div>
     </div>
   );
