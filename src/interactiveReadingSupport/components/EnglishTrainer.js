@@ -5,9 +5,11 @@ function ShowProuniciationAudioForGivenWord(props) {
   let pronounciationInfo = props.urlList[selectedText];
   let pronounciationUrl = '';
   let phonetic = '';
+  let audioElement = '';
   if (pronounciationInfo !== undefined) {
     pronounciationUrl = pronounciationInfo.audioUrl;
     phonetic = pronounciationInfo.phonetic;
+    audioElement = <audio src="pronounciationUrl"></audio>;
   }
   //console.log('In Dictionary Component', meaning);
 

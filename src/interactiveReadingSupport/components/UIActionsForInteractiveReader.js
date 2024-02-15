@@ -17,10 +17,18 @@ const InteractiveReader = (props) => {
   let actionHandler = (event) => {
     setAction(event.target.value);
     if (
-      props.meaningObj[selectedText] === undefined ||
-      props.meaningObj[selectedText] === ''
+      event.target.value === 'meaning' &&
+      (props.meaningObj[selectedText] === undefined ||
+        props.meaningObj[selectedText] === '')
     ) {
       return props.invokeServerFetch(selectedText);
+    }
+    if (
+      event.target.value === 'pronounciation' &&
+      (props.urlList[selectedText] === undefined ||
+        props.urlList[selectedText] === '')
+    ) {
+      return props.invokeServerFetchForPronounciation(selectedText);
     }
   };
 
