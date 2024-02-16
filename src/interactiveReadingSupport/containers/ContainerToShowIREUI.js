@@ -8,7 +8,7 @@ import { actionCreatorForFetchingPronounciationOfWord } from '../actionCreators/
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
-
+import ShowUserWrittenNotes from '../components/DisplayUserNotes.js';
 function getDataFromStore(state) {
   console.log(
     'Selected Text in Toolscontainer',
