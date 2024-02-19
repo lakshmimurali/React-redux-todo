@@ -21,13 +21,14 @@ function ConstructAddToDoForm(props) {
   };
   return (
     <div>
-      <input
-        type="textbox"
+      <textarea
         name="addToDo"
         value={toDo}
         onChange={todoHandler}
+        style={{ width: '400px', height: '200px' }}
         onKeyDown={handleKeyDown}
       />
+      <br />
       <button onClick={invokeToDoAction}>Add To Do</button>
     </div>
   );
