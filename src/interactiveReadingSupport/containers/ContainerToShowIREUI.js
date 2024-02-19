@@ -5,6 +5,11 @@ import { actionCreatorForFetchingMeaningOfPayload } from '../actionCreators/IRE-
 
 import { actionCreatorForFetchingPronounciationOfWord } from '../actionCreators/IRE-Pronounciation.js';
 
+import {
+  actionCreatorForStoringNote,
+  actionCreatorForEditingtheNote,
+} from '../actionCreators/IRE-Notes.js';
+
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
@@ -31,6 +36,12 @@ function dispatchActions(dispatch) {
     },
     fetchPronounciationDetailsFromServer: (word) => {
       dispatch(actionCreatorForFetchingPronounciationOfWord(word));
+    },
+    storeNote: (payload) => {
+      dispatch(actionCreatorForStoringNote(payload));
+    },
+    updateNote: (payload) => {
+      dispatch(actionCreatorForEditingtheNote(payload));
     },
   };
 }
@@ -66,6 +77,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <ShowUserWrittenNotes
       selectedText={props.selectedText}
       notesList={props.notesList}
+      storeNote={props.storeNote}
+      updateNote={props.updateNote}
     />
   );
   return (
