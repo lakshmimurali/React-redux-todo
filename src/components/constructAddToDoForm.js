@@ -8,6 +8,7 @@ function ConstructAddToDoForm(props) {
   let [toDo, setToDo] = useState('');
 
   let todoHandler = (event) => {
+    console.log(toDo);
     return setToDo(event.target.value);
   };
 
@@ -15,7 +16,7 @@ function ConstructAddToDoForm(props) {
     return props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator(toDo);
   };
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.ctrlKey && event.key === 'Enter') {
       invokeToDoAction();
     }
   };
@@ -25,10 +26,10 @@ function ConstructAddToDoForm(props) {
         name="addToDo"
         value={toDo}
         onChange={todoHandler}
-        style={{ width: '400px', height: '200px' }}
+        style={{ width: '300px', height: '100px', wrap: 'hard' }}
         onKeyDown={handleKeyDown}
       />
-      <br />
+
       <button onClick={invokeToDoAction}>Add To Do</button>
     </div>
   );
