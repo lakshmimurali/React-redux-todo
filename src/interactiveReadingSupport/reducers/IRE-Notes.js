@@ -41,6 +41,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     let sentence = action.sentence;
     let updatedNoteInfo = state.notes.map((noteObj) => {
       if (noteObj[sentence] !== undefined) {
+        console.log('Inside the actual update case', noteObj[sentence]);
         return {
           [sentence]: {
             name: sentence,
@@ -51,14 +52,14 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
         return noteObj;
       }
     });
-    console.log('In notes reducer', {
+    /* console.log('In notes reducer', {
       ...state,
-      notes: [...state.notes, ...updatedNoteInfo],
-    });
+      notes: [...updatedNoteInfo],
+    });*/
 
     return {
       ...state,
-      notes: [...state.notes, ...updatedNoteInfo],
+      notes: [...updatedNoteInfo],
     };
   }
   return state;
