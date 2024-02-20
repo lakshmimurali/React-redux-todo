@@ -23,9 +23,9 @@ function ShowUserWrittenNotes(props) {
     if (event.ctrlKey && event.key === 'Enter') {
       console.log('Inside updateUserNote', noteInfo, selectedText);
       if (noteInfo.length > 0) {
-        props.updateNote({ note: userNote, name: selectedText });
+        props.updateNote({ note: userNote, sentence: selectedText });
       } else {
-        props.storeNote({ note: userNote, name: selectedText });
+        props.storeNote({ note: userNote, sentence: selectedText });
       }
     }
   };
