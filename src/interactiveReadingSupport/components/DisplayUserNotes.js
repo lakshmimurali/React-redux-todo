@@ -4,8 +4,8 @@ function getNote(sentence, notesList) {
   let requiredNoteInfo = notesList.filter((noteObj) => {
     return noteObj[sentence] !== undefined;
   });
-  //console.log('requiredNoteInfo is >>>>>>>>>>>>>>>', requiredNoteInfo.po());
-  console.log(requiredNoteInfo);
+
+  console.log('Required Note Info is >>>>>>>>>>>>', requiredNoteInfo);
   if (requiredNoteInfo.length) {
     return requiredNoteInfo[0][sentence];
   } else {
@@ -44,8 +44,10 @@ function ShowUserWrittenNotes(props) {
     if (event.ctrlKey && event.key === 'Enter') {
       console.log('Inside updateUserNote', noteInfo, selectedText);
       if (noteInfo.note !== '' && noteInfo.note !== undefined) {
+        console.log('Inside update CASE', noteInfo.note, selectedText);
         props.updateNote({ note: userNote, sentence: selectedText });
       } else {
+        console.log('Inside add CASE', noteInfo.note, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
       }
     }
