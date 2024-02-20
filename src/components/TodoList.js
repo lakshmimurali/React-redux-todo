@@ -49,7 +49,7 @@ function TodoList(props) {
   return (
     <div>
       Added ToDo List:
-      <ul style={{ 'white-space': 'pre-wrap' }}>{taskList}</ul>
+      <ul style={{ whiteSpace: 'pre-wrap' }}>{taskList}</ul>
     </div>
   );
 }
