@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import highlighter from './Highlighter.js';
 
 function getNote(sentence, notesList) {
   let requiredNoteInfo = notesList.filter((noteObj) => {
@@ -60,9 +61,10 @@ function ShowUserWrittenNotes(props) {
         );
         props.updateNote({ note: event.target.value, sentence: selectedText });
       } else {
-        console.log('Inside add CASE', noteInfo.note, selectedText);
+        console.log('Inside Add CASE', noteInfo.note, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
       }
+      //highlighter(selectedText);
     }
   };
   let textAreaElement = (
