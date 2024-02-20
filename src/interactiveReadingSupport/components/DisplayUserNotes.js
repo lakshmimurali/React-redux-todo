@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function getNote(sentence, notesList) {
   let requiredNoteInfo = notesList.filter((noteObj) => {
+    console.log('noteObj in getNote is', noteObj, noteObj[sentence]);
     return noteObj[sentence] !== undefined;
   });
 
@@ -44,8 +45,14 @@ function ShowUserWrittenNotes(props) {
     if (event.ctrlKey && event.key === 'Enter') {
       console.log('Inside updateUserNote', noteInfo, selectedText);
       if (noteInfo.note !== '' && noteInfo.note !== undefined) {
-        console.log('Inside update CASE', noteInfo.note, selectedText);
-        props.updateNote({ note: userNote, sentence: selectedText });
+        console.log(
+          'Inside update CASE',
+          noteInfo.note,
+          selectedText,
+          userNote,
+          event.target.value
+        );
+        props.updateNote({ note: event.target.value, sentence: selectedText });
       } else {
         console.log('Inside add CASE', noteInfo.note, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
