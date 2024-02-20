@@ -53,7 +53,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     });
     return {
       ...state,
-      notes: [...updatedNoteInfo],
+      notes: [...state.notes, ...updatedNoteInfo],
     };
   }
   return state;
