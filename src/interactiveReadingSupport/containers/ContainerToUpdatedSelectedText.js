@@ -16,10 +16,10 @@ function UpdateSelectedText({ dispatch }) {
 
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
     };
-    document.addEventListener('selectionchange', handleSelection, true);
+    document.addEventListener('selectionchange', handleSelection, false);
 
     return () => {
-      document.removeEventListener('selectionchange', handleSelection, true);
+      document.removeEventListener('selectionchange', handleSelection, false);
     };
   }, []);
   return null;

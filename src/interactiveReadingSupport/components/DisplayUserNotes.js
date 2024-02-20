@@ -13,9 +13,16 @@ function ShowUserWrittenNotes(props) {
   let noteList = props.notesList;
   console.log('noteList is', noteList);
   let noteInfo = getNote(selectedText, noteList);
+  let noteDetails = noteInfo[selectedText];
+  let note = '';
+  if (noteDetails !== '' && noteDetails !== undefined) {
+    note = noteDetails.note;
+  }
+  console.log('NoteDetails is >>>>>>>>>>>>>', noteDetails);
 
   let updateTextAreaValueHandler = (event) => {
     let enteredText = event.target.value;
+    console.log('Inside onchange event handler');
     setUserNote(enteredText);
   };
 
@@ -31,7 +38,7 @@ function ShowUserWrittenNotes(props) {
   };
   let textAreaElement = (
     <textarea
-      value={noteInfo.note}
+      value={note}
       style={{ width: '200px', height: '200px' }}
       name="usernote"
       onChange={updateTextAreaValueHandler}
