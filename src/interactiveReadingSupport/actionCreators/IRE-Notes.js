@@ -27,7 +27,7 @@ const actionCreatorForDeletingtheNote = (sentence) => {
 
 const actionCreatorForEditingtheNote = (payload) => {
   return {
-    type: 'editing-the-note',
+    type: 'edit-the-note',
     sentence: payload.sentence,
     note: payload.note,
   };

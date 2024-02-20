@@ -37,7 +37,7 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
     };
   }
   if (actionType === 'edit-the-note') {
-    console.log('Inside the edit note action');
+    console.log('Inside the edit note action', action.note);
     let sentence = action.sentence;
     let updatedNoteInfo = state.notes.map((noteObj) => {
       if (noteObj[sentence] !== undefined) {
@@ -51,6 +51,11 @@ const notesReducer = (state = initialStateForWNotesReducer, action) => {
         return noteObj;
       }
     });
+    console.log('In notes reducer', {
+      ...state,
+      notes: [...state.notes, ...updatedNoteInfo],
+    });
+
     return {
       ...state,
       notes: [...state.notes, ...updatedNoteInfo],
