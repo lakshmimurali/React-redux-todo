@@ -20,9 +20,14 @@ function getNote(sentence, notesList) {
 function ShowUserWrittenNotes(props) {
   let [userNote, setUserNote] = useState('');
   let [isEditMode, setEditMode] = useState(false);
+  let [issubmitDone, setSubmitActionValue] = useState(false);
 
   useEffect(() => {
     setEditMode(false);
+  }, [props.selectedText]);
+
+  useEffect(() => {
+    setSubmitActionValue(false);
   }, [props.selectedText]);
 
   let selectedText = props.selectedText;
@@ -43,6 +48,7 @@ function ShowUserWrittenNotes(props) {
 
   let updateUserNote = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
+      setSubmitActionValue(true);
       console.log('Inside updateUserNote', noteInfo, selectedText);
       if (noteInfo.note !== '' && noteInfo.note !== undefined) {
         console.log(
@@ -73,7 +79,8 @@ function ShowUserWrittenNotes(props) {
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
-        Note For Selected Text: {textAreaElement}
+        Note For Selected Text:{' '}
+        {issubmitDone === true ? userNote : textAreaElement}
         <br />
       </div>
     </div>
