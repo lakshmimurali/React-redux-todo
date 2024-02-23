@@ -97,6 +97,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         invokeServerFetchForPronounciation={
           props.fetchPronounciationDetailsFromServer
         }
+        invokeHighlightTextAction={props.invokeHighlightTextAction}
         meaningObj={props.meaningObj}
         urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
