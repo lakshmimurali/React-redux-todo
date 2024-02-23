@@ -32,6 +32,10 @@ const InteractiveReader = (props) => {
       console.log('Inside pronounciation ');
       return props.invokeServerFetchForPronounciation(selectedText);
     }
+    if (event.target.value === 'highlight' && selectedText.length > 0) {
+      console.log('Inside highlight ');
+      return props.invokeHighlightAction(selectedText);
+    }
   };
 
   let hideAction = () => {
@@ -51,7 +55,10 @@ const InteractiveReader = (props) => {
           <button value="notes" key="3" onClick={actionHandler}>
             Add Note
           </button>
-          <button value="hidetools" key="4" onClick={hideAction}>
+          <button value="highlight" key="4" onClick={actionHandler}>
+            Highlight Text
+          </button>
+          <button value="hidetools" key="5" onClick={hideAction}>
             Cancel
           </button>
         </p>
