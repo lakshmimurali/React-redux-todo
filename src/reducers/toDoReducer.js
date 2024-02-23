@@ -11,6 +11,7 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
             value: action.value,
             id: action.id,
             completed: false,
+            textToHighlight: '',
           },
         },
       ],
@@ -61,6 +62,29 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
         : toDo;
     });
     console.log('updatedToDos', updatedToDos);
+    return {
+      ...state,
+      toDos: updatedToDos,
+    };
+  } else if (action.type === 'highlight_todo') {
+    console.log('state is', state);
+    let actionId = action.id;
+    let updatedToDos = state.toDos.map((toDo, index) => {
+      let keyOftaskItemObj = Object.keys(toDo);
+      let taskObj = toDo[keyOftaskItemObj];
+      console.log('taskObj is', taskObj);
+
+      console.log('inside map', taskObj);
+      return taskObj.id === actionId
+        ? {
+            [actionId]: {
+              ...taskObj,
+              textToHighlight: action.selectedWord,
+            },
+          }
+        : toDo;
+    });
+    console.log('HighlightToDos', updatedToDos);
     return {
       ...state,
       toDos: updatedToDos,

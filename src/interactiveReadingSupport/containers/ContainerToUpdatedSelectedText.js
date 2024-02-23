@@ -12,10 +12,7 @@ function UpdateSelectedText({ dispatch }) {
       let wholeText = selectedElemParent.innerText;
       console.log(
         'In  UpdateSelectedText container useeffect for selectionchange event',
-        selectedWord,
-        selectedElemParent,
-        wholeText,
-        selectedElemParent.attributes.extref
+        selectedElemParent.getAttribute('extref')
       );
 
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
