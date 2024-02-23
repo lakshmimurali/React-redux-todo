@@ -39,6 +39,7 @@ function TodoList(props) {
           completed={toDo.completed}
           invokeToggleToDoActionCreator={props.invokeToggleToDoActionCreator}
           selectedView={props.selectedView}
+          textToHighlight={props.textToHighlight}
         />
       );
     });
