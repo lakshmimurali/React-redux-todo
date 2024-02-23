@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import getSelectionParentElement from './helperToGetSelectedElementParent.js';
 
 import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSelectedText.js';
 
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = (event) => {
-      console.log('selection event triggers', event.target, event.target.value);
-
       let selectedWord = window.getSelection().toString();
-      let selectedElemParent = console.log(
+      let selectedElemParent = getSelectionParentElement();
+      console.log(
         'In  UpdateSelectedText container useeffect for selectionchange event',
-        selectedWord
+        selectedWord,
+        selectedElemParent
       );
 
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
