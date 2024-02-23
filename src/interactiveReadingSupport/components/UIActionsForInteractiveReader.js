@@ -33,7 +33,7 @@ const InteractiveReader = (props) => {
       console.log('Inside pronounciation ');
       return props.invokeServerFetchForPronounciation(selectedText);
     }
-    if (event.target.value === 'highlight' && selectedText.length > 0) {
+    if (event.target.value === 'highlight') {
       console.log('Inside highlight ');
       let selectedElemParent = getParentElementOfSelectedText();
       let refOfElement = selectedElemParent.getAttribute('extref');

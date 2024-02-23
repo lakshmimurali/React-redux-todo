@@ -9,10 +9,10 @@ function highlightSelectedWord(selectedWord, toDo) {
 }
 
 function displayToDoText(textToHighlight, toDoText) {
-  if (props.textToHighlight.length > 0) {
+  if (textToHighlight !== '' && textToHighlight !== undefined) {
     return highlightSelectedWord(textToHighlight, toDoText);
   } else {
-    return props.value;
+    return toDoText;
   }
 }
 
