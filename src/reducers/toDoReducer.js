@@ -67,13 +67,14 @@ function toDoItemsReducer(state = { selectedView: 'All', toDos: [] }, action) {
       toDos: updatedToDos,
     };
   } else if (action.type === 'highlight_todo') {
-    console.log('state is', state);
-    let actionId = action.id;
+    console.log(' Inside  highlight_todo >>>>>>>>> state is', state);
+    let actionId = action.id * 1;
+    console.log('Checking type of Action Id', typeof actionId);
     let updatedToDos = state.toDos.map((toDo, index) => {
       let keyOftaskItemObj = Object.keys(toDo);
       let taskObj = toDo[keyOftaskItemObj];
       console.log('taskObj is', taskObj);
-
+      console.log('checking type of taskobjid', typeof taskObj.id);
       console.log('inside map', taskObj);
       return taskObj.id === actionId
         ? {
