@@ -36,10 +36,11 @@ function TodoList(props) {
         <Todo
           value={toDo.value}
           id={toDo.id}
+          key={toDo.id}
           completed={toDo.completed}
           invokeToggleToDoActionCreator={props.invokeToggleToDoActionCreator}
           selectedView={props.selectedView}
-          textToHighlight={props.textToHighlight}
+          textToHighlight={toDo.textToHighlight}
         />
       );
     });
