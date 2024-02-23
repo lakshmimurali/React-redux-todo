@@ -7,7 +7,7 @@ function Todo(props) {
   };
 
   return (
-    <li key={props.id} onClick={toggleToDo}>
+    <li key={props.id} extref={props.id} onClick={toggleToDo}>
       {props.value} {props.completed === true ? 'Done' : ''}{' '}
     </li>
   );

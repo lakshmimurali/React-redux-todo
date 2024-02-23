@@ -9,10 +9,13 @@ function UpdateSelectedText({ dispatch }) {
     const handleSelection = (event) => {
       let selectedWord = window.getSelection().toString();
       let selectedElemParent = getSelectionParentElement();
+      let wholeText = selectedElemParent.innerText;
       console.log(
         'In  UpdateSelectedText container useeffect for selectionchange event',
         selectedWord,
-        selectedElemParent
+        selectedElemParent,
+        wholeText,
+        selectedElemParent.attributes.extref
       );
 
       dispatch(actionCreatorForUpdatingSelectedText(selectedWord));
