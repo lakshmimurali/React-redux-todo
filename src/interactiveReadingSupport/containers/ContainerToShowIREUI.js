@@ -10,10 +10,13 @@ import {
   actionCreatorForEditingtheNote,
 } from '../actionCreators/IRE-Notes.js';
 
+import actionCreatorForHightlightingToDo from '../../actions/highlightToDo.js';
+
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
 import ShowUserWrittenNotes from '../components/DisplayUserNotes.js';
+
 function getDataFromStore(state) {
   console.log(
     'Selected Text in Toolscontainer',
@@ -43,6 +46,9 @@ function dispatchActions(dispatch) {
     updateNote: (payload) => {
       dispatch(actionCreatorForEditingtheNote(payload));
     },
+    invokeHighlightTextAction: (payload) => {
+      dispatch(actionCreatorForHightlightingToDo(payload));
+    },
   };
 }
 
@@ -50,6 +56,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
   if (props.selectedText === '0000' || props.selectedText.length === 0) {
     return null;
   }
+
   console.log(
     'props in RespondToUIActionsBasedOnTextSelectionChange toolscontainer',
     props.selectedText,
@@ -81,6 +88,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       updateNote={props.updateNote}
     />
   );
+
   return (
     <div>
       <InteractiveReader

@@ -1,4 +1,4 @@
-function hightlightToDo(payload) {
+function actionCreatorForHightlightingToDo(payload) {
   console.log('Inside hightlightToDo', payload.toDoId);
   return {
     type: 'highlight_todo',
@@ -7,4 +7,4 @@ function hightlightToDo(payload) {
   };
 }
 
-export default hightlightToDo;
+export default actionCreatorForHightlightingToDo;

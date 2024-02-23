@@ -1,4 +1,4 @@
-function getSelectionParentElement() {
+function getParentElementOfSelectedText() {
   var parentEl = null,
     sel;
   if (window.getSelection) {
@@ -15,4 +15,4 @@ function getSelectionParentElement() {
   return parentEl;
 }
 
-export default getSelectionParentElement;
+export default getParentElementOfSelectedText;

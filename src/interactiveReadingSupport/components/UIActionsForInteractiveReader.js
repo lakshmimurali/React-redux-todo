@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import getParentElementOfSelectedText from '../containers/helperToGetSelectedElementParent.js';
 
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
@@ -34,7 +35,14 @@ const InteractiveReader = (props) => {
     }
     if (event.target.value === 'highlight' && selectedText.length > 0) {
       console.log('Inside highlight ');
-      return props.invokeHighlightAction(selectedText);
+      let selectedElemParent = getParentElementOfSelectedText();
+      let refOfElement = selectedElemParent.getAttribute('extref');
+      console.log('selectedElemParent is', selectedElemParent);
+      console.log('refOfElement is', refOfElement);
+      return props.invokeHighlightTextAction({
+        toDoId: refOfElement,
+        selectedWord: selectedText,
+      });
     }
   };
 
