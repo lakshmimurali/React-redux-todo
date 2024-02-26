@@ -18,6 +18,7 @@ function ConstructAddToDoForm(props) {
   const handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
       invokeToDoAction();
+      event.target.value = '';
     }
   };
   return (
@@ -28,6 +29,7 @@ function ConstructAddToDoForm(props) {
         onChange={todoHandler}
         style={{ width: '300px', height: '100px', wrap: 'hard' }}
         onKeyDown={handleKeyDown}
+        autoFocus
       />
 
       <button onClick={invokeToDoAction}>Add To Do</button>

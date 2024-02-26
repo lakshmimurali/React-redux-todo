@@ -74,6 +74,7 @@ function ShowUserWrittenNotes(props) {
       name="usernote"
       onChange={updateTextAreaValueHandler}
       onKeyDown={updateUserNote}
+      autoFocus
     />
   );
   return (
