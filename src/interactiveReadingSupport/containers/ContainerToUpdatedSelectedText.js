@@ -6,7 +6,7 @@ import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSe
 function UpdateSelectedText({ dispatch }) {
   useEffect(() => {
     const handleSelection = (event) => {
-      let selectedWord = window.getSelection().toString();
+      let selectedWord = window.getSelection().toString().trim();
       console.log(
         'Selected Word in Container to listen for selection change',
         selectedWord
