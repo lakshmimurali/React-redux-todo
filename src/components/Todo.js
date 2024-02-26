@@ -10,8 +10,16 @@ function Todo(props) {
   let renderedString = displayToDoText(props.textToHighlight, props.value);
 
   return (
-    <li key={props.id} extref={props.id} onClick={toggleToDo}>
+    <li key={props.id} extref={props.id}>
       {parse(renderedString)} {props.completed === true ? 'Done' : ''}{' '}
+      <label class="switch">
+        <input
+          type="checkbox"
+          onClick={toggleToDo}
+          checked={props.completed === true}
+        />
+        <span class="slider round"></span>
+      </label>
     </li>
   );
 }
