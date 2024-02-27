@@ -5,6 +5,8 @@ import { actionCreatorForFetchingMeaningOfPayload } from '../actionCreators/IRE-
 
 import { actionCreatorForFetchingPronounciationOfWord } from '../actionCreators/IRE-Pronounciation.js';
 
+import { actionCreatorForFetchingAbbreviations } from '../actionCreators/IREActions-Abbreviation.js';
+
 import {
   actionCreatorForStoringNote,
   actionCreatorForEditingtheNote,
@@ -15,6 +17,7 @@ import actionCreatorForHightlightingToDo from '../../actions/highlightToDo.js';
 import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
+import ShowAbbreviationForAcronym from '../components/DisplayAbbreviation.js';
 import ShowUserWrittenNotes from '../components/DisplayUserNotes.js';
 
 function getDataFromStore(state) {
@@ -22,13 +25,15 @@ function getDataFromStore(state) {
     'Selected Text in Toolscontainer',
     state.selectedNode,
     state.meanings,
-    state.pronounciations
+    state.pronounciations,
+    state.abbr
   );
   return {
     selectedText: state.selectedNode.textValue,
     meaningObj: state.meanings.synonyms,
     urlList: state.pronounciations.urls,
     notesList: state.writeups.notes,
+    abbrList: state.abbr.abbreviations,
   };
 }
 
@@ -39,6 +44,9 @@ function dispatchActions(dispatch) {
     },
     fetchPronounciationDetailsFromServer: (word) => {
       dispatch(actionCreatorForFetchingPronounciationOfWord(word));
+    },
+    fetchAbbreviationDetailsFromServer: (word) => {
+      dispatch(actionCreatorForFetchingAbbreviations(word));
     },
     storeNote: (payload) => {
       dispatch(actionCreatorForStoringNote(payload));
@@ -63,8 +71,10 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     props.meaningObj,
     props.urlList,
     props.notesList,
+    props.abbrList,
     props.fetchMeaningsFromServer,
-    props.fetchPronounciationDetailsFromServer
+    props.fetchPronounciationDetailsFromServer,
+    props.fetchAbbreviationDetailsFromServer
   );
 
   let meaningRenderer = (
@@ -89,6 +99,13 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     />
   );
 
+  let abbreviationRenderer = (
+    <ShowAbbreviationForAcronym
+      selectedText={props.selectedText}
+      abbrList={props.abbrList}
+    />
+  );
+
   return (
     <div>
       <InteractiveReader
@@ -97,12 +114,16 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         invokeServerFetchForPronounciation={
           props.fetchPronounciationDetailsFromServer
         }
+        invokeServerFetchForAbbreviation={
+          props.fetchAbbreviationDetailsFromServer
+        }
         invokeHighlightTextAction={props.invokeHighlightTextAction}
         meaningObj={props.meaningObj}
         urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
         PronounciationRenderer={pronounciationRenderer}
         NotesRenderer={notesRenderer}
+        AbbreviationRenderer={abbreviationRenderer}
       />
     </div>
   );

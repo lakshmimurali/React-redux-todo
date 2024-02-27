@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getParentElementOfSelectedText from '../containers/helperToGetSelectedElementParent.js';
+import getParentElementOfSelectedText from '../../domelementutils/helperToGetSelectedElementParent.js';
 
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
@@ -33,6 +33,15 @@ const InteractiveReader = (props) => {
       console.log('Inside pronounciation ');
       return props.invokeServerFetchForPronounciation(selectedText);
     }
+    if (
+      event.target.value === 'abbreviation' &&
+      (props.abbrList[selectedText] === undefined ||
+        props.abbrList[selectedText] === '')
+    ) {
+      console.log('Inside pronounciation ');
+      return props.invokeServerFetchForAbbreviation(selectedText);
+    }
+
     if (event.target.value === 'highlight') {
       console.log('Inside highlight ');
       let selectedElemParent = getParentElementOfSelectedText();
@@ -55,16 +64,19 @@ const InteractiveReader = (props) => {
       <div>
         <p>
           <button value="meaning" key="1" onClick={actionHandler}>
-            Check Meaning
+            Check Meaning.
           </button>
           <button value="pronounciation" key="2" onClick={actionHandler}>
             Pronounce It.. Plz..
           </button>
           <button value="notes" key="3" onClick={actionHandler}>
-            Add Note
+            Add Note.
           </button>
           <button value="highlight" key="4" onClick={actionHandler}>
-            Highlight Text
+            Highlight Text.
+          </button>
+          <button value="abbreviation" key="4" onClick={actionHandler}>
+            Show Abbreviation.
           </button>
           <button value="hidetools" key="5" onClick={hideAction}>
             Cancel
@@ -73,6 +85,9 @@ const InteractiveReader = (props) => {
         <div>{selAction === 'meaning' ? props.Meaningrenderer : null}</div>
         <div>
           {selAction === 'pronounciation' ? props.PronounciationRenderer : null}
+        </div>
+        <div>
+          {selAction === 'abbreviation' ? props.AbbreviationRenderer : null}
         </div>
         <div>{selAction === 'notes' ? props.NotesRenderer : null}</div>
       </div>
