@@ -38,7 +38,7 @@ const InteractiveReader = (props) => {
       (props.abbrList[selectedText] === undefined ||
         props.abbrList[selectedText] === '')
     ) {
-      console.log('Inside pronounciation ');
+      console.log('Inside  Abbreviation Server Fetch Action Invoking Part ');
       return props.invokeServerFetchForAbbreviation(selectedText);
     }
 
