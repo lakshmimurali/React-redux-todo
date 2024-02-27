@@ -119,6 +119,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         }
         invokeHighlightTextAction={props.invokeHighlightTextAction}
         meaningObj={props.meaningObj}
+        abbrList={props.abbrList}
         urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
         PronounciationRenderer={pronounciationRenderer}
