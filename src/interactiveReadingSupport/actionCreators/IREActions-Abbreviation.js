@@ -14,7 +14,7 @@ const actionCreatorForStoringAbbreviation = (payload) => {
 const actionCreatorForFetchingAbbreviations = (selectedWord) => {
   return function (dispatch) {
     fetch(
-      `https://www.stands4.com/services/v2/abbr.php?uid=12379&tokenid=2NQkdEwvlghwcjRy&term=${selectedWord}&format=json&categoryid=all`
+      `https://www.stands4.com/services/v2/abbr.php?uid=12381&tokenid=BoPubKpqOeKtbxQ2&term=${selectedWord}&format=json`
     )
       .then((response) => {
         console.log(
@@ -28,6 +28,7 @@ const actionCreatorForFetchingAbbreviations = (selectedWord) => {
         return response.json();
       })
       .then((data) => {
+        console.log('data inside abbr response ', data);
         let abbrList = data.results.result;
         let definition = abbrList[0].definition || 'Not Available';
         let field = abbrList[0].category || 'Not Available';
