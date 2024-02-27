@@ -12,13 +12,13 @@ function Todo(props) {
   return (
     <li key={props.id} extref={props.id}>
       {parse(renderedString)} {props.completed === true ? 'Done' : ''}{' '}
-      <label class="switch">
+      <label className="switch">
         <input
           type="checkbox"
-          onClick={toggleToDo}
+          onChange={toggleToDo}
           checked={props.completed === true}
         />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
     </li>
   );
