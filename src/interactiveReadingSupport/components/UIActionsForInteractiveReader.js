@@ -75,10 +75,10 @@ const InteractiveReader = (props) => {
           <button value="highlight" key="4" onClick={actionHandler}>
             Highlight Text.
           </button>
-          <button value="abbreviation" key="4" onClick={actionHandler}>
+          <button value="abbreviation" key="5" onClick={actionHandler}>
             Show Abbreviation.
           </button>
-          <button value="hidetools" key="5" onClick={hideAction}>
+          <button value="hidetools" key="6" onClick={hideAction}>
             Cancel
           </button>
         </p>
