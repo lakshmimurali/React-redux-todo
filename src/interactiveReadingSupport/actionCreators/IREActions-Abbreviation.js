@@ -29,19 +29,20 @@ const actionCreatorForFetchingAbbreviations = (selectedWord) => {
       })
       .then((data) => {
         console.log('data inside abbr response ', data);
-        let abbrList = data.results.result;
+        let abbrList = data.result;
         let definition = abbrList[0].definition || 'Not Available';
         let field = abbrList[0].category || 'Not Available';
         console.log(definition, field);
+
         return dispatch(
           actionCreatorForStoringAbbreviation({
             selectedWord: selectedWord,
-            abbreviation: abbreviation,
+            abbreviation: definition,
             field: field,
           })
         );
-      })
-      .catch((error) => {
+      });
+    /*.catch((error) => {
         console.log('Abbreviations Action creator', error);
         return dispatch(
           actionCreatorForStoringAbbreviation({
@@ -50,7 +51,7 @@ const actionCreatorForFetchingAbbreviations = (selectedWord) => {
             field: 'Not Available',
           })
         );
-      });
+      });*/
   };
 };
 
