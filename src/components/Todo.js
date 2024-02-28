@@ -11,7 +11,7 @@ function Todo(props) {
 
   return (
     <li key={props.id} extref={props.id}>
-      {parse(renderedString)} {props.completed === true ? 'Done' : ''}{' '}
+      {parse(renderedString)} {props.completed === true ? 'Done' : 'Done ?'}{' '}
       <label className="switch">
         <input
           type="checkbox"
