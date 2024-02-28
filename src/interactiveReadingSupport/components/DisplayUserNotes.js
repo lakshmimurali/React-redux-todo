@@ -33,7 +33,7 @@ function ShowUserWrittenNotes(props) {
 
   let selectedText = props.selectedText;
   let noteList = props.notesList;
-  console.log('noteList is', noteList);
+
   let noteInfo = getNote(selectedText, noteList);
   console.log('noteInfo is >>>>>>', noteInfo);
   if (!isEditMode) {
@@ -44,7 +44,6 @@ function ShowUserWrittenNotes(props) {
     let enteredText = event.target.value;
     setUserNote(enteredText);
     setEditMode(true);
-    console.log('Inside onchange event handler', enteredText);
   };
 
   let updateUserNote = (event) => {

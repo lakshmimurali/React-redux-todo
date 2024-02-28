@@ -72,6 +72,7 @@ const InteractiveReader = (props) => {
           <button value="notes" key="3" onClick={actionHandler}>
             Add Note.
           </button>
+          <br />
           <button value="highlight" key="4" onClick={actionHandler}>
             Highlight Text.
           </button>
