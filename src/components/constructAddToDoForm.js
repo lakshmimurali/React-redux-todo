@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function ConstructAddToDoForm(props) {
   /*console.log(
@@ -6,6 +6,7 @@ function ConstructAddToDoForm(props) {
     props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator
   );*/
   let [toDo, setToDo] = useState('');
+  let toDoElementRef = useRef('textarea-todo');
 
   let todoHandler = (event) => {
     console.log(toDo);
@@ -13,12 +14,13 @@ function ConstructAddToDoForm(props) {
   };
 
   let invokeToDoAction = () => {
-    return props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator(toDo);
+    props.addToDoActionCreatorAsProps.invokeaddToDoActionCreator(toDo);
+    toDoElementRef.current.value = '';
+    return null;
   };
   const handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
       invokeToDoAction();
-      event.target.value = '';
     }
   };
   return (
@@ -30,6 +32,7 @@ function ConstructAddToDoForm(props) {
         style={{ width: '300px', height: '100px', wrap: 'hard' }}
         onKeyDown={handleKeyDown}
         autoFocus
+        ref={toDoElementRef}
       />
 
       <button onClick={invokeToDoAction}>Add To Do</button>
