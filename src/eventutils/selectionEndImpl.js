@@ -1,3 +1,5 @@
+import debounce from './debounce.js';
+
 function subscribeToSelectEvent(callBackHandler) {
   let selectionEndTimeout = null,
     selectionEndEvent = new Event('selectionEnd');
@@ -37,8 +39,15 @@ function subscribeToSelectEvent(callBackHandler) {
       document.dispatchEvent(selectionEndEvent);
     }
   };
+
+  const debouncedHandleSelectionChange = debounce(selectionChangeHandler, 300);
+
   ['selectionchange'].map((e) => {
-    document.addEventListener(e.toString(), selectionChangeHandler, false);
+    document.addEventListener(
+      e.toString(),
+      debouncedHandleSelectionChange,
+      false
+    );
   });
   return function unSubscribe() {
     document.removeEventListener(
