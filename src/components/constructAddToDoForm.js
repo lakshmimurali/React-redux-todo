@@ -9,7 +9,7 @@ function ConstructAddToDoForm(props) {
   let toDoElementRef = useRef('textarea-todo');
 
   let todoHandler = (event) => {
-    console.log(toDo);
+    //console.log(toDo);
     return setToDo(event.target.value);
   };
 

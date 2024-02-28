@@ -13,12 +13,12 @@ function TodoList(props) {
     }
     toToDoList = props.toDoListFromStore.toDos.map((toDo) => {
       let toDoKey = Object.keys(toDo);
-      console.log(toDoKey);
+      //console.log(toDoKey);
       let toToData = toDo[toDoKey];
-      console.log(toToData);
+      //console.log(toToData);
       return toToData;
     });
-    console.log(toToDoList);
+    //console.log(toToDoList);
     return constructToDoData(toToDoList);
   }
 

@@ -15,7 +15,7 @@ function SubscribeToDoList(props) {
 }
 
 let mapStateToProps = (state, ownProps) => {
-  console.log(state.toDos, state.selectedView);
+  //console.log(state.toDos, state.selectedView);
   return { toDoListFromStore: state.toDos, selectedView: state.selectedView };
 };
 

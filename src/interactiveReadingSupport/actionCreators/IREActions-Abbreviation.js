@@ -32,7 +32,7 @@ const actionCreatorForFetchingAbbreviations = (selectedWord) => {
         let abbrList = data.result;
         let definition = abbrList[0].definition || 'Not Available';
         let field = abbrList[0].category || 'Not Available';
-        console.log(definition, field);
+        //console.log(definition, field);
 
         return dispatch(
           actionCreatorForStoringAbbreviation({
