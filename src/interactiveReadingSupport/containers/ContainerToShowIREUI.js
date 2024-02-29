@@ -18,7 +18,7 @@ import InteractiveReader from '../components/UIActionsForInteractiveReader.js';
 import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
 import ShowAbbreviationForAcronym from '../components/DisplayAbbreviation.js';
-import ShowUserWrittenNotes from '../components/DisplayUserNotes.js';
+import ShowUserWrittenNote from '../components/DisplayUserNote.js';
 import DisplayAllNotes from '../components/DisplayUserNoteList.js';
 
 function getDataFromStore(state) {
@@ -91,8 +91,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     />
   );
 
-  let notesRenderer = (
-    <ShowUserWrittenNotes
+  let noteRenderer = (
+    <ShowUserWrittenNote
       selectedText={props.selectedText}
       notesList={props.notesList}
       storeNote={props.storeNote}
@@ -126,7 +126,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         urlList={props.urlList}
         Meaningrenderer={meaningRenderer}
         PronounciationRenderer={pronounciationRenderer}
-        NotesRenderer={notesRenderer}
+        NoteRenderer={noteRenderer}
         AllNotesRenderer={allNotesRenderer}
         AbbreviationRenderer={abbreviationRenderer}
       />

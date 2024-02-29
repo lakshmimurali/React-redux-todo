@@ -69,7 +69,7 @@ const InteractiveReader = (props) => {
           <button value="pronounciation" key="2" onClick={actionHandler}>
             Pronounce It.. Plz..
           </button>
-          <button value="notes" key="3" onClick={actionHandler}>
+          <button value="note" key="3" onClick={actionHandler}>
             Add Note.
           </button>
 
@@ -95,7 +95,7 @@ const InteractiveReader = (props) => {
         <div>
           {selAction === 'abbreviation' ? props.AbbreviationRenderer : null}
         </div>
-        <div>{selAction === 'notes' ? props.NotesRenderer : null}</div>
+        <div>{selAction === 'note' ? props.NoteRenderer : null}</div>
         <div>
           {selAction === 'displayallnotes' ? props.AllNotesRenderer : null}
         </div>

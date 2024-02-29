@@ -29,9 +29,3 @@ function DisplayAllNotes(props) {
 
 export default DisplayAllNotes;
 
-/*myArr.map((person)=>{
-  let values = Object.values(person).pop();
-  console.log(values);
-  console.log(values.age);
-  console.log(values.mom);
-})*/

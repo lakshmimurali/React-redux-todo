@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import highlighter from './Highlighter.js';
 
 function getNote(sentence, notesList) {
   let requiredNoteInfo = notesList.filter((noteObj) => {
@@ -18,7 +17,7 @@ function getNote(sentence, notesList) {
   }
 }
 
-function ShowUserWrittenNotes(props) {
+function ShowUserWrittenNote(props) {
   let [userNote, setUserNote] = useState('');
   let [isEditMode, setEditMode] = useState(false);
   let [issubmitDone, setSubmitActionValue] = useState(false);
@@ -63,7 +62,6 @@ function ShowUserWrittenNotes(props) {
         console.log('Inside Add CASE', noteInfo.note, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
       }
-      //highlighter(selectedText);
     }
   };
   let textAreaElement = (
@@ -89,4 +87,4 @@ function ShowUserWrittenNotes(props) {
   );
 }
 
-export default ShowUserWrittenNotes;
+export default ShowUserWrittenNote;
