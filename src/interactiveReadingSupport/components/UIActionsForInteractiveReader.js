@@ -72,6 +72,7 @@ const InteractiveReader = (props) => {
           <button value="notes" key="3" onClick={actionHandler}>
             Add Note.
           </button>
+
           <br />
           <button value="highlight" key="4" onClick={actionHandler}>
             Highlight Text.
@@ -79,6 +80,10 @@ const InteractiveReader = (props) => {
           <button value="abbreviation" key="5" onClick={actionHandler}>
             Show Abbreviation.
           </button>
+          <button value="displayallnotes" key="7" onClick={actionHandler}>
+            Display Notes.
+          </button>
+
           <button value="hidetools" key="6" onClick={hideAction}>
             Cancel
           </button>
@@ -91,6 +96,9 @@ const InteractiveReader = (props) => {
           {selAction === 'abbreviation' ? props.AbbreviationRenderer : null}
         </div>
         <div>{selAction === 'notes' ? props.NotesRenderer : null}</div>
+        <div>
+          {selAction === 'displayallnotes' ? props.AllNotesRenderer : null}
+        </div>
       </div>
     );
   } else {

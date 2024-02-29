@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-function displayAllNotes(props) {
+function DisplayAllNotes(props) {
   let noteList = props.notesList;
 
   let noteListElement = noteList.map((noteObj) => {
-    let selectedWord = Object.keys(noteObj);
+    let noteInfo = Object.values(noteObj).pop();
+    console.log('noteInfo Obj is', noteInfo);
     return (
-      <div>
-        <div> Selected Text:{noteObj.selectedText} </div>
+      <div key={noteInfo.name}>
+        <div> Selected Text:{noteInfo.name} </div>
         <div>
           {' '}
-          Note For Selected Text: {noteObj.userNote}
+          Note For Selected Text: {noteInfo.note}
           <br />
         </div>
+        <hr />
       </div>
     );
   });
 
-  return noteListElement;
+  return (
+    <div>
+      <p>NoteList:</p>
+      {noteListElement}
+    </div>
+  );
 }
 
-export default displayAllNotes;
+export default DisplayAllNotes;
 
 /*myArr.map((person)=>{
   let values = Object.values(person).pop();

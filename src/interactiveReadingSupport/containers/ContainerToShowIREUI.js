@@ -19,6 +19,7 @@ import ShowMeaningForWord from '../components/Dictionary.js';
 import ShowProuniciationAudioForGivenWord from '../components/EnglishTrainer.js';
 import ShowAbbreviationForAcronym from '../components/DisplayAbbreviation.js';
 import ShowUserWrittenNotes from '../components/DisplayUserNotes.js';
+import DisplayAllNotes from '../components/DisplayUserNoteList.js';
 
 function getDataFromStore(state) {
   console.log(
@@ -99,6 +100,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     />
   );
 
+  let allNotesRenderer = <DisplayAllNotes notesList={props.notesList} />;
+
   let abbreviationRenderer = (
     <ShowAbbreviationForAcronym
       selectedText={props.selectedText}
@@ -124,6 +127,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         Meaningrenderer={meaningRenderer}
         PronounciationRenderer={pronounciationRenderer}
         NotesRenderer={notesRenderer}
+        AllNotesRenderer={allNotesRenderer}
         AbbreviationRenderer={abbreviationRenderer}
       />
     </div>
