@@ -10,6 +10,8 @@ import { actionCreatorForFetchingAbbreviations } from '../actionCreators/IREActi
 import {
   actionCreatorForStoringNote,
   actionCreatorForEditingtheNote,
+  actionCreatorForDeletingtheNote,
+  actionCreatorForEditingtheNote,
 } from '../actionCreators/IRE-Notes.js';
 
 import actionCreatorForHightlightingToDo from '../../actions/highlightToDo.js';
@@ -54,6 +56,9 @@ function dispatchActions(dispatch) {
     },
     updateNote: (payload) => {
       dispatch(actionCreatorForEditingtheNote(payload));
+    },
+    deleteNote: (payload) => {
+      dispatch(actionCreatorForDeletingtheNote(payload));
     },
     invokeHighlightTextAction: (payload) => {
       dispatch(actionCreatorForHightlightingToDo(payload));
@@ -100,7 +105,12 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     />
   );
 
-  let allNotesRenderer = <DisplayAllNotes notesList={props.notesList} />;
+  let allNotesRenderer = (
+    <DisplayAllNotes
+      notesList={props.notesList}
+      deleteNote={props.deleteNote}
+    />
+  );
 
   let abbreviationRenderer = (
     <ShowAbbreviationForAcronym

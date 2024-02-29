@@ -11,7 +11,9 @@ p {
   height: 10px;
   top: 4px;
 }
-
+.pointer {
+  cursor: pointer;
+}
 .switch input {
   opacity: 0;
   width: 0;
