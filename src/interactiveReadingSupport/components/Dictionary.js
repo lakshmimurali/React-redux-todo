@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import getNote from './noteHelper.js';
 
 function ShowMeaningForWord(props) {
+  let [noteStatus, setNoteAddStatus] = useState('');
+  useEffect(() => {
+    noteStatus = '';
+  }, [props.selectedText]);
+
   let selectedText = props.selectedText;
   let meaningInfo = props.meaningObj[selectedText];
   let meaning = '';
@@ -9,10 +16,46 @@ function ShowMeaningForWord(props) {
     meaning = meaningInfo.meaning;
     exampleSentence = meaningInfo.exampleSentence;
   }
+  if (noteStatus === 'loading') {
+    let noteInfo = getNote(selectedText, props.notesList);
+    if (noteInfo.note !== '') {
+      setNoteAddStatus('added');
+    }
+  }
   //console.log('In Dictionary Component', meaning);
+  let addAsNoteHandler = () => {
+    setNoteAddStatus('loading');
+    let noteInfo = getNote(selectedText, props.notesList);
 
+    if (noteInfo.note !== '' && noteInfo.note !== undefined) {
+      props.updateNote({
+        note:
+          meaning !== 'Not Available'
+            ? meaning
+            : exampleSentence !== 'Not Available'
+            ? exampleSentence
+            : 'Not Available',
+        sentence: selectedText,
+      });
+    } else {
+      props.storeNote({
+        note:
+          meaning !== 'Not Available'
+            ? meaning
+            : exampleSentence !== 'Not Available'
+            ? exampleSentence
+            : 'Not Available',
+        sentence: selectedText,
+      });
+    }
+  };
   return (
     <div>
+      {noteStatus === 'loading'
+        ? 'Adding Notes...'
+        : noteStatus === 'added'
+        ? 'Note Added Successfully :)'
+        : null}
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
@@ -24,6 +67,12 @@ function ShowMeaningForWord(props) {
           ? exampleSentence
           : 'Loading...'}
       </div>
+      {meaning === 'Not Avaialble' && sentence === 'Not Available' ? null : (
+        <span className="pointer" onClick={addAsNoteHandler}>
+          {' '}
+          Add as Note.{' '}
+        </span>
+      )}
     </div>
   );
 }

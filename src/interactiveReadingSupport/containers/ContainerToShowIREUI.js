@@ -87,6 +87,9 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <ShowMeaningForWord
       meaningObj={props.meaningObj}
       selectedText={props.selectedText}
+      notesList={props.notesList}
+      storeNote={props.storeNote}
+      updateNote={props.updateNote}
     />
   );
   let pronounciationRenderer = (
