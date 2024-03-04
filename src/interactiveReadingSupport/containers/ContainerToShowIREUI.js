@@ -112,6 +112,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <DisplayAllNotes
       notesList={props.notesList}
       deleteNote={props.deleteNote}
+      selectedText={props.selectedText}
+      updateNote={props.updateNote}
     />
   );
 

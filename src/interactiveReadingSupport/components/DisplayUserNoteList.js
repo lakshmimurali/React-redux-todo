@@ -1,11 +1,24 @@
 import React from 'react';
+import ShowUserWrittenNote from './DisplayUserNote.js';
 
 function DisplayAllNotes(props) {
   let noteList = props.notesList;
 
-  let editHandler = (sentence) => {
+  let deleteHandler = (sentence) => {
     props.deleteNote(sentence);
   };
+
+  let editHandler = () => {
+    console.log('Inside Edit Handler', props);
+    return (
+      <ShowUserWrittenNote
+        selectedText={props.selectedText}
+        notesList={props.notesList}
+        updateNote={props.updateNote}
+      />
+    );
+  };
+
   let noteListElement = noteList.map((noteObj) => {
     let noteInfo = Object.values(noteObj).pop();
     console.log('noteInfo Obj is', noteInfo);
@@ -18,7 +31,15 @@ function DisplayAllNotes(props) {
           <span
             className="pointer"
             onClick={() => {
-              return editHandler(noteInfo.name);
+              return editHandler();
+            }}
+          >
+            &#x270E;
+          </span>
+          <span
+            className="pointer"
+            onClick={() => {
+              return deleteHandler(noteInfo.name);
             }}
           >
             &#x1F5D1;
