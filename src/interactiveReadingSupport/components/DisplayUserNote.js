@@ -80,6 +80,7 @@ function ShowUserWrittenNote(props) {
       <div>
         {' '}
         Note For Selected Text:{' '}
+        
         {issubmitDone === true ? userNote : textAreaElement}
         <br />
       </div>

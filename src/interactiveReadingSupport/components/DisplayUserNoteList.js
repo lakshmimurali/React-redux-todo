@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ShowUserWrittenNote from './DisplayUserNote.js';
 
 function DisplayAllNotes(props) {
+  let [displayNote, setValue] = useState(false);
+  let [selectedText, setSelectedText] = useState('');
+
+  useEffect(() => {
+    setValue(false);
+  }, []);
+
   let noteList = props.notesList;
 
   let deleteHandler = (sentence) => {
     props.deleteNote(sentence);
   };
 
-  let editHandler = () => {
-    console.log('Inside Edit Handler', props);
-    return (
-      <ShowUserWrittenNote
-        selectedText={props.selectedText}
-        notesList={props.notesList}
-        updateNote={props.updateNote}
-      />
-    );
+  let editHandler = (sentence) => {
+    console.log('Inside Edit Handler', props, selectedText);
+    setSelectedText(sentence);
+    return;
   };
 
   let noteListElement = noteList.map((noteObj) => {
     let noteInfo = Object.values(noteObj).pop();
-    console.log('noteInfo Obj is', noteInfo);
+    console.log('noteInfo Obj in List Comp  is', noteInfo);
     return (
       <div key={noteInfo.name}>
         <div> Selected Text:{noteInfo.name} </div>
@@ -31,7 +33,8 @@ function DisplayAllNotes(props) {
           <span
             className="pointer"
             onClick={() => {
-              return editHandler();
+              setValue(true);
+              return editHandler(noteInfo.name);
             }}
           >
             &#x270E;
@@ -55,6 +58,13 @@ function DisplayAllNotes(props) {
     <div>
       <p>NoteList:</p>
       {noteListElement}
+      {displayNote === true ? (
+        <ShowUserWrittenNote
+          selectedText={selectedText}
+          notesList={props.notesList}
+          updateNote={props.updateNote}
+        />
+      ) : null}
     </div>
   );
 }
