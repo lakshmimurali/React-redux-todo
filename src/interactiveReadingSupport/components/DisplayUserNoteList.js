@@ -63,6 +63,7 @@ function DisplayAllNotes(props) {
           selectedText={selectedText}
           notesList={props.notesList}
           updateNote={props.updateNote}
+          fromListView={true}
         />
       ) : null}
     </div>
