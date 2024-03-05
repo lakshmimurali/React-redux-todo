@@ -18,26 +18,35 @@ function getNote(sentence, notesList) {
 }
 
 function ShowUserWrittenNote(props) {
-  let [userNote, setUserNote] = useState('');
-  let [isEditMode, setEditMode] = useState(false);
-  let [issubmitDone, setSubmitActionValue] = useState(false);
-
-  useEffect(() => {
-    setEditMode(false);
-  }, [props.selectedText]);
-
-  useEffect(() => {
-    setSubmitActionValue(false);
-  }, [props.selectedText]);
-
   let selectedText = props.selectedText;
-  let noteList = props.notesList;
+  let savedNote = props.note;
+  let noteList = '';
+  let noteInfo = '';
 
-  let noteInfo = getNote(selectedText, noteList);
-  console.log('noteInfo is >>>>>>', noteInfo);
-  if (!isEditMode) {
-    userNote = noteInfo.note;
-  }
+  let [userNote, setUserNote] = useState('');
+  let [isEditMode, setEditMode] = useState(true || props.editMode);
+
+  useEffect(() => {
+    setEditMode(true);
+  }, [props.selectedText]);
+
+  useEffect(() => {
+    if (savedNote === '' || savedNote === undefined) {
+      noteList = props.notesList;
+      noteInfo = getNote(selectedText, noteList);
+      savedNote = noteInfo.note;
+    }
+    setUserNote(savedNote);
+  }, [props.selectedText]);
+
+  let deleteHandler = (sentence) => {
+    props.deleteNote(sentence);
+  };
+
+  let editHandler = () => {
+    setEditMode(true);
+    return;
+  };
 
   let updateTextAreaValueHandler = (event) => {
     let enteredText = event.target.value;
@@ -47,19 +56,19 @@ function ShowUserWrittenNote(props) {
 
   let updateUserNote = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
-      setSubmitActionValue(true);
-      console.log('Inside updateUserNote', noteInfo, selectedText);
-      if (noteInfo.note !== '' && noteInfo.note !== undefined) {
+      setEditMode(false);
+      console.log('Inside updateUserNote', savedNote, selectedText);
+      if (savedNote !== '' && savedNote !== undefined) {
         console.log(
           'Inside update CASE',
-          noteInfo.note,
+          savedNote,
           selectedText,
           userNote,
           event.target.value
         );
         props.updateNote({ note: event.target.value, sentence: selectedText });
       } else {
-        console.log('Inside Add CASE', noteInfo.note, selectedText);
+        console.log('Inside Add CASE', savedNote, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
       }
     }
@@ -75,12 +84,32 @@ function ShowUserWrittenNote(props) {
     />
   );
   return (
-    <div>
+    <div key={selectedText}>
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
         Note For Selected Text:{' '}
-        {issubmitDone === true ? userNote : textAreaElement}
+        {isEditMode === true ? textAreaElement : userNote}
+        {isEditMode === false ? (
+          <p>
+            <span
+              className="pointer"
+              onClick={() => {
+                return editHandler(selectedText);
+              }}
+            >
+              &#x270E;
+            </span>
+            <span
+              className="pointer"
+              onClick={() => {
+                return deleteHandler(selectedText);
+              }}
+            >
+              &#x1F5D1;
+            </span>
+          </p>
+        ) : null}
         <br />
       </div>
     </div>
