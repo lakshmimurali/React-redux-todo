@@ -19,9 +19,6 @@ function getNote(sentence, notesList) {
 
 function ShowUserWrittenNote(props) {
   let selectedText = props.selectedText;
-  let savedNote = props.note;
-  let noteList = '';
-  let noteInfo = '';
   let getEditValue = () => {
     let editMode = true;
     if (props.fromListView !== '' && props.fromListView !== undefined) {
@@ -29,7 +26,26 @@ function ShowUserWrittenNote(props) {
     }
     return editMode;
   };
-  let [userNote, setUserNote] = useState('');
+  let noteList = '';
+  let noteInfo = '';
+
+  let getNoteValue = () => {
+    let savedNote = '';
+    if (props.fromListView !== '' && props.fromListView !== undefined) {
+      savedNote = props.note;
+    }
+
+    if (props.fromAddForm !== '' && props.fromAddForm !== undefined) {
+      console.log('Inside >>> From Add case');
+      noteList = props.notesList;
+      noteInfo = getNote(selectedText, noteList);
+      savedNote = noteInfo.note;
+      console.log('savedNote is', savedNote);
+    }
+    return savedNote;
+  };
+
+  let [userNote, setUserNote] = useState(getNoteValue());
   let [isEditMode, setEditMode] = useState(getEditValue());
 
   useEffect(() => {
@@ -37,12 +53,7 @@ function ShowUserWrittenNote(props) {
   }, [props.selectedText]);
 
   useEffect(() => {
-    if (savedNote === '' || savedNote === undefined) {
-      noteList = props.notesList;
-      noteInfo = getNote(selectedText, noteList);
-      savedNote = noteInfo.note;
-    }
-    setUserNote(savedNote);
+    setUserNote(getNoteValue());
   }, [props.selectedText]);
 
   let deleteHandler = (sentence) => {
@@ -63,18 +74,21 @@ function ShowUserWrittenNote(props) {
   let updateUserNote = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
       setEditMode(false);
-      console.log('Inside updateUserNote', savedNote, selectedText);
-      if (savedNote !== '' && savedNote !== undefined) {
+      console.log('Inside updateUserNote', userNote, selectedText);
+      if (
+        getNote(userNote, props.notesList).note !== '' &&
+        getNote(userNote, props.notesList).note !== undefined
+      ) {
         console.log(
           'Inside update CASE',
-          savedNote,
+          userNote,
           selectedText,
           userNote,
           event.target.value
         );
         props.updateNote({ note: event.target.value, sentence: selectedText });
       } else {
-        console.log('Inside Add CASE', savedNote, selectedText);
+        console.log('Inside Add CASE', userNote, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
       }
     }

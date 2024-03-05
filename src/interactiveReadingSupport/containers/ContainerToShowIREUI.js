@@ -83,6 +83,8 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     props.fetchAbbreviationDetailsFromServer
   );
 
+  console.log('noteList is >>>>>>>>>>>>>', props.notesList);
+
   let meaningRenderer = (
     <ShowMeaningForWord
       meaningObj={props.meaningObj}

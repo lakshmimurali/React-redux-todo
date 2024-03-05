@@ -3,6 +3,7 @@ import ShowUserWrittenNote from './DisplayUserNote.js';
 
 function DisplayAllNotes(props) {
   let noteList = props.notesList;
+  console.log('noteList is', noteList);
 
   let noteListElement = noteList.map((noteObj) => {
     let noteInfo = Object.values(noteObj).pop();
@@ -12,6 +13,7 @@ function DisplayAllNotes(props) {
         <ShowUserWrittenNote
           selectedText={noteInfo.name}
           note={noteInfo.note}
+          notesList={noteList}
           updateNote={props.updateNote}
           deleteNote={props.deleteNote}
           editMode={false}
