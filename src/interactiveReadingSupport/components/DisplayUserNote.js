@@ -97,7 +97,7 @@ function ShowUserWrittenNote(props) {
         Note For Selected Text:{' '}
         {isEditMode === true ? textAreaElement : userNote}
         {isEditMode === false ? (
-          <p>
+          <span>
             <span
               className="pointer"
               onClick={() => {
@@ -114,7 +114,7 @@ function ShowUserWrittenNote(props) {
             >
               &#x1F5D1;
             </span>
-          </p>
+          </span>
         ) : null}
         <br />
       </div>

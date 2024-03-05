@@ -8,14 +8,18 @@ function DisplayAllNotes(props) {
     let noteInfo = Object.values(noteObj).pop();
     console.log('noteInfo Obj in List Comp  is', noteInfo);
     return (
-      <ShowUserWrittenNote
-        selectedText={noteInfo.name}
-        note={noteInfo.note}
-        updateNote={props.updateNote}
-        editMode={false}
-        fromListView={true}
-        key={selectedText}
-      />
+      <>
+        <ShowUserWrittenNote
+          selectedText={noteInfo.name}
+          note={noteInfo.note}
+          updateNote={props.updateNote}
+          deleteNote={props.deleteNote}
+          editMode={false}
+          fromListView={true}
+          key={noteInfo.name}
+        />
+        <hr />
+      </>
     );
   });
 
