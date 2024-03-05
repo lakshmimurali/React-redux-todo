@@ -22,12 +22,18 @@ function ShowUserWrittenNote(props) {
   let savedNote = props.note;
   let noteList = '';
   let noteInfo = '';
-
+  let getEditValue = () => {
+    let editMode = true;
+    if (props.fromListView !== '' && props.fromListView !== undefined) {
+      editMode = false;
+    }
+    return editMode;
+  };
   let [userNote, setUserNote] = useState('');
-  let [isEditMode, setEditMode] = useState(true || props.editMode);
+  let [isEditMode, setEditMode] = useState(getEditValue());
 
   useEffect(() => {
-    setEditMode(true);
+    setEditMode(getEditValue());
   }, [props.selectedText]);
 
   useEffect(() => {

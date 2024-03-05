@@ -13,6 +13,8 @@ function DisplayAllNotes(props) {
         note={noteInfo.note}
         updateNote={props.updateNote}
         editMode={false}
+        fromListView={true}
+        key={selectedText}
       />
     );
   });

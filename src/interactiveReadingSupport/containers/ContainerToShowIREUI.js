@@ -105,6 +105,7 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
       notesList={props.notesList}
       storeNote={props.storeNote}
       updateNote={props.updateNote}
+      fromAddForm={true}
     />
   );
 
