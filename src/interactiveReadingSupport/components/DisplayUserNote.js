@@ -61,6 +61,8 @@ function ShowUserWrittenNote(props) {
   useEffect(() => {
     if (textAreaReference.current !== null) {
       textAreaReference.current.focus();
+      const textLength = textAreaReference.current.value.length;
+      textAreaReference.current.setSelectionRange(textLength, textLength);
     }
   });
 
