@@ -77,7 +77,9 @@ function ShowUserWrittenNote(props) {
   let updateTextAreaValueHandler = (event) => {
     let enteredText = event.target.value;
     setUserNote(enteredText);
-    setEditMode(true);
+    if (isEditMode === false) {
+      setEditMode(true);
+    }
   };
 
   let updateUserNote = (event) => {
