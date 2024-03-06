@@ -9,7 +9,7 @@ function DisplayAllNotes(props) {
     let noteInfo = Object.values(noteObj).pop();
     console.log('noteInfo Obj in List Comp  is', noteInfo);
     return (
-      <>
+      <React.Fragment key={noteInfo.name}>
         <ShowUserWrittenNote
           selectedText={noteInfo.name}
           note={noteInfo.note}
@@ -21,7 +21,7 @@ function DisplayAllNotes(props) {
           key={noteInfo.name}
         />
         <hr />
-      </>
+      </React.Fragment>
     );
   });
 

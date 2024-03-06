@@ -19,7 +19,7 @@ function getNote(sentence, notesList) {
 
 function ShowUserWrittenNote(props) {
   let selectedText = props.selectedText;
-  let textAreaReference = useRef('textareaelem');
+  let textAreaReference = useRef(null);
   let getValueForEditMode = () => {
     let editMode = true;
     if (props.fromListView !== '' && props.fromListView !== undefined) {
@@ -59,11 +59,9 @@ function ShowUserWrittenNote(props) {
   }, [props.selectedText]);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (textAreaReference.current !== null) {
-        textAreaReference.current.focus();
-      }
-    }, 50);
+    if (textAreaReference.current !== null) {
+      textAreaReference.current.focus();
+    }
   });
 
   let deleteHandler = (sentence) => {
