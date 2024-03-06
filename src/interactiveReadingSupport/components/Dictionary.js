@@ -68,10 +68,14 @@ function ShowMeaningForWord(props) {
           : 'Loading...'}
       </div>
       {meaning === 'Not Avaialble' && sentence === 'Not Available' ? null : (
-        <span className="pointer" onClick={addAsNoteHandler}>
+        <button
+          disabled={noteStatus === 'added' ? true : false}
+          className="pointer"
+          onClick={addAsNoteHandler}
+        >
           {' '}
           Add as Note.{' '}
-        </span>
+        </button>
       )}
     </div>
   );
