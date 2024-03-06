@@ -57,6 +57,7 @@ const InteractiveReader = (props) => {
 
   let hideAction = () => {
     setStateForIRETools(false);
+    props.invokeActionCreatorForUpdatingSelectedText('0000');
   };
   console.log('selAction is', selAction);
   if (showIRETools) {

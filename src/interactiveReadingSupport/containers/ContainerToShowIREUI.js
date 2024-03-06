@@ -7,6 +7,8 @@ import { actionCreatorForFetchingPronounciationOfWord } from '../actionCreators/
 
 import { actionCreatorForFetchingAbbreviations } from '../actionCreators/IREActions-Abbreviation.js';
 
+import actionCreatorForUpdatingSelectedText from '../actionCreators/IRE-UpdateSelectedText.js';
+
 import {
   actionCreatorForStoringNote,
   actionCreatorForEditingtheNote,
@@ -32,7 +34,7 @@ function getDataFromStore(state) {
     state.abbr
   );
   return {
-    selectedText: state.selectedNode.textValue,
+    selectedText: state.selectedNode,
     meaningObj: state.meanings.synonyms,
     urlList: state.pronounciations.urls,
     notesList: state.writeups.notes,
@@ -62,6 +64,9 @@ function dispatchActions(dispatch) {
     },
     invokeHighlightTextAction: (payload) => {
       dispatch(actionCreatorForHightlightingToDo(payload));
+    },
+    invokeActionCreatorForUpdatingSelectedText: (text) => {
+      dispatch(actionCreatorForUpdatingSelectedText(text));
     },
   };
 }
@@ -147,6 +152,9 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
         NoteRenderer={noteRenderer}
         AllNotesRenderer={allNotesRenderer}
         AbbreviationRenderer={abbreviationRenderer}
+        invokeActionCreatorForUpdatingSelectedText={
+          props.invokeActionCreatorForUpdatingSelectedText
+        }
       />
     </div>
   );
