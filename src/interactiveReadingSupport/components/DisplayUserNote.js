@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function getNote(sentence, notesList) {
   let requiredNoteInfo = notesList.filter((noteObj) => {
@@ -19,7 +19,8 @@ function getNote(sentence, notesList) {
 
 function ShowUserWrittenNote(props) {
   let selectedText = props.selectedText;
-  let getEditValue = () => {
+  let textAreaReference = useRef('textareaelem');
+  let getValueForEditMode = () => {
     let editMode = true;
     if (props.fromListView !== '' && props.fromListView !== undefined) {
       editMode = false;
@@ -29,7 +30,7 @@ function ShowUserWrittenNote(props) {
   let noteList = '';
   let noteInfo = '';
 
-  let getNoteValue = () => {
+  let getNoteData = () => {
     let savedNote = '';
     if (props.fromListView !== '' && props.fromListView !== undefined) {
       savedNote = props.note;
@@ -45,16 +46,25 @@ function ShowUserWrittenNote(props) {
     return savedNote;
   };
 
-  let [userNote, setUserNote] = useState(getNoteValue());
-  let [isEditMode, setEditMode] = useState(getEditValue());
+  let [noteInStore, setValueForNoteInStore] = useState(getNoteData());
+  let [userNote, setUserNote] = useState(getNoteData());
+  let [isEditMode, setEditMode] = useState(getValueForEditMode());
 
   useEffect(() => {
-    setEditMode(getEditValue());
+    setEditMode(getValueForEditMode());
   }, [props.selectedText]);
 
   useEffect(() => {
-    setUserNote(getNoteValue());
+    setUserNote(getNoteData());
   }, [props.selectedText]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (textAreaReference.current !== null) {
+        textAreaReference.current.focus();
+      }
+    }, 50);
+  });
 
   let deleteHandler = (sentence) => {
     props.deleteNote(sentence);
@@ -62,6 +72,7 @@ function ShowUserWrittenNote(props) {
 
   let editHandler = () => {
     setEditMode(true);
+
     return;
   };
 
@@ -75,10 +86,7 @@ function ShowUserWrittenNote(props) {
     if (event.ctrlKey && event.key === 'Enter') {
       setEditMode(false);
       console.log('Inside updateUserNote', userNote, selectedText);
-      if (
-        getNote(userNote, props.notesList).note !== '' &&
-        getNote(userNote, props.notesList).note !== undefined
-      ) {
+      if (noteInStore !== '' && noteInStore !== undefined) {
         console.log(
           'Inside update CASE',
           userNote,
@@ -90,26 +98,29 @@ function ShowUserWrittenNote(props) {
       } else {
         console.log('Inside Add CASE', userNote, selectedText);
         props.storeNote({ note: userNote, sentence: selectedText });
+        setValueForNoteInStore(userNote);
       }
     }
   };
-  let textAreaElement = (
-    <textarea
-      value={userNote}
-      style={{ width: '200px', height: '200px' }}
-      name="usernote"
-      onChange={updateTextAreaValueHandler}
-      onKeyDown={updateUserNote}
-      autoFocus
-    />
-  );
+
   return (
     <div key={selectedText}>
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
         Note For Selected Text:{' '}
-        {isEditMode === true ? textAreaElement : userNote}
+        {isEditMode === true ? (
+          <textarea
+            value={userNote}
+            style={{ width: '200px', height: '200px' }}
+            name="usernote"
+            onChange={updateTextAreaValueHandler}
+            onKeyDown={updateUserNote}
+            ref={textAreaReference}
+          />
+        ) : (
+          userNote
+        )}
         {isEditMode === false ? (
           <span>
             <span
