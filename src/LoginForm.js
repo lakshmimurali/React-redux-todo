@@ -5,6 +5,7 @@ export default function LoginForm(props) {
   const handleKeyDown = (event) => {
     if (event.ctrlKey && event.key === 'Enter') {
       if ('OTPCredential' in window) {
+        const ac = new AbortController();
         const input = document.querySelector('input');
         const form = input.closest('form');
         if (form) {
@@ -14,7 +15,6 @@ export default function LoginForm(props) {
           });
         }
         // Set up an AbortController to use with the OTP request
-        const ac = new AbortController();
 
         // Request the OTP via get()
         navigator.credentials
@@ -40,8 +40,8 @@ export default function LoginForm(props) {
     }
   };
   return (
-    <form>
-      Please enter Mobile No:
+    <form name="loginform">
+      OTP:
       <input
         type="text"
         ref={optBox}
