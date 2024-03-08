@@ -64,7 +64,7 @@ function ShowUserWrittenNote(props) {
       const textLength = textAreaReference.current.value.length;
       textAreaReference.current.setSelectionRange(textLength, textLength);
     }
-  });
+  }, []);
 
   let deleteHandler = (sentence) => {
     props.deleteNote(sentence);
@@ -72,7 +72,13 @@ function ShowUserWrittenNote(props) {
 
   let editHandler = () => {
     setEditMode(true);
-
+    setTimeout(() => {
+      if (textAreaReference.current !== null) {
+        textAreaReference.current.focus();
+        const textLength = textAreaReference.current.value.length;
+        textAreaReference.current.setSelectionRange(textLength, textLength);
+      }
+    }, 100);
     return;
   };
 
