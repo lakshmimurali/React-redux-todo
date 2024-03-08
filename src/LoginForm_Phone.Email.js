@@ -46,12 +46,14 @@ const LoginFormPhoneEmail = (props) => {
         phEmailJwt: phEmailJwt,
       });
 
+      console.log('User Details are>>>>>>>', responseData);
+
       // Set cookie with 180-day expiration
       const cookieExpire = new Date(
         Date.now() + 180 * 24 * 60 * 60 * 1000
       ).toUTCString();
       document.cookie = `ph_email_jwt=${phEmailJwt}; expires=${cookieExpire}; path=/`;
-
+      props.setValue(true);
       // Register User: As the user phone number has been verified successfully. If user corrosponding to this verified  mobile number does not exist in your user table then register the user by creating a row in user table. If user already exists then simply continue to the next step.
 
       // Send Email: We reccomend you to send welcome email to the user.
@@ -152,8 +154,6 @@ const LoginFormPhoneEmail = (props) => {
           </div>
         </div>
       )}
-
-      {accessToken && props.setValue(true)}
     </React.Fragment>
   );
 };
