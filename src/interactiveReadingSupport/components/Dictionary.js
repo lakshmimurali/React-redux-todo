@@ -50,7 +50,7 @@ function ShowMeaningForWord(props) {
     }
   };
   return (
-    <div>
+    <div className="not-selectable">
       {noteStatus === 'loading'
         ? 'Adding Notes...'
         : noteStatus === 'added'

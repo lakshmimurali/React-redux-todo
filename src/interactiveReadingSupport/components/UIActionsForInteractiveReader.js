@@ -62,7 +62,7 @@ const InteractiveReader = (props) => {
   console.log('selAction is', selAction);
   if (showIRETools) {
     return (
-      <div>
+      <div className="not-selectable">
         <p>
           <button value="meaning" key="1" onClick={actionHandler}>
             Check Meaning.

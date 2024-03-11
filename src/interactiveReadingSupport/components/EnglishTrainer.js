@@ -22,7 +22,7 @@ function ShowProuniciationAudioForGivenWord(props) {
   );
 
   return (
-    <div>
+    <div className="not-selectable">
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}

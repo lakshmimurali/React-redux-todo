@@ -12,7 +12,7 @@ function ShowAbbreviationForAcronym(props) {
   console.log('In Show AbbreviationForAcronym Component', abbreviation);
 
   return (
-    <div>
+    <div className="not-selectable">
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}

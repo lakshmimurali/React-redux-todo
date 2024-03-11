@@ -112,7 +112,7 @@ function ShowUserWrittenNote(props) {
   };
 
   return (
-    <div key={selectedText}>
+    <div key={selectedText} className="not-selectable">
       <div> Selected Text:{selectedText} </div>
       <div>
         {' '}
