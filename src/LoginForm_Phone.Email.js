@@ -35,7 +35,8 @@ const LoginFormPhoneEmail = (props) => {
       const responseData = await response.json();
 
       if (responseData.status !== 200) {
-        throw new Error('Something went wrong');
+        props.setValue(true);
+        console.log('Something went wrong');
       }
 
       const phEmailJwt = responseData.ph_email_jwt;
@@ -65,6 +66,7 @@ const LoginFormPhoneEmail = (props) => {
 
       // Handle Logout (Optional): You can create logout button on your website as required.In the event of logout you must clear delete ph_email_jwt cookie and clear your session variables.  To delete cookie simply set it to blank -> setcookie("ph_email_jwt", "", time()-3600);
     } catch (error) {
+      props.setValue(false);
       console.error('Fetch error:', error);
     }
   };

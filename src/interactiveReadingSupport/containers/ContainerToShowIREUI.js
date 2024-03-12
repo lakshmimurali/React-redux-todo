@@ -129,6 +129,9 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <ShowAbbreviationForAcronym
       selectedText={props.selectedText}
       abbrList={props.abbrList}
+      notesList={props.notesList}
+      storeNote={props.storeNote}
+      updateNote={props.updateNote}
     />
   );
 
