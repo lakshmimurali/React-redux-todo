@@ -103,6 +103,9 @@ function RespondToUIActionsBasedOnTextSelectionChange(props) {
     <ShowProuniciationAudioForGivenWord
       selectedText={props.selectedText}
       urlList={props.urlList}
+      notesList={props.notesList}
+      storeNote={props.storeNote}
+      updateNote={props.updateNote}
     />
   );
 
