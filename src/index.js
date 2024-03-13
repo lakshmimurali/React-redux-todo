@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import appStore, { persistor } from './store/AppStore.js';
+import { appStore, persistor } from './store/AppStore.js';
 
 import { PersistGate } from 'redux-persist/integration/react';
 
