@@ -4,8 +4,8 @@
 
 # Have to write a factorty reducer, action creator that produces reducer, action creator based on the need.
 
-# Persist Changes.
+# Persist Changes. Done :)
 
-# Adding Abbreviations as Notes
+# Adding Abbreviations as Notes # Done
 
-# Need to fine tune the logging part
+# Need to fine tune the login part
