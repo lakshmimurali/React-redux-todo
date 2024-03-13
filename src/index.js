@@ -10,7 +10,7 @@ import LoginForm from './LoginForm.js';
 import LoginFormPhoneEmail from './LoginForm_Phone.Email.js';
 
 function RenderApp() {
-  const [loggedIn, setLoggedInState] = useState(true);
+  const [loggedIn, setLoggedInState] = useState(false);
   return (
     <Provider store={appStore}>
       <PersistGate loading={null} persistor={persistor}>

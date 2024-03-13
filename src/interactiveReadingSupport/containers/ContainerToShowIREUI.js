@@ -13,7 +13,7 @@ import {
   actionCreatorForStoringNote,
   actionCreatorForEditingtheNote,
   actionCreatorForDeletingtheNote,
-  actionCreatorForEditingtheNote,
+  
 } from '../actionCreators/IRE-Notes.js';
 
 import actionCreatorForHightlightingToDo from '../../actions/highlightToDo.js';
