@@ -9,7 +9,7 @@ p {
   display: inline-block;
   width: 20px;
   height: 10px;
-  top: 4px;
+  top: -5px;
 }
 .pointer {
   cursor: pointer;
