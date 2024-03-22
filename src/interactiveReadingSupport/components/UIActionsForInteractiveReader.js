@@ -4,20 +4,45 @@ import getParentElementOfSelectedText from '../../domelementutils/helperToGetSel
 const InteractiveReader = (props) => {
   const selectedText = props.selectedText;
   let [showIRETools, setStateForIRETools] = useState(true);
-  let [selAction, setAction] = useState('');
+  let [selAction, setAction] = useState('none');
+  // Expectation updates state for selAction to reset and showIRETools to false
+  let hideAction = () => {
+    setAction('reset');
+    console.log('Inside Hide Action');
+    setStateForIRETools(false);
+    //props.invokeActionCreatorForUpdatingSelectedText('0000');
+  };
 
-  console.log('Inside Tool Component', selectedText, showIRETools);
+  console.log('Inside Tool Component', selectedText, showIRETools,selAction);
+  
   useEffect(() => {
+    console.log('inside showIRETools effect');
     setStateForIRETools(true);
   }, [selectedText]);
+  
+  /* Expectation = runs only one time during onload. 
+  Result =  */
+  useEffect(() => {
+    if(selAction === 'none' && showIRETools === true)
+    {
+      console.log('Inside Page Load Event >>>>>>>', selAction);
+      setStateForIRETools(false);
+    
+    }
+  },[]);
 
   useEffect(() => {
-    setAction('');
-  }, [selectedText]);
+    console.log('inside selActions effect');
+    setAction('reset');
+}, [selectedText]);
+
+
+
 
   let actionHandler = (event) => {
     console.log('Clicked Element', event.target.value);
     setAction(event.target.value);
+    setStateForIRETools(true);
     if (
       event.target.value === 'meaning' &&
       (props.meaningObj[selectedText] === undefined ||
@@ -55,12 +80,9 @@ const InteractiveReader = (props) => {
     }
   };
 
-  let hideAction = () => {
-    setStateForIRETools(false);
-    props.invokeActionCreatorForUpdatingSelectedText('0000');
-  };
-  console.log('selAction is', selAction);
-  if (showIRETools) {
+  
+  
+  if (showIRETools ) {
     return (
       <div className="not-selectable">
         <p>
