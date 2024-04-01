@@ -10,12 +10,14 @@ const InteractiveReader = (props) => {
     setAction('reset');
     console.log('Inside Hide Action');
     setStateForIRETools(false);
+    props.invokeActionCreatorForUpdatingSelectedText('0000');
   };
 
   console.log('Inside Tool Component', selectedText, showIRETools,selAction);
   
   useEffect(() => {
-    console.log('inside showIRETools effect');
+    console.log('Inside showIRETools effect');
+    
     setStateForIRETools(true);
   }, [selectedText]);
   
@@ -31,11 +33,9 @@ const InteractiveReader = (props) => {
   },[]);
 
   useEffect(() => {
-    console.log('inside selActions effect');
+    console.log('Inside showIRETools effect');
     setAction('reset');
-}, [selectedText]);
-
-
+  }, [selectedText]);
 
 
   let actionHandler = (event) => {
