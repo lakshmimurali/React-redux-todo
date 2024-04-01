@@ -10,7 +10,7 @@ const InteractiveReader = (props) => {
     setAction('reset');
     console.log('Inside Hide Action');
     setStateForIRETools(false);
-    //props.invokeActionCreatorForUpdatingSelectedText('0000');
+    props.invokeActionCreatorForUpdatingSelectedText('0000');
   };
 
   console.log('Inside Tool Component', selectedText, showIRETools,selAction);
